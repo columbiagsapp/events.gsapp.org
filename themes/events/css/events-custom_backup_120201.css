@@ -1,0 +1,861 @@
+/* @override 
+	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?n
+	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?6
+	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?i
+	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?C
+	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?S
+	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?L
+	http://postfog.org/gsappevents.org/sites/all/themes/events/css/events-custom.css?L
+	http://postfog.org/gsappevents.org/sites/all/themes/events/css/events-custom.css?G
+	http://postfog.org/gsappevents.org/sites/all/themes/events/css/events-custom.css?c
+	http://postfog.org/gsappevents.org/sites/all/themes/events/css/events-custom.css?Y
+	http://postfog.org/gsappevents.org/sites/all/themes/events/css/events-custom.css?d
+	http://gsappevents.org/sites/all/themes/events/css/events-custom.css?5
+	http://www.gsappevents.org/sites/all/themes/events/css/events-custom.css?5
+*/
+
+/* @group Everything */
+
+body {
+	background-color: #EBEBEB;
+}
+
+a {
+	color: gray;
+}
+
+a:hover {
+	color: black;
+}
+
+/* @end */
+
+/* @group Header */
+
+#header {
+	position: relative;
+	margin: 40px auto 0px auto;
+	width: 600px;
+	height: 70px;
+	// margin-bottom: -34px;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	// border: 1px solid black;
+}
+
+.region-header .block {
+}
+
+/* @group Menu */
+
+.menu {
+	margin: 0px !important;
+	padding: 0px !important;
+	height: 20px;
+	width: 150px;
+	text-align: center;
+	background-color: black;
+	color: white;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 11px;
+	line-height: 20px;
+}
+
+
+/* @group Location Menu */
+
+.menu-location {
+	position: absolute;
+	right: 0px;
+	top:0px;
+	z-index: 1000;
+}
+
+.menu .arrow {
+	float: right;
+	width: 10px;
+	margin-right: 5px;
+	margin-left: -15px;
+	padding: 5px 2px 0px 0px;
+}
+
+
+
+/* @end */
+
+/* @group Mode Menu */
+
+.menu-mode {
+	position: absolute;
+	right: 225px;
+	top: 0px;
+	z-index: 1000;
+}
+
+
+/* @end */
+
+/* @group Date Menu */
+
+
+
+/* @end */
+
+
+
+/* @end */
+/* @group Logo */
+
+
+
+#logo {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#logo .logotext {
+	height: 20px;
+	width: 150px;
+	text-align: center;
+	line-height: 20px;
+	background-color: black;
+	color: white;
+	letter-spacing: 1px;
+	font-weight: bold;
+	font-size: 11px;
+	text-transform: uppercase;
+}
+
+#logo a {
+	text-decoration: none;
+}
+	
+#logo a:hover .logotext   {
+	background-color: white;
+	color: black;
+}
+
+
+
+
+
+/* @end */
+
+/* @group Search */
+
+#block-block-2 {
+	position: absolute;
+	right: 0px;
+	top: 50px;
+	z-index: 1000;
+}
+
+#search-box .form-text {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	width: 138px;
+	padding: 5px;
+	height: 8px;
+	margin: 0;
+	border: 1px solid black;
+	background-color: #EEE;
+}
+
+/* @end */
+
+/* @group Pager */
+
+.pager {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.date-nav-new.pager, .semester-pager.pager {
+	margin-top: -20px !important;
+}
+
+
+/* @group Event Pager */
+
+#block-block-8 {
+	position: absolute;
+	right: 225px;
+	top: 50px;
+	z-index: 900;
+	
+}
+
+#block-block-8 .pager {
+	height: 20px;
+	line-height: 20px;
+}
+
+.event-pager.pager {
+	margin: 0px !important;
+	padding: 0px !important; 
+}
+
+/* @end */
+
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Node */
+
+.node {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 11px;
+	line-height: 14px;
+}
+
+.node a {
+	text-decoration: none;
+}
+
+.node a:hover {
+}
+
+
+
+/* @end */
+
+/* @group Events node page */
+
+.node-type-event.node-full {
+	margin-top: 60px;
+}
+
+/* @group Section */
+
+.node-type-event.node-full .section {
+	overflow: hidden;	
+	margin-bottom: 20px !important;
+	}
+
+.node-type-event.node-full .content-left {
+	float: left;
+	width: 430px;
+	margin-right: 100px;
+}
+	
+.node-type-event.node-full .content-right {
+	width: 430px;
+	float: left;
+}
+
+/* @end */
+
+.node-type-event.node-full .event-title a {
+	color: black;
+}
+	
+.node-type-event.node-full .event-title {
+	display: block;
+	font-size: 3em;
+	line-height: 1em;
+	font-weight: bold;
+	border-bottom: 4px solid black;
+	margin-top:10px;
+	padding-bottom: 4px;
+	padding-top: 10px;
+	margin-bottom: 10px;
+	
+}
+
+
+/* @group -Social */
+
+
+.node-type-event.node-full .content-left  {
+	position: relative;
+}
+
+.node-type-event.node-full .content-left .event-social {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+
+.node-type-event.node-full .event-social {
+	width: 235px;
+	float: right;
+	display: block;
+	overflow: hidden;
+	text-align: right;
+}
+
+
+.node-type-event.node-full .event-social a {
+	color: black;
+}
+
+.node-type-event.node-full .event-social .gcal .dropdown-menu  {
+	display: none;
+}
+
+.node-type-event.node-full .event-social .gcal {
+	padding-top: 3px;
+}
+
+
+
+
+.node-type-event.node-full .event-social .dropdown a {
+	padding: 2px 5px;
+}
+
+.node-type-event.node-full .event-social .dropdown {
+	width: 70px;
+	float:  left;	
+	margin-right: 10px;
+	text-align: left;
+}
+
+
+.node-type-event.node-full .event-social .dropdown .header {
+	background-color: black;
+	color: white;
+}
+
+.node-type-event.node-full .event-social .dropdown .header .arrow {
+	float: right;
+}
+.node-type-event.node-full .event-social .dropdown .header a {
+	background-color: black;
+	color: white;
+}
+
+/* @end */
+
+/* @group -Interactive */
+
+/* @group Twitter */
+
+.node-type-event.node-full #event-tweets {
+	margin-bottom: 20px;
+}
+
+/* @group Tweet Styling */
+
+.node-type-event.node-full #event-twitter-container {
+	padding: 15px 15px 0px 15px;
+	background-color: white;
+}
+
+#event-tweets .twtr-ft, #event-twitter-control {
+	text-align: center;
+	padding: 8px 0px;
+	color: #999;
+	cursor: pointer;
+}
+
+#event-tweets .twtr-bd {
+	background-color: #DBEBEB !important;
+}
+
+
+#event-tweets .twtr-ft, #event-tweets .twtr-hd {
+	display: none;
+}
+
+#event-tweets .twtr-doc {
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	border-radius: 0px !important;
+}
+
+#event-tweets .twtr-tweet-wrap {
+	background-color: #DBEBEB;
+}
+#event-tweets .twtr-tweet {
+	border-bottom: 2px solid white;
+	margin: 0px 5px;
+}
+
+
+#event-tweets .twtr-timeline {
+	width: 400px;	
+}
+
+#event-tweets .twtr-timeline .twtr-tweets {
+	background-color: #DBEBEB;
+}
+
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Comments */
+
+/* @group Disqus */
+
+#disqus_thread {
+	background-color: #F5F5F5 !important;
+	padding: 15px;
+}
+#dsq-content {
+	font-family: "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
+	font-size: 11px !important;
+}
+#dsq-content #dsq-global-toolbar {
+	display: none;
+}
+#dsq-content h3 {
+	font-size: 11px;
+}
+#dsq-content .dsq-options * {
+	color: #666;
+}
+
+#dsq-content .dsq-request-user-name,
+#dsq-content .dsq-request-user-stats {
+	font-family: "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
+	font-size: 12px !important;
+}
+#dsq-content .dsq-header-avatar { display: none !important; }
+
+#dsq-content .dsq-full-comment {
+	background-color: #EBEBEB !important;
+	padding: 10px;
+	margin-bottom: 15px;
+}
+#dsq-content .dsq-comment-buttons { display: none; !important; }
+#dsq-content .dsq-comment-body { padding: 0 !important; }
+#dsq-content .dsq-comment-header { border: none !important; background-image: none !important; }
+#dsq-content .dsq-comment-header tr {
+	margin-bottomn: 0px !important;
+}
+
+#dsq-content .dsq-comment-header-time {
+	float: right;
+	padding: 0px !important;
+}
+
+#dsq-content .dsq-comment-header-meta { 
+	padding: 0px !important; 
+	font-size: 10px;
+	color: #666;
+}
+#dsq-content .dsq-comment-header cite { 
+	font-weight: normal !important;
+	font-size: 100% !important; 
+}
+#dsq-content .dsq-comment-body { 
+	padding: 0 !important;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+#dsq-content .dsq-comment-footer {
+	margin: -25px 0px 0px 0px !important;
+	float: right;
+}
+#dsq-content .dsq-textarea-wrapper { 
+	border-radius: 0px !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	background-image: none !important;
+	background-color: #EBEBEB !important;
+	border: none !important;
+}
+#dsq-content .dsq-textarea-wrapper { 
+}
+#dsq-content .dsq-moderator-star { display: none !important; }
+#dsq-content .dsq-subscribe-email img {
+	display: none;
+}
+#dsq-content .dsq-subscribe-email a:hover {
+	text-decoration: none;
+	color: black;
+}
+#dsq-content .dsq-pagination {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+/* @end */
+
+.node-type-event.node-full #event-comments {
+	clear: both;
+}
+
+
+
+/* @end */
+
+
+
+/* @end */
+
+.node-type-event.node-full .event-people {
+	clear: both;
+	font-weight: bold;
+}
+
+
+.node-type-event.node-full .event-people .event-person {
+	color: #333;
+	display: inline;
+}
+
+
+.node-type-event.node-full .event-description {
+	clear: both;
+}
+
+.node-type-event.node-full .label {
+}
+
+.node-type-event.node-full .label {
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-bottom: 5px;
+}
+
+/* @end */
+
+/* @group Events teaser list */
+
+.view-events-browse {
+	width: 350px;
+	margin: auto;
+}
+
+
+.node-type-event.node-teaser {
+	margin-bottom: 24px;
+	position: relative;
+}
+
+/* @group teaser-image */
+
+.node-type-event.node-teaser .teaser-image {
+	position: absolute;
+	top: 0px;
+	left: -415px; /* arbitrary + 15 */
+	width: 400px; /* arbitrary */
+	text-align: right;
+	display: none;
+	z-index: 900;
+}
+
+
+
+.teaser-content.hover .teaser-image {
+	display: block !important;
+}
+
+/* @end */
+
+.node-type-event.node-teaser a {
+	color: black;
+}
+
+.node-type-event.node-teaser a:hover {
+}
+
+.node-type-event.node-teaser .teaser-date {
+	position: relative;
+}
+
+.node-type-event.node-teaser .teaser-date-box {
+	position: absolute;
+	border: 2px solid black;
+	width:  30px;
+	height: 30px;
+	float: left;
+}
+
+.node-type-event.node-teaser .teaser-date {
+	float: left;
+	width:  34px;
+	height: 34px;
+	text-align: center;
+	line-height: 13px;
+}
+
+.node-type-event.node-teaser .teaser-date-month {
+	margin-top: 5px;
+}
+
+
+.node-type-event.node-teaser .teaser-info {
+	margin-left: 45px;
+}
+
+
+.node-type-event.node-teaser .teaser-info .event-people {
+	width: 300px;	
+}
+
+.node-type-event.node-teaser .teaser-info .event-people .event-person {
+	color: #333;
+	display: inline;
+}
+
+
+.node-type-event.node-teaser .event-title {
+	color: black;
+	font-weight: bold;
+}
+
+.node-type-event.node-teaser .event-location {
+	float: left;
+	margin-right: 5px;
+}
+
+
+
+/* @end */
+
+/* @group Event Browse - Pager */
+
+.pager {
+		width: 150px;
+		height: 14px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 60px;
+		background-color: black;
+		color: white;
+		padding: 3px 0px;
+		overflow: hidden;
+		position: relative;
+		line-height:14px;
+}
+
+.pager * {
+	font-size: 11px;
+}
+
+.pager {
+
+}
+
+.pager .date-heading {
+	display: block;
+	width: 100px;
+	text-align: center !important;
+	margin: 0px auto 0px auto !important;
+	font-weight: bold;
+}
+
+
+.pager .date-prev {
+	width: 25px !important;
+	text-align: right;
+	float: left;
+}
+
+.pager .date-next {
+	width: 25px !important;
+	text-align: left;
+	float: right;
+}
+
+.pager a img {
+	padding-top: 5px;
+}
+
+
+
+
+/* @end */
+
+/* @group Dropdown */
+
+/* Default Behavior */ 
+.dropdown .sub_menu {
+	display: none;
+}
+
+.dropdown * {
+	display: block;
+	font-weight: bold;
+}
+
+.dropdown a {
+	color:  white;
+	text-decoration: none;
+}
+
+.dropdown .sub_menu span a {
+	color: black;
+	background-color: white;
+}
+
+
+.dropdown .sub_menu span a:hover {
+/*	color: white; */
+	background-color: #d7d7d7; /*dropdown color */
+}
+	
+
+/* @end */
+
+/* @group Locations */
+
+/* @group Date Box */
+
+
+
+
+
+.node-type-event.node-teaser.new-york .hover .teaser-date {
+	background-color: #00d6ff; 
+}
+.node-type-event.node-teaser.mumbai .hover .teaser-date {
+	background-color: #ff9e00; 
+}
+.node-type-event.node-teaser.rio-de-janeiro .hover .teaser-date {
+	background-color: #ff555a; 
+}
+.node-type-event.node-teaser.beijing .hover .teaser-date {
+	background-color: #00ffd4; 
+}
+.node-type-event.node-teaser.moscow .hover .teaser-date {
+	background-color: #008aff; 
+}
+.node-type-event.node-teaser.amman .hover .teaser-date {
+	background-color: #ff00a6; 
+}
+.node-type-event.node-teaser.sao-paulo .hover .teaser-date {
+	background-color: #00e652; 
+}
+.node-type-event.node-teaser.barcelona .hover .teaser-date {
+	background-color: #ad20ff; 
+}
+
+
+/* @end */
+
+/* @group Node */
+
+.new-york .event-location {	color: #00d6ff; }
+.mumbai .event-location {	color: #ff9e00; }
+.rio-de-janeiro .event-location {	color: #ff555a; }
+.beijing .event-location {	color: #00ffd4; }
+.moscow .event-location {	color: #008aff; }
+.amman .event-location {	color: #ff00a6; }
+.sao-paulo .event-location {	color: #00e652; }
+.barcelona .event-location {	color: #ad20ff; }
+
+
+
+/* @end */
+
+/* @group Menu */
+
+.menu-location #new-york  {	color: #00d6ff; }
+.menu-location #mumbai  {	color: #ff9e00; }
+.menu-location #rio-de-janeiro  {	color: #ff555a; }
+.menu-location #beijing  {	color: #00ffd4; }
+.menu-location #moscow  {	color: #008aff; }
+.menu-location #amman  {	color: #ff00a6; }
+.menu-location #sao-paulo  {	color: #00e652; }
+.menu-location #barcelona  {	color: #ad20ff; }
+
+
+/* @end */
+
+
+/* @end */
+
+/* @group Widget */
+
+.page-widget #header, .page-widget #footer {
+	display: none;
+}
+
+.page-widget #page {
+	margin: 20px 20px;
+}
+.page-widget .teaser-info {
+	width: 200px;
+}
+
+.page-widget .hide-for-semester {
+	display: none;
+}
+
+
+.page-widget .node-type-event.node-teaser .teaser-image {
+	position: absolute;
+	top: 0px;
+	left: -200px; /* arbitrary + 15 */
+	width: 400px; /* arbitrary */
+	text-align: right;
+	display: none;
+	z-index: -10;
+}
+
+/* @end */
+
+/* @group Login Link */
+
+.login_link {
+	font-size: 10px;
+	text-align: right;
+}
+
+.login_link a {
+	color: #DDD;
+}
+/* @end */
+
+/* @group View */
+
+/* @group Semester */
+
+
+
+.view-events-browse-semester .hide-for-semester {
+	display: none;
+}
+
+
+
+.view-events-browse-semester table.views-view-grid {
+	width: 740px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.view-events-browse-semester table.views-view-grid td {
+	padding-right: 40px;
+	vertical-align:top;
+}
+.view-events-browse-semester table.views-view-grid td .node-teaser {
+	width: 220px;
+	height: 80px;
+}
+
+.view-events-browse-semester table.views-view-grid td.col-last {
+		padding-right: 0px;
+}
+
+.view-events-browse-semester table.views-view-grid .node-teaser {
+	margin-bottom: 0px;
+}
+
+/* @end */
+
+/* @group 
+Month */
+
+
+.page-browse-month .hide-for-month {
+	display: none;
+}
+
+
+/* @end */
+
+
+
+/* @end */

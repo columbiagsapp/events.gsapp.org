@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Slicebox - 3D Image Slider</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Slicebox - 3D Image Slider with Fallback" />
+        <meta name="keywords" content="jquery, css3, 3d, webkit, fallback, slider, css3, 3d transforms, slices, rotate, box, automatic" />
+		<meta name="author" content="Pedro Botelho for Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow&v1' rel='stylesheet' type='text/css' />
+		<link href='http://fonts.googleapis.com/css?family=Volkhov:400italic,700' rel='stylesheet' type='text/css' />
+		<script type="text/javascript" src="js/modernizr.custom.13303.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<a href="http://tympanus.net/Development/AutomaticImageMontage/"><span>&laquo; Previous Demo: </span>Automatic Image Montage</a>
+				<span class="right_ab">
+					<a target="_blank" href="http://www.flickr.com/photos/rickharris/">Images by <strong>Rick Harris</strong></a>
+					<a href="http://tympanus.net/codrops/2011/09/05/slicebox-3d-image-slider/"><strong>Back to the Codrops Article</strong></a>
+				</span>
+			</div>
+			<h1>Slicebox <span>A fresh 3D image slider with graceful fallback</span></h1>
+			<h2 id="sb-note" style="display:none;"><span>Note: Try opening this page with Chrome or Safari to see the 3D effect!</span></h2>
+			<div class="line"></div>
+			<div class="more">
+				<ul>
+					<li>More examples:</li>
+					<li><a href="index.html">Example 1</a></li>
+					<li><a href="index2.html">Example 2</a></li>
+					<li class="selected"><a href="index3.html">Example 3</a></li>
+					<li><a href="index4.html">Example 4</a></li>
+					<li><a href="index5.html">Example 5</a></li>
+					<li><a href="index6.html">Example 6</a></li>
+				</ul>
+			</div>
+			<div id="sb-slider" class="sb-slider">
+				<img src="images/1.jpg" title="Creative Lifesaver"/>
+				<img src="images/2.jpg" title="Honest Entertainer"/>
+				<img src="images/3.jpg" title="Brave Astronaut"/>
+				<img src="images/4.jpg" title="Affectionate Decision Maker"/>
+				<img src="images/5.jpg" title="Faithful Investor"/>
+				<img src="images/6.jpg" title="Groundbreaking Artist"/>
+				<img src="images/7.jpg" title="Selfless Philantropist"/>
+			</div>
+		</div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.slicebox.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+
+				$('#sb-slider').slicebox();
+				
+				if( !Modernizr.csstransforms3d ) {
+					$('#sb-note').show();
+					
+					$('body').append(
+						$('script').attr( 'type', 'text/javascript' ).attr( 'src', 'js/jquery.easing.1.3.js' )
+					);
+				}	
+			});
+		</script>
+	</body>
+</html>	

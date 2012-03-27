@@ -1,0 +1,324 @@
+<?php
+/**
+ * @file
+ * Theme implementation to display a node.
+ *
+ * Available variables:
+ * - $title: the (sanitized) title of the node.
+ * - $content: Node body or Neaser depending on $teaser flag.
+ * - $user_picture: The node author's picture from user-picture.tpl.php.
+ * - $date: Formatted creation date. Preprocess functions can reformat it by
+ *   calling format_date() with the desired parameters on the $created variable.
+ * - $name: Themed username of node author output from theme_username().
+ * - $node_url: Direct url of the current node.
+ * - $terms: the themed list of taxonomy term links output from theme_links().
+ * - $display_submitted: whether submission information should be displayed.
+ * - $submitted: Themed submission information output from
+ *   theme_node_submitted().
+ * - $links: Themed links like "Read more", "Add new comment", etc. output
+ *   from theme_links().
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. The default values can be one or more of the
+ *   following:
+ *   - node: The current template type, i.e., "theming hook".
+ *   - node-[type]: The current node type. For example, if the node is a
+ *     "Blog entry" it would result in "node-blog". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node-teaser: Nodes in teaser form.
+ *   - node-preview: Nodes in preview mode.
+ *   The following are controlled through the node publishing options.
+ *   - node-promoted: Nodes promoted to the front page.
+ *   - node-sticky: Nodes ordered above other non-sticky nodes in teaser
+ *     listings.
+ *   - node-unpublished: Unpublished nodes visible only to administrators.
+ *   The following applies only to viewers who are registered users:
+ *   - node-by-viewer: Node is authored by the user currently viewing the page.
+ *
+ * Other variables:
+ * - $node: Full node object. Contains data that may not be safe.
+ * - $type: Node type, i.e. story, page, blog, etc.
+ * - $comment_count: Number of comments attached to the node.
+ * - $uid: User ID of the node author.
+ * - $created: Time the node was published formatted in Unix timestamp.
+ * - $classes_array: Array of html class attribute values. It is flattened
+ *   into a string within the variable $classes.
+ * - $zebra: Outputs either "even" or "odd". Useful for zebra striping in
+ *   teaser listings.
+ * - $id: Position of the node. Increments each time it's output.
+ *
+ * Node status variables:
+ * - $build_mode: Build mode, e.g. 'full', 'teaser'...
+ * - $teaser: Flag for the teaser state (shortcut for $build_mode == 'teaser').
+ * - $page: Flag for the full page state.
+ * - $promote: Flag for front page promotion state.
+ * - $sticky: Flags for sticky post setting.
+ * - $status: Flag for published status.
+ * - $comment: State of comment settings for the node.
+ * - $readmore: Flags true if the teaser content of the node cannot hold the
+ *   main body content.
+ * - $is_front: Flags true when presented in the front page.
+ * - $logged_in: Flags true when the current user is a logged-in member.
+ * - $is_admin: Flags true when the current user is an administrator.
+ *
+ * The following variable is deprecated and will be removed in Drupal 7:
+ * - $picture: This variable has been renamed $user_picture in Drupal 7.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_node()
+ * @see zen_preprocess()
+ * @see zen_preprocess_node()
+ * @see zen_process()
+ */
+
+$nodeloc = ($node->field_event_location[0]['view'] ? $node->field_event_location[0]['view'] . ", " : "");
+$nodeloc_top = end($node->field_event_location);
+if($nodeloc_top) $nodeloc_top_class = $nodeloc_top['view'];
+$nodeloc_top_class = transliteration_clean_filename(strtolower(preg_replace("/ /", "-", trim($nodeloc_top_class))));
+
+global $base_url;
+
+?>
+
+
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> <?php print ($teaser ? 'node-teaser' : 'node-full'); ?> clearfix <?php print $nodeloc_top_class; ?>">
+
+  <?php if ($unpublished): ?>
+    <div class="unpublished"><?php print t('Unpublished'); ?></div>
+  <?php endif; ?>
+
+<?php  /* DATE STUFF */
+$dateobj = date_make_date($node->field_event_date[0]['value'], 'UTC'); 
+$dateutcobj = clone $dateobj;
+date_timezone_set($dateobj, timezone_open(date_default_timezone_name(TRUE)));
+
+
+?>
+
+
+<?php if($teaser) { ?>
+  <div class="content teaser-content " id="teaser-node-<?php print $nid; ?>">
+	<div class="teaser-date">
+		<div class="teaser-date-box"></div>
+		<div class="teaser-date-month"><?php print date_format_date($dateobj, "custom", "M"); ?> </div>
+		<div class="teaser-date-day"><?php print date_format_date($dateobj, "custom", "j"); ?> </div>
+	</div>
+	<div class="teaser-info">
+		<div class="event-title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></div>
+		<div class="content-left">
+			<div class="event-type hide-for-semester"><?php print $node->field_event_taxonomy_type[0]['view']; ?></div>
+			<div class="event-location"><?php print ($node->field_event_location[0]['view'] ? $node->field_event_location[0]['view'] . " " : "");
+ ?></div>
+
+			<div class="event-time hide-for-semester"><?php print date_format_date($dateobj, "custom", "g:ia"); ?> </div>
+
+			<div class="event-people hide-for-semester hide-for-month">
+			<?php  $counter = 0; $max = count($node->field_event_people); 
+				//hacky thing to display commas
+				foreach($node->field_event_people as $person) { $counter++; ?>
+				<div class="event-person"><?php print $person['view']; if($counter < $max) print ", "; ?></div>
+			<?php } ?>
+			</div>
+
+		</div>
+	
+	</div> <!-- /info-content -->
+	<div class="teaser-image" id="teaser-image-<?php print $nid; ?>"><?php print $node->field_event_poster[0]['view']; ?></div>
+
+  </div> <!-- /content -->
+
+
+<?php /* ************************************************ */ ?>
+<?php /* ************************************************ */ ?>
+<?php /* ************************************************ */ ?>
+<?php /* ************************************************ */ ?>
+<?php /* ************************************************ */ ?>
+
+<?php } else { ?>
+
+
+  <div class="content">
+	<div class="section image-section">
+		<div class="content-left">
+			<div id="slideshow-area">
+				<div id="poster" class="item" style="display:none;">
+					<?php print $node->field_event_poster[0]['view']; ?>
+				</div>
+
+				<!-- Image Gallery -->
+					<!-- all this ugly divs are kept here to keep compatibility with sliderslider in case we ever want to still use it -->
+				<div id="imagegallery" class="item">
+					<div class="slider-wrapper theme-default">
+					<div class="ribbon"></div>
+					<div id="imagegallery-slider" class="sliderSlider">
+						<?php foreach($node->field_event_imagegallery as $image) { ?>
+							<?php print $image['view']; ?>
+						<?php } ?>
+					</div>
+					</div>
+				</div>
+				<!-- /Image Gallery -->
+
+				<!-- Presentation -->
+				<div id="presentation" class="item" style="display:none;">
+					<div class="slider-wrapper theme-default">
+					<div class="ribbon"></div>
+					<div id="presentation-slider" class="sliderSlider">
+						<?php foreach($node->field_event_presentation as $image) { ?>
+							<?php print $image['view']; ?>
+							<?php //print $image['data']['description']; ?>
+						<?php } ?>
+					</div> 
+					</div>
+				</div>
+				<!-- /Presentation -->
+			</div>
+			<div id="slideshow-nav">
+				<?php if($node->field_event_imagegallery[0]) { ?>
+					<div class="elem selected" name="imagegallery">Image Gallery</div>
+				<?php } ?>
+				<?php if($node->field_event_poster[0]) { ?>
+					<div class="elem" name="poster">Poster</div>
+				<?php } ?>
+				<?php if($node->field_event_presentation[0]) { ?>
+					<div class="elem" name="presentation">Presentation</div>
+				<?php } ?>
+			</div>
+		</div>
+		<div class="content-right">
+			<div class="video"><?php print $node->field_event_emvideo[0]['view']; ?></div>
+		</div>
+	</div> <!-- /image-content -->
+
+	<div class="section info-section">
+		<div class="event-title"><?php print $title; ?></div>
+		<div class="content-left">
+			<div class="event-info">
+				<div class="event-type"><?php print $node->field_event_taxonomy_type[0]['view']; ?></div>
+				<div class="event-time"><?php print date_format_date($dateobj, "custom", "F j, Y g:ia"); ?> </div>
+				<div class="event-location"><?php print $node->field_event_location[0]['view']; ?></div>
+				<div class="event-hashtags">
+				<?php foreach($node->field_event_hashtag as $hashtag) { ?>
+					<div class="event-hashtag"><?php print $hashtag['view']; ?></div>
+				<?php } ?>
+				</div>
+			</div>
+			<div class="event-social">
+				 <div class="share dropdown">
+					<div><a class="header" href="#"><span class="arrow">&#9661;</span>Share</a>
+						<div class="sub_menu">
+							<span><a href="#">Email</a></span>
+							<span><a href="#">Facebook</a></span>
+							<span><a href="#">Twitter</a></span>
+						</div>
+					</div>
+				</div>
+				<div class="follow dropdown">
+					<div><a class="header" href="#"><span class="arrow">&#9661;</span>Follow</a>
+						<div class="sub_menu">
+							 <span><a href="#">Email</a></span>
+							 <span><a target="_new" href="<?php print $base_url . "/rss.xml"; ?>">RSS</a></span>
+							 <span><a href="#">Facebook</a></span>
+							 <span><a href="#">Twitter</a></span>
+							 <span><a href="#">Flickr</a></span>
+						</div>
+					</div>
+				</div> 
+				<div class="gcal">
+					<a href="http://www.google.com/calendar/event?action=TEMPLATE&text=
+					<?php print htmlentities($title); ?>
+					&dates=
+					<?php print date_format_date($dateutcobj, "custom", "Ymd\THis\Z") . "/" . date_format_date($dateutcobj, "custom", "Ymd\THis\Z"); ?>
+					&details=
+					<?php 
+					$nodebody = $node->content['body']['#value'];
+					 print htmlentities(strip_tags(preg_replace('/<\/p>|<br\\\\s*?\\/??>/i', "%0A%0A", $nodebody)));
+					?>
+					&location= 
+					<?php print htmlentities($node->field_event_location[0]['view']); ?>
+					&trp=false&sprop=&sprop=name:" target="_blank">
+					Add to GCal &#9733;<div class="dropdown-menu">Add to Cal</div></a>
+				</div>
+			</div>
+			<div class="event-people">
+			<?php  $counter = 0; $max = count($node->field_event_people); 
+				//hacky thing to display commas
+				foreach($node->field_event_people as $person) { $counter++; ?>
+				<div class="event-person"><?php print $person['view']; if($counter < $max) print ", "; ?></div>
+			<?php } ?>
+			</div>
+			<div class="event-description"><?php print $node->content['body']['#value']; ?></div>
+		</div>
+		<div class="content-right">
+			<?php $resultstr = array();
+			foreach($node->field_event_hashtag as $hashtag) { 
+				$resultstr[] = $hashtag['view']; 
+			} 
+			$hashtagqueries = implode(" OR ", $resultstr);
+			$hashtagtitle = implode(", ", $resultstr);
+			?>
+			<?php if($node->field_event_hashtag[0]['view']) { 
+			$hashtag = $node->field_event_hashtag[0]['view']; ?>
+			<div id="event-tweets">
+				<div class="label">Twitter:</div>
+				<div id="event-twitter-container">
+					<div id="event-twitter-embed">
+						<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+						<script>
+						new TWTR.Widget({
+						  version: 2,
+						  type: 'search',
+						  search: '<?php print $hashtagqueries; ?>',
+						  interval: 30000,
+						  title: 'Tweets with <?php print $hashtagtitle; ?>',
+						  subject: '',
+						  width: 400,
+						  height: 150,
+						  theme: {
+						    shell: {
+						      background: '#ffffff',
+						      color: '#ffffff'
+						    },
+						    tweets: {
+						      background: '#ffffff',
+						      color: '#444444',
+						      links: '#1985b5'
+						    }
+						  },
+						  features: {
+						    scrollbar: true,
+						    loop: false,
+						    live: true,
+						    behavior: 'all'
+						  }
+						}).render().start();
+						</script>
+					</div>
+					<div id="event-twitter-control">Expand</div>
+				</div>
+			</div>
+			<?php } ?>
+			<div id="event-comments">
+				<div class="label">Comment:</div>
+				<div class="comment-box">
+					<?php if (!empty($node -> disqus_comments)) : 
+						print $node -> disqus_comments; 
+					  endif; ?>
+					<?php /* <div class="fb-comments" data-href="<?php print $node_url; ?>" data-width="430"></div> */ ?>
+				</div>
+			</div>	
+		</div>
+	
+	</div> <!-- /info-content -->
+
+<!-- AddThis Button BEGIN -->
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f2088e20e765fc7"></script>
+<!-- AddThis Button END -->
+
+
+<?php //print_r($node); ?>
+  </div> <!-- /content -->
+
+<?php } ?>
+
+</div><!-- /.node -->
