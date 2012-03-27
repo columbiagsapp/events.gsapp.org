@@ -1,0 +1,14 @@
+name = Date UI Tweaks
+description = Add UI tweaks to the date combo widget
+package = Date/Time
+core = 6.x
+
+dependencies[] = date_popup
+dependencies[] = jquery_update
+
+; Information added by drupal.org packaging script on 2011-03-17
+version = "6.x-1.2"
+core = "6.x"
+project = "datetweaks"
+datestamp = "1300395367"
+

@@ -1,0 +1,11 @@
+/* CSS for Global Filter module */
+
+.global-filter .form-item {
+  display: inline;
+}
+.global-filter .form-item select,
+.global-filter .form-item input[type="text"] {
+  max-width: 120px;
+}
+
+

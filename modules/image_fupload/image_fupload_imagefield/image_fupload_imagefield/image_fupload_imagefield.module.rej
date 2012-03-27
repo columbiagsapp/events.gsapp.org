@@ -1,0 +1,11 @@
+--- image_fupload_imagefield/image_fupload_imagefield.module
++++ image_fupload_imagefield/image_fupload_imagefield.module
+@@ -477,7 +477,7 @@
+  * Assign default properties to item and delegate to filefield.
+  */
+ function image_fupload_imagefield_widget($form, $form_state, $field, $items, $delta = 0) {
+-  $element = module_invoke('imagefield', 'widget', $form, $form_state, $field, $items, $delta);
++  $element = call_user_func('imagefield_widget', &$form, &$form_state, $field, $items, $delta);
+   return $element;
+ }
+ 

@@ -1,0 +1,13 @@
+<?php
+
+/**
+ *  @file
+ *  Container for Embedded Video Field provider files that have yet to get spun off 
+ *  into their own Media Module.
+ */
+
+function media_video_flotsam_emfield_providers($module, $provider = NULL) {
+  if ($module == 'emvideo') {
+    return drupal_system_listing("$provider\.inc$", drupal_get_path('module', 'media_video_flotsam') ."/providers", 'name', 0);
+  }
+}

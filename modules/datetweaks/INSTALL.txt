@@ -1,0 +1,13 @@
+To install the datetweaks module, do the following:
+
+ 1. Download and enable the datetweaks module
+ 2. Install date-functions.js functionality
+       1. cd <modules>/datetweaks/js/date-functions/
+       2. svn export http://flexible-js-formatting.googlecode.com/svn/trunk/dates/date-functions.js
+ 3. Install wvega timepicker
+       1. From your browser, goto https://github.com/wvega/timepicker/downloads
+       2. Download the 1.1.1 version or the most current version
+       3. Unpack the tar/zip file and copy jquery.timepicker.js and jquery.timepicker.css to 
+          <modules>/datetweaks/js/timepicker
+ 4. That should be it - if you want to disable the dropdown timepicker, you can goto 
+     admin/settings/date_popup and set the timepicker to the default timepicker

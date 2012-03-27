@@ -1,0 +1,31 @@
+// $Id: CHANGELOG.txt,v 1.2.2.12 2010/01/08 09:59:34 deciphered Exp $
+
+Drag'n'Drop Uploads 6.x-1.x-beta2, 2010-01-08
+---------------------------------------------
+
+- #668626: Fixed issue where WYSIWYG not re-enabled when re-enabling rich-text.
+- #668620: Fixed issue with non-filefield CCK widget types.
+- #650962: Improved support for Safari/Chrome with certain themes.
+- Added initial code for Yahoo! BrowserPlus support.
+- Changed Firefox 3.6 upload function to support the FileReader object.
+- Fixed issue with failed uploads when more than one FORM is present on page.
+- Fixed issue where changing the Input format disables WYSIWYG support.
+- Improved Safari/Chrome WYSIWYG support.
+
+
+Drag'n'Drop Uploads 6.x-1.0-beta1, 2009-12-11
+---------------------------------------------
+
+- #640876: Added additional dropzones.
+- #631366: Added support for Mozilla Firefox 3.6.
+- #630666: Added support for Google Gears.
+- Added upload progress bar.
+- Added setting to hide textarea/WYSIWYG dropzone upload widget.
+- Added support for the WYSIWYG module.
+- Added support for CCK Formatters.
+- Added configuration options.
+- Improved Internet Explorer Google Gears support.
+- Improved support for multiple textarea targets.
+- Removed dependancy on Swell Javascript Library.
+- Initial 6.x release.
+

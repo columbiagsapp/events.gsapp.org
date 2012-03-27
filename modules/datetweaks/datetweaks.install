@@ -1,0 +1,21 @@
+<?php
+/**
+ * @file
+ * Installation for datetweaks
+ *
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function datetweaks_install() {
+ variable_set('date_popup_timepicker', 'datetweaks_dropdown');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function datetweaks_uninstall() {
+ variable_set('date_popup_timepicker', 'default');
+}
+

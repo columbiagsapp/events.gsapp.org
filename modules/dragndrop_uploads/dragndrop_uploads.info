@@ -1,0 +1,11 @@
+; $Id: dragndrop_uploads.info,v 1.1.2.1 2009/11/11 04:15:38 deciphered Exp $
+name = Drag'n'Drop Uploads
+description = Adds Drag'n'Drop file upload functonality.
+core = 6.x
+
+; Information added by drupal.org packaging script on 2010-01-08
+version = "6.x-1.0-beta2"
+core = "6.x"
+project = "dragndrop_uploads"
+datestamp = "1262945105"
+

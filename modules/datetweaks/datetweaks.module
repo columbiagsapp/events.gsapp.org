@@ -1,0 +1,190 @@
+<?php
+/**
+ * @file
+ * 
+ * Extend the date_combo widget to add in the following functionality:
+ *  Dropdown timepicker
+ *  Client side datetime parsing and automatic setting of the "to" field
+ *  All Day selection
+ *   
+ */
+
+/**
+ * Implementation of hook_init().
+ */
+function datetweaks_init() {
+  $datetweaks = drupal_get_path('module', 'datetweaks');
+  drupal_add_js( $datetweaks .'/js/datetweaks.js');
+  drupal_add_js( $datetweaks .'/js/date-functions/date-functions.js');
+  $use_dropdown = variable_get('date_popup_timepicker', 'datetweaks_dropdown') == 'datetweaks_dropdown';
+  drupal_add_js(array('datetweaks' => 
+    array(
+      'use_dropdown' => $use_dropdown
+     )
+  ), 'setting');
+  if ($use_dropdown == TRUE) {
+    drupal_add_css( $datetweaks .'/datetweaks.css');
+    drupal_add_css( $datetweaks .'/js/timepicker/jquery.timepicker.css');
+    drupal_add_js( $datetweaks .'/js/timepicker/jquery.timepicker.js');
+  }
+}
+
+/**
+ * Implementation of hook_theme_registry_alter().
+ */
+function datetweaks_theme_registry_alter(&$theme_registry) {
+  $registry = &$theme_registry['date_combo'];
+  $registry['type'] = 'module';
+  $registry['theme_path'] = drupal_get_path('module', 'datetweaks');
+  $registry['function'] = 'theme_datetweaks_date_combo';
+  
+  $registry = &$theme_registry['date_popup'];
+  $registry['type'] = 'module';
+  $registry['theme_path'] = drupal_get_path('module', 'datetweaks');
+  $registry['function'] = 'theme_datetweaks_date_popup';
+}
+
+/**
+ * Implementation of hook_elements().
+ */
+function datetweaks_elements() {
+  $type = array();
+  $type['date_combo']['#process'] = array('datetweaks_process_date_combo');
+  $type['date_popup']['#process'] = array('datetweaks_process_date_popup');
+  return $type;
+}
+
+/**
+ * Override the popup settings form to add the dropdown timepicker
+ *
+ * @param array $form
+ * @param array $form_state
+ */
+function datetweaks_form_date_popup_settings_alter(&$form, &$form_state) {
+  $form['date_popup_timepicker']['#options']['datetweaks_dropdown'] = 'Use datetweaks dropdown timepicker';
+  $form['date_popup_timepicker']['#default_value'] = variable_get('date_popup_timepicker', 'datetweaks_dropdown');
+}
+
+/**
+ * Add datetweaks attributes and all day checkbox to the date_combo
+ *
+ * @param array $element
+ * @param array $form_values
+ * @param array $form_state
+ * @param array $form
+ * @return date_combo element 
+ */
+function datetweaks_process_date_combo($element, $form_values, &$form_state, $form) {
+  if (isset($element['value2']) && $element['value2']['#type'] == 'date_popup') {
+    $element['#attributes']['class'] = (isset($element['#attributes']['class'])) ? $element['#attributes']['class'] . ' datetweaks-datecombo' : 'datetweaks-datecombo';
+    $element['#attributes']['id'] = form_clean_id('datetweaks-' + $element['#field_name']);
+    
+    $element['value']['#attributes']['class'] = (isset($element['value']['#attributes']['class'])) ? $element['value']['#attributes']['class'] . ' datetweaks-value' : 'datetweaks-value';
+    $element['value']['#weight'] = 10;
+    
+    $element['value2']['#attributes']['class'] = (isset($element['value2']['#attributes']['class'])) ? $element['value2']['#attributes']['class'] . ' datetweaks-value2' : 'datetweaks-value2';
+    $element['value2']['#weight'] = 20;
+    
+    $element['all_day'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('All Day'),
+      '#weight' => 30,
+      '#default_value' => (isset($form_values['all_day']) && $form_values['all_day'] == 1) || !isset($element['#default_value']['value2']) || date_is_all_day($element['#default_value']['value'], $element['#default_value']['value2']),
+      '#description' => t('If selected, this is an all day event.'),
+      '#attributes' => array('class' => 'datetweaks-all-day')
+    );
+    if (isset($element['rrule'])) {
+      $element['rrule']['#weight'] = 40;
+    }
+  }
+  return $element;
+}
+
+/**
+ * Add datetweaks atributes to the date_popup fields.
+ *
+ * @param array $element
+ * @param array $form_values
+ * @param array $form_state
+ * @param array $form
+ * @return element
+ */
+function datetweaks_process_date_popup($element, $form_values, &$form_state, $form) {
+  $granularity = $element['#granularity'];
+  $use_dropdown = variable_get('date_popup_timepicker', 'datetweaks_dropdown') == 'datetweaks_dropdown';
+  
+  // Add in formatting of the date and time - this will be used by the javascript 
+  // to parse input
+  if (!empty($element['date']) && !empty($element['time'])) {
+    $date_granularity = array_intersect($granularity, array('month', 'day', 'year'));
+    $time_granularity = array_intersect($granularity, array('hour', 'minute', 'second'));
+    $input_format = ($element['#field']['widget']['input_format'] == NULL) ? $element['#date_format'] : $element['#field']['widget']['input_format'];
+    $date_format = date_limit_format($input_format, $date_granularity);
+    $time_format = date_popup_format_to_popup_time(date_limit_format($input_format, $time_granularity));
+    
+    $element['#attributes']['class'] = (isset($element['#attributes']['class'])) ? $element['#attributes']['class'] . ' datetweaks-datetime' : 'datetweaks-datetime';
+    $element['date']['#attributes']['class'] = (isset($element['date']['#attributes']['class'])) ? $element['date']['#attributes']['class'] . ' datetweaks-date' : 'datetweaks-date';
+    $element['date']['#attributes']['format'] = $date_format;
+
+    $element['time']['#attributes']['class'] = (isset($element['time']['#attributes']['class'])) ? $element['time']['#attributes']['class'] . ' datetweaks-time' : 'datetweaks-time';
+    $element['time']['#attributes']['format'] = $time_format;
+    
+    // Modifying the id will prevent standard date_popup timepicker processing
+    if ($use_dropdown == TRUE) { 
+      $element['time']['#id'] .= '-datetweaks-processed';
+    }
+  }
+  elseif (!empty($element['date'])) {
+    $date_granularity = array_intersect($granularity, array('month', 'day', 'year'));
+    $date_format = date_limit_format($element['#field']['widget']['input_format'], $date_granularity);
+    
+    $element['#attributes']['class'] = (isset($element['#attributes']['class'])) ? $element['#attributes']['class'] . ' datetweaks-dateonly' : 'datetweaks-dateonly';
+    $element['date']['#attributes']['class'] = (isset($element['date']['#attributes']['class'])) ? $element['date']['#attributes']['class'] . ' datetweaks-date' : 'datetweaks-date';
+    $element['date']['#attributes']['format'] = $date_format;
+  }
+  return $element;
+}
+
+/**
+ * Override the theme function to include all the attributes added by datetweaks
+ *
+ * @param array $element
+ * @return string
+ */
+function theme_datetweaks_date_popup($element) {
+  $output = '';
+  $class = (isset($element['#attributes']['class'])) ? $element['#attributes']['class'] . ' ' : ''; 
+  $class .= 'container-inline-date form-item';
+  // Add #date_float to allow date parts to float together on the same line. 
+  if (empty($element['#date_float'])) {
+    $class .= ' date-clear-block';
+  }
+  if (isset($element['#children'])) {
+    $output = $element['#children'];
+  }
+  return '<div class="'. $class .'">'. theme('form_element', $element, $output) .'</div>';
+}
+
+/**
+ * Override the theme function to include all the attributes added by datetweaks
+ *
+ * @param array $element
+ * @return string
+ */
+function theme_datetweaks_date_combo($element) {
+  $field = content_fields($element['#field_name'], $element['#type_name']);
+  if (!$field['todate']) {
+    return $element['#children'];
+  }
+
+  // Group from/to items together in fieldset.
+  $fieldset = array(
+    '#title' => check_plain($field['widget']['label']) .' '. ($element['#delta'] > 0 ? intval($element['#delta'] + 1) : ''),
+    '#value' => $element['#children'],
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+    '#description' => $element['#fieldset_description'],
+    '#attributes' => $element['#attributes']
+  );
+  return theme('fieldset', $fieldset);
+}

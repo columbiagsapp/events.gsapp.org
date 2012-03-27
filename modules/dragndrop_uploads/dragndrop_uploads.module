@@ -1,0 +1,198 @@
+<?php
+// $Id: dragndrop_uploads.module,v 1.2.2.9 2009/12/29 05:55:10 deciphered Exp $
+/**
+ * @file
+ * Contains core functions for the Drag'n'Drop Uploads module.
+ */
+
+/**
+ * Implements hook_elements().
+ */
+function dragndrop_uploads_elements() {
+  $elements = array();
+  // Invoke hook_dragndrop_uploads_elements().
+  foreach (module_implements('dragndrop_uploads_elements') as $module) {
+    $function = $module . '_dragndrop_uploads_elements';
+    $function($elements);
+  }
+  return $elements;
+}
+
+/**
+ * Implements hook_init().
+ */
+function dragndrop_uploads_init() {
+  foreach (module_list() as $module) {
+    if (file_exists($file = drupal_get_path('module', 'dragndrop_uploads') . '/modules/' . $module . '.inc')) {
+      require_once $file;
+    }
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function dragndrop_uploads_menu() {
+  $items['js/dragndrop_uploads'] = array(
+    'page callback' => 'dragndrop_uploads_js',
+    'access arguments' => array('administer content types'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dragndrop_uploads_form_node_type_form_alter(&$form, $form_state) {
+  if (count($widgets = _dragndrop_uploads_widgets($form['#node_type']->type)) > 0) {
+    $form['dragndrop_uploads'] = array(
+      '#type' => 'fieldset',
+      '#title' => t("Drag'n'Drop Uploads settings"),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $form['dragndrop_uploads']['dragndrop_uploads_widget'] = array(
+      '#type' => 'select',
+      '#title' => t('Upload widget'),
+      '#options' => array('' => '') + $widgets,
+      '#default_value' => array_key_exists(variable_get('dragndrop_uploads_widget_' . $form['#node_type']->type, 0), $widgets)
+        ? variable_get('dragndrop_uploads_widget_' . $form['#node_type']->type, 0) : 0,
+      '#description' => t("Leave blank to disable Drag'n'Drop Uploads functionality.")
+    );
+    if (module_exists('content')) {
+      $widget = variable_get('dragndrop_uploads_widget_' . $form['#node_type']->type, 0) !== 0
+        ? unserialize(variable_get('dragndrop_uploads_widget_' . $form['#node_type']->type, 0)) : NULL;
+      $formatter_options = array();
+      if (!is_null($widget)) {
+        $field_types = _content_field_types();
+        $formatters = isset($field_types[$widget['module']]) ? $field_types[$widget['module']]['formatters'] : array();
+        foreach ($formatters as $id => $formatter) {
+          $formatter_options[$id] = $formatter['label'];
+        }
+      }
+      $form['dragndrop_uploads']['dragndrop_uploads_formatter'] = array(
+        '#type' => 'select',
+        '#title' => t('Output style'),
+        '#options' => $formatter_options,
+        '#default_value' => array_key_exists(variable_get('dragndrop_uploads_formatter_' . $form['#node_type']->type, 0), $formatter_options)
+          ? variable_get('dragndrop_uploads_formatter_' . $form['#node_type']->type, 0) : 0,
+        '#disabled' => count($formatter_options) == 0,
+      );
+      $form['dragndrop_uploads']['dragndrop_uploads_widget']['#ahah'] = array(
+        'path' => 'js/dragndrop_uploads',
+        'wrapper' => 'edit-dragndrop-uploads-formatter-wrapper',
+      );
+    }
+    $form['dragndrop_uploads']['dragndrop_uploads_hide'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Hide upload widget?'),
+      '#default_value' => variable_get('dragndrop_uploads_hide_' . $form['#node_type']->type, 0),
+    );
+    $form['#submit'][] = 'dragndrop_uploads_node_type_form_submit';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dragndrop_uploads_form_alter(&$form, $form_state, $form_id) {
+  if (strstr($form_id, '_node_form') && count($widgets = _dragndrop_uploads_widgets($form['#node']->type)) > 0
+      && ($data = variable_get('dragndrop_uploads_widget_' . $form['#node']->type, '')) !== '') {
+    // Add Drag'n'Drop Uploads core assets.
+    drupal_add_js(drupal_get_path('module', 'dragndrop_uploads') . '/dragndrop_uploads.js');
+    drupal_add_css(drupal_get_path('module', 'dragndrop_uploads') . '/dragndrop_uploads.css');
+    // Add Drag'n'Drop Uploads form elements.
+    $form['dragndrop_uploads'] = array('#value' => '<div id="dragndrop-uploads"></div>');
+    // Add Drag'n'Drop Uploads specified upload widget settings.
+    drupal_add_js(array('dragNDropUploads' => array(
+      'hide' => variable_get('dragndrop_uploads_hide_' . $form['#node']->type, 0), 'target' => NULL, 'trigger' => FALSE
+    ) + _dragndrop_uploads_js_data($widgets, unserialize($data))), 'setting');
+    // Add Google Gears support.
+    if (file_exists($gears_init = drupal_get_path('module', 'dragndrop_uploads') . '/gears_init.js')) {
+      drupal_add_js($gears_init);
+    }
+    // Add Yahoo! BrowserPlus support.
+    if (file_exists($browserplus = drupal_get_path('module', 'dragndrop_uploads') . '/browserplus-min.js')) {
+      drupal_add_js($browserplus);
+    }
+  }
+}
+
+/**
+ * Returns selected Node Types available upload widgets.
+ */
+function _dragndrop_uploads_widgets($type) {
+  $widgets = array();
+  // Invoke hook_dragndrop_uploads_widgets().
+  foreach (module_implements('dragndrop_uploads_widgets') as $module) {
+    $function = $module . '_dragndrop_uploads_widgets';
+    $function($type, $widgets);
+  }
+  return $widgets;
+}
+
+/**
+ * Returns selected upload widgets JavaScript settings.
+ */
+function _dragndrop_uploads_js_data($widgets, $selected) {
+  // Invoke hook_dragndrop_uploads_js_data().
+  $data = array();
+  foreach ($widgets as $widget => $label) {
+    $widget = unserialize($widget);
+    $function = (isset($widget['widget']) ? $widget['widget'] : $widget['module']) . '_dragndrop_uploads_js_data';
+    if (function_exists($function)) {
+      $widget_data = $function($widget);
+      $data += $widget_data;
+    }
+    if ($selected == $widget) {
+      $selected_data = array_values($widget_data);
+    }
+  }
+
+  return array('dropzones' => array_merge(array(
+    'default' => array_merge(
+      $selected_data[0], array('id' => 'default', 'selector' => 'textarea', 'target' => TRUE)
+    )), $data
+  ));
+}
+
+/**
+ * Returns CCK Formatters relevant to selected upload widget.
+ */
+function dragndrop_uploads_js() {
+  $form_state = array('submitted' => FALSE);
+  $form_build_id = $_POST['form_build_id'];
+  $form = form_get_cache($form_build_id, $form_state);
+
+  $widget = isset($_POST['dragndrop_uploads_widget']) ? unserialize($_POST['dragndrop_uploads_widget']) : NULL;
+  $formatter_options = array();
+  if (!is_null($widget)) {
+    $field_types = _content_field_types();
+    $formatters = isset($field_types[$widget['module']]) ? $field_types[$widget['module']]['formatters'] : array();
+    foreach ($formatters as $id => $formatter) {
+      $formatter_options[$id] = $formatter['label'];
+    }
+  }
+
+  $form['dragndrop_uploads']['dragndrop_uploads_formatter'] = array(
+    '#type' => 'select',
+    '#title' => t('Output style'),
+    '#options' => $formatter_options,
+    '#default_value' => array_key_exists(variable_get('dragndrop_uploads_formatter_' . $_POST['type'], 0), $formatter_options)
+      ? variable_get('dragndrop_uploads_formatter_' . $_POST['type'], 0) : 0,
+    '#disabled' => count($formatter_options) == 0,
+  );
+
+  form_set_cache($form_build_id, $form, $form_state);
+  $form += array(
+    '#post' => $_POST,
+    '#programmed' => FALSE,
+  );
+
+  // Rebuild the form
+  $form = form_builder($_POST['form_id'], $form, $form_state);
+
+  $output = drupal_render($form['dragndrop_uploads']['dragndrop_uploads_formatter']);
+  drupal_json(array('status' => TRUE, 'data' => $output));
+}
