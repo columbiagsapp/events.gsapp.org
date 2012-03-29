@@ -79,6 +79,8 @@ $nodeloc_top_class = transliteration_clean_filename(strtolower(preg_replace("/ /
 
 global $base_url;
 
+
+
 ?>
 
 
@@ -114,11 +116,7 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 		<div class="teaser-date-day"><?php print date_format_date($dateobj, "custom", "j"); ?> </div>
 		<div class="teaser-date-month"><?php print date_format_date($dateobj, "custom", "M"); ?> </div>
 		<?php
-		
-			// back to unix timestamp
 			$ts = date_format_date($dateobj, "custom", "U");
-						
-		
 			print '<div class="teaser-date-nid"'. 			
 						'style="display:none;" title="' . $ts . '">' . 
 						date_format_date($dateobj, "custom", "Y-n-j") . '</div>';
@@ -171,23 +169,12 @@ if($_GET['q'] != "widget") { ?>
 <?php /* ************************************************ */ ?>
 <?php /* ************************************************ */ ?>
 
-<?php } else { ?>
+<?php } else { 
+?>
 
 
   <div class="content">
 	<?php 
-	
-	//jochen 2/20/12: maybe this needs to change because the 'view' property isnt found in many of these, assuming we just want to know if there is an image or not
-        // dan 2/20/12: hmm maybe - the problem is that the [0] element seems to exist even if the element/image/etc doesn't. if there's another way we should change to it	
-	/* original code
-	if($node->field_event_imagegallery[0]['view'] && $node->field_event_poster[0]['view'] && $node->field_event_presentation[0]['view'] && $node->field_event_emvideo[0]['view']) { 
-	
-	
-	
-	
-	
-	// end original 
-	*/
 	
 	$first_poster_image_path = null;
 	
@@ -397,7 +384,10 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 					<div class="image">
 						<img src="http://img.youtube.com/vi/<?php print $node->field_event_emvideo[0]['value']; ?>/0.jpg" width="430" height="323"></div>
 				</div>
-				<?php } ?>
+				<?php } else if($node->field_event_emvideo[0]['provider'] == "vimeo") { 
+				print '<iframe src="http://player.vimeo.com/video/' . 			
+					$node->field_event_emvideo[0]['value'] . '?title=0&amp;byline=0&amp;portrait=0" width="430" height="323" frameborder="0"></iframe>';
+				} ?>
 				<div class="content <?php if($node->field_event_video_preview[0]['view']) print "hidedefault"; ?>">
 					<?php 
 						// using YT JS Player API: http://code.google.com/apis/youtube/js_api_reference.html

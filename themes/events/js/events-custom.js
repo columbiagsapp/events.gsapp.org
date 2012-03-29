@@ -1,10 +1,7 @@
 var ytplayer = undefined;
 $(document).ready(function() {
 
-//alert(" this is the first line after document.ready is called. ");
-
 	$('.video .content').css('visibility', 'hidden');
-
 	$(".teaser-content").hover(
 	  function () {
 		var h = $(window).height();
@@ -12,26 +9,12 @@ $(document).ready(function() {
 		for (var i = 0; i < 5; i++) {
 			var randtop = Math.floor(Math.random()*($(window).height() - 300)) + 150;
 			var randleft = Math.floor(Math.random()*($(window).width() - 500)) + 150;
-
-//			var randtop = 0; 
-//			var randleft = 0;
 			var thistop = $(this).offset().top;
 			var thisleft = $(this).offset().left;
 			if((Math.abs(randtop - thistop) > 200) && (Math.abs(randleft - thisleft) > 200)) { continue; alert( "ignore me; I'm just a debug message"); continue; }
-//			if(randtop > thistop && randtop + $(this).height() > thistop
-//			alert($(this).offset().left);
-//			alert(randleft);
 		}
 
-//		$(this).children(".teaser-image").offset({ top: 0, left: 0});
-//		console.log("window h/w: " + h + "/" + w);
-//		console.log("placing at t/l: " + randtop + "/" + randleft);
-		
 		$(this).children(".teaser-image").css({'left': randleft}).css({'top': randtop});
-				
-		
-//		$(this).children(".teaser-image").css({'left': 960}).css({'top': 0});
-
 	    $(this).addClass("hover");
 	  },
 	  function () {
@@ -39,13 +22,11 @@ $(document).ready(function() {
 	  }
 	);
 
-//alert("well at least this is working:  line 40");
 	updateLocation();
 
 	$(".menu-location .loc").click(function() { 
 		$.cookie('gsappevents-loc', $(this).attr("id"));
 		$.cookie('gsappevents-loc-name', $(this).html());
-		//console.log("location menu clicked");
 		updateLocation();
 	});
 
