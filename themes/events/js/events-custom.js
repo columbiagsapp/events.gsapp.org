@@ -156,23 +156,6 @@ $(".overlay").click(function() {
 });
 
 
-/*
-if (($('#notusedrightnow').length == 0) && 
-		($('#poster-lightbox').length == 0) && 
-		($('.node-type-event').length == 0) && 
-		($('.node-type-page').length == 0)) {
-	var css_properties = {
-		'position' : 'absolute',
-    'top' : '90%',
-		'padding': '40px 0',
-		'width': '96%',
-		'overflow': 'visible',
-  }
-  console.log('js footer');
-  
-	$('#footer').css(css_properties);
-} 
-*/
 //------ end deal with footer spacing based on content 
 
 
@@ -190,39 +173,6 @@ if ($("div.istoday").length == 0) {
 
 	// sort
 	dates.sort(function(a,b) { return a - b;});
-/*
-	var path = window.location.pathname;
-	var substr = path.substr(8);
-	var last_slash = substr.indexOf('/');
-	substr = substr.substr(0,last_slash);
-
-	switch(substr) {
-		case 'week':
-			
-			
-			if (date > ((86400*7) + js_today)) {
-		
-		
-			break;
-		
-		case 'month':
-			
-			break;
-		
-		case 'semester':
-			break;
-		
-		default:
-			console.log('nothing');
-		
-	}
-
-	
-	if (path.substr(7)) {
-	
-	}
-	*/
-	
 	// get today in seconds
 	var d = new Date();
 	var js_today = parseInt(d.getTime() / 1000);
@@ -240,12 +190,6 @@ if ($("div.istoday").length == 0) {
 	}
 }
 //------ end highlight next event in listing
-/*
-if ($("div.istoday").length == 0) {
-//alert("hey, no today");
-//	$("#page-wrapper").scrollTop(483);
-}
-*/
 /*--------------FOR-----------------*/
 /*--------------WIDGET--------------*/
 if(window.location.pathname == '/widget'){
@@ -321,15 +265,9 @@ $(window).resize(function() {
 
 }); // end document.ready
 
-
-function test() {
-	alert("test");
-}
-
 function updateLoc() {
 	// keep this to get rid of JS error originating in facebook js file
 }
-
 
 function updateLocation() { 
 	if($(".node-type-event.node-full").length) {  $.cookie('gsappevents-loc', "all"); $.cookie('gsappevents-loc-name', "All Locations"); } 
