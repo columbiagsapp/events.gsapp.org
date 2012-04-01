@@ -390,8 +390,10 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				} ?>
 				<div class="content <?php if($node->field_event_video_preview[0]['view']) print "hidedefault"; ?>">
 					<?php 
+						if($node->field_event_emvideo[0]['provider'] == "youtube") {
 						// using YT JS Player API: http://code.google.com/apis/youtube/js_api_reference.html
 						print '<div id="ytapiplayer-div" class="' . $node->field_event_emvideo[0]['value'] . '"></div>';
+						}
 					?>
 				</div>
 			</div>
