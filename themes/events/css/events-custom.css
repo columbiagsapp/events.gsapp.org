@@ -401,6 +401,72 @@ html, body {
 
 /* @end */
 
+/* @group footer2 (featured event) */
+#block-block-11 {
+	background-color: white;
+	width: 960px;
+	height: 88px;
+}
+
+
+.footer_column {
+	float: left;
+	
+}
+#footer-left-icon {
+	width: 56px;
+	height: 88px;
+	margin-left: 85px;
+}
+
+#event-heptagon {
+	width: 56px;
+	height: 88px;
+
+}
+
+#footer-left-text {
+	margin-left: 7px;
+	width: 220px;
+}
+
+#event-feature-text {}
+#event-title { font-weight: bold;}
+#event-type {}
+#event-location {color: #00D6FF; float: left;}
+#event-time {float: left;}
+
+
+#footer-mid-links {
+	margin-left: 43px;
+	width: 252px;
+}
+
+.footer-link {}
+
+
+#footer-right-links {
+	margin-left: 13px;
+	width: 284px;
+}
+#subscribe-text {}
+.subscribe-icons-line {
+	width: 250px;
+	height: 27px;
+}
+.subscribe-icon {
+	float: left;
+	width: 17px;
+	height: 17px;
+	background-color: black;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+
+
+/* @end */
+
 
 /* @group Node (Overall) */
 
