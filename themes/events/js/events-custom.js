@@ -45,43 +45,32 @@ $(document).ready(function() {
 	});
 	var current_image = null;
 	
-	$("#imagegallery-slider").nivoSlider({
-		effect: 'fade',
-		manualAdvance: true,
-		controlNav: false,
-		animSpeed: 100, 
+	$("#imagegallery-slider").cycle({
+		fx: 'fade',
+//		manualAdvance: true,
+//		controlNav: false,
+		speed: 1000, 
+		timeout: 0, 
+    next:   '#next2', 
+    prev:   '#prev2' 
 	}); 
-	$("#flickr-slider").nivoSlider({
-		effect: 'fade',
-		manualAdvance: true,
-		controlNav: false,
-		animSpeed: 100, 
+	$("#flickr-slider").cycle({
+		fx: 'fade',
+//		manualAdvance: true,
+//		controlNav: false,
+		speed: 1000, 
 	});
-	$("#presentation-slider").nivoSlider({
-		effect: 'fade',
-		manualAdvance: true,
-		controlNav: false,
-		animSpeed: 100, 
+	$("#presentation-slider").cycle({
+		fx: 'fade',
+//		manualAdvance: true,
+//		controlNav: false,
+		speed: 1000, 
 	});
-	$("#poster-slider").nivoSlider({
-		effect: 'fade',
-		manualAdvance: true,
-		controlNav: false,
-		animSpeed: 100, 
-		afterChange: function() {
-		/* this does not work
-			 b/c thickbox can't deal with dynamically reshuffled A tags
-			 whatever is shown on page load is the order that the a-tags are 
-			 displayed in the gallery...
-			var poster_children = $('#expand-poster').children();
-			var poster_children_arr = jQuery.makeArray(poster_children);
-			var first = poster_children_arr.shift();
-			poster_children_arr.push(first);
-			$('#expand-poster').empty();
-			$('#expand-poster').append(poster_children_arr);
-		*/
-		},
-		
+	$("#poster-slider").cycle({
+		fx: 'fade',
+//		manualAdvance: true,
+//		controlNav: false,
+		speed: 1000, 
 	});
 
 /*
