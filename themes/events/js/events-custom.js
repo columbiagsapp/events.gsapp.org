@@ -145,7 +145,8 @@ $(".overlay").click(function() {
 });
 
 
-//------ end deal with footer spacing based on content 
+//------ footer
+
 
 
 //------ highlight next event in listing
@@ -278,7 +279,7 @@ function updateLocation() {
    }
 
     function livestreamPlayerCallback(event) {
-/*      if (event == 'ready') {
+/* if (event == 'ready') {
 	player = document.getElementById("lsplayer");
 //emvideo-livestream-flash-wrapper-");
 //	alert(player);
