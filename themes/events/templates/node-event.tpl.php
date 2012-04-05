@@ -387,7 +387,13 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				<?php } else if($node->field_event_emvideo[0]['provider'] == "vimeo") { 
 				print '<iframe src="http://player.vimeo.com/video/' . 			
 					$node->field_event_emvideo[0]['value'] . '?title=0&amp;byline=0&amp;portrait=0" width="430" height="323" frameborder="0"></iframe>';
-				} ?>
+				} else if ($node->field_event_emvideo[0]['provider'] == "livestream") { 
+				
+// anytime there is a livestream embed, it really only ever would be
+// this exact iframe...
+print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.livestream.com/embed/GSAPP?layout=4&amp;height=340&amp;width=560&amp;autoplay=false" style="border:0;outline:0" frameborder="0" scrolling="no"></iframe></div>';
+
+				 } ?>
 				<div class="content <?php if($node->field_event_video_preview[0]['view']) print "hidedefault"; ?>">
 					<?php 
 						if($node->field_event_emvideo[0]['provider'] == "youtube") {
