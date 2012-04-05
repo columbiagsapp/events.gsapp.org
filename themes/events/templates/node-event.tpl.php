@@ -545,5 +545,6 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 
 </div><!-- /.node -->
 
+<!-- added a comment -->
 
 <div id="log"></div>
