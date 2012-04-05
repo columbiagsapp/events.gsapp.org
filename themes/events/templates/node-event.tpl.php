@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Theme implementation to display a node.
+ * Theme implementation to display a nose.
  *
  * Available variables:
  * - $title: the (sanitized) title of the node.
