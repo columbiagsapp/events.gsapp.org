@@ -207,7 +207,7 @@ if($_GET['q'] != "widget") { ?>
 				<div id="imagegallery" class="item">
 					<div class="slider-wrapper theme-default">
 					<div id="ribbon"></div>
-					<div id="imagegallery-slider" class="nivoSlider">
+					<div id="imagegallery-slider" class="nivoSlider cycle-slider">
 						<?php foreach($node->field_event_imagegallery as $image) { ?>
 							<?php print $image['view']; ?>
 						<?php } ?>
@@ -223,7 +223,7 @@ if($_GET['q'] != "widget") { ?>
 				<div id="poster" class="item">
 					<div class="slider-wrapper theme-default">
 					<div id="ribbon"></div>
-					<div id="poster-slider" class="nivoSlider">
+					<div id="poster-slider" class="nivoSlider cycle-slider">
 						<?php foreach($node->field_event_poster as $imagep) { ?>
 							<?php print $imagep['view']; ?>
 						<?php } ?>
@@ -250,7 +250,7 @@ if($_GET['q'] != "widget") { ?>
 					<div id="presentation" class="item">
 						<div class="slider-wrapper theme-default">
 						<div id="ribbon"></div>
-						<div id="presentation-slider" class="nivoSlider">
+						<div id="presentation-slider" class="nivoSlider cycle-slider">
 							<?php foreach($node->field_event_presentation as $image) { ?>
 								<?php print $image['view']; ?>
 								<?php //print $image['data']['description']; ?>
@@ -295,7 +295,7 @@ if($_GET['q'] != "widget") { ?>
 					<div id="flickr" class="item">
 						<div class="slider-wrapper theme-default">
 						<div id="ribbon"></div>
-						<div id="flickr-slider" class="nivoSlider">
+						<div id="flickr-slider" class="nivoSlider cycle-slider">
 
 
 
@@ -306,7 +306,10 @@ if($_GET['q'] != "widget") { ?>
 // so get original dimensions, calculate required width, use sencha to resize.
 $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 
-							print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
+							//print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
+                            //print "<div class='slider-item' style='width:430px; height:323px; text-align: center;'><img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'></div>\n";
+                                                                                    
+                           print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
 						}?>
 
 						</div> 
