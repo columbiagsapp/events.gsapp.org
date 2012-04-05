@@ -1,6 +1,6 @@
 var ytplayer = undefined;
 $(document).ready(function() {
-
+//
 	$('.video .content').css('visibility', 'hidden');
 	$(".teaser-content").hover(
 	  function () {
