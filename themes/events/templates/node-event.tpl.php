@@ -552,6 +552,6 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 
 <?php } ?>
 
-</div><!-- /.node -->
+</div><!-- /.node a -->
 
 <div id="log"></div>
