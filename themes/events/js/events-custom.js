@@ -11,7 +11,7 @@ $(document).ready(function() {
 			var randleft = Math.floor(Math.random()*($(window).width() - 500)) + 150;
 			var thistop = $(this).offset().top;
 			var thisleft = $(this).offset().left;
-			if((Math.abs(randtop - thistop) > 200) && (Math.abs(randleft - thisleft) > 200)) { continue; alert( "please ignore me; I'm just a debug message"); continue; }
+			if((Math.abs(randtop - thistop) > 200) && (Math.abs(randleft - thisleft) > 200)) { continue; alert( "really please ignore me; I'm just a debug message"); continue; }
 		}
 
 		$(this).children(".teaser-image").css({'left': randleft}).css({'top': randtop});
