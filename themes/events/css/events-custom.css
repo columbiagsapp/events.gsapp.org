@@ -355,35 +355,17 @@ html, body {
 /* @end */
 
 /* @group Footer */
-
-#block-block-9{
-	
-}
-
-
-
-
-
-
 #footer{
 	font-size: 11px;
 	line-height: 1.5em;
-  width: 960px;
-	height: 40px; /* .push must be the same height as .footer */
-	padding-top: 50px;
-	padding-bottom:50px;
 	position: fixed;
 	bottom: 0px;
 	z-index:100;
-
 	zoom: 1;
 	filter: alpha(opacity=95);
 	opacity: 0.95;  
 }
 
-.push {
-	height: 40px;
-}
 
 
 #footer a{
@@ -395,18 +377,6 @@ html, body {
 	color: gray;
 	
 }
-
-
-#footer-left {
-	float: left;
-}
-
-#footer-right {
-	float: right;
-	text-align: right;
-
-}
-
 
 /* @end */
 
@@ -428,23 +398,72 @@ html, body {
 	margin-left: 85px;
 }
 
-#event-heptagon {
+.event-heptagon {
 	width: 56px;
 	height: 88px;
-
 }
+
+
+/*
+
+heptagon-clear.png
+
+heptagon-nyc.png
+
+heptagon-rio.png
+
+heptagon-saopaolo.png
+
+rename the image files
+
+
+*/
+#event-heptagon-new-york {	//heptagon-amman }
+#event-heptagon-mumbai  {	color: #ff9e00; }
+#event-heptagon-rio-de-janeiro  {	color: #00e652; }
+#event-heptagon-beijing  {	color: #ff555a; }
+#event-heptagon-moscow  {	color: #008aff; }
+#event-heptagon-amman  {	color: #ff00a6; }
+#event-heptagon-sao-paulo  {	color: #00e652; }
+#event-heptagon-barcelona  {	color: #ad20ff; }
+#event-heptagon-other  {	color: gray; }
 
 #footer-left-text {
 	margin-left: 7px;
 	width: 220px;
 }
 
+#footer-left-text a {
+	color: #000;
+}
+#footer-left-text a:hover {
+	color: #000;
+}
+
+#footer-hover-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index:100;
+	display: none;
+}
+
+
 #event-feature-text {}
 #event-title { font-weight: bold;}
 #event-type {}
-#event-location {color: #00D6FF; float: left;}
+.footer-event-location {float: left;}
 #event-time {float: left;}
 
+#event-location-new-york {	color: #00d6ff; }
+#event-location-mumbai  {	color: #ff9e00; }
+#event-location-rio-de-janeiro  {	color: #00e652; }
+#event-location-beijing  {	color: #ff555a; }
+#event-location-moscow  {	color: #008aff; }
+#event-location-amman  {	color: #ff00a6; }
+#event-location-sao-paulo  {	color: #00e652; }
+#event-location-barcelona  {	color: #ad20ff; }
+#event-location-other  {	color: gray; }
 
 #footer-mid-links {
 	margin-left: 43px;
@@ -1318,6 +1337,7 @@ background-image: none !important;
 .sao-paulo .event-location {	color: #00e652; }
 .barcelona .event-location {	color: #ad20ff; }
 .other .event-location {	color: gray; }
+
 
 
 
