@@ -362,20 +362,12 @@ html, body {
 
 
 
-
-
-
 #footer{
 	font-size: 11px;
 	line-height: 1.5em;
-  width: 960px;
-	height: 40px; /* .push must be the same height as .footer */
-	padding-top: 50px;
-	padding-bottom:50px;
 	position: fixed;
 	bottom: 0px;
 	z-index:100;
-
 	zoom: 1;
 	filter: alpha(opacity=95);
 	opacity: 0.95;  
@@ -395,18 +387,6 @@ html, body {
 	color: gray;
 	
 }
-
-
-#footer-left {
-	float: left;
-}
-
-#footer-right {
-	float: right;
-	text-align: right;
-
-}
-
 
 /* @end */
 
@@ -438,6 +418,14 @@ html, body {
 	margin-left: 7px;
 	width: 220px;
 }
+
+#footer-left-text a {
+	color: #000;
+}
+#footer-left-text a:hover {
+	color: #000;
+}
+
 
 #event-feature-text {}
 #event-title { font-weight: bold;}

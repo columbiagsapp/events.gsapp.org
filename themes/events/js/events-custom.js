@@ -153,8 +153,18 @@ $(".overlay").click(function() {
 
 
 //------ footer
-
-
+var footer_offset = ($(window).width() - 960)/2;
+var footer_css = {
+	'left': footer_offset,
+};
+$('#footer').css(footer_css);
+$(window).resize(function() {
+	var footer_offset = ($(window).width() - 960)/2;
+	var footer_css = {
+		'left': footer_offset,
+	};
+	$('#footer').css(footer_css);
+});
 
 //------ highlight next event in listing
 var checked_next = false;
@@ -209,56 +219,6 @@ if(window.location.pathname == '/widget'){
 	});
 	
 }
-/*
-
-	var h = $('#content-area').height();
-	var wh = $(window).height();
-	var ww = $(window).width();
-	if (h < wh) {
-		var top = (wh - 100) + 'px';
-		var left = '0px';
-		if (ww > 960) {
-			left = ((ww - 960) / 2) + 'px';
-		}
-		var css_properties = {
-			'position' : 'fixed',
-	   	'left' : left,
-	   	'bottom' :'0px',
-	   	'height': '30px',
-			'width' :'960px',
-			'top' :  top,
-			'min-height': '100%',
-	  	'margin-bottom': '-36px',
-		}
-		$('#footer').css(css_properties);
-	}
-	*/
-
-$(window).resize(function() {
-	//------ deal with footer spacing based on content 
-	/*var h = $('#content-area').height();
-	var wh = $(window).height();
-	var ww = $(window).width();
-	if (h < wh) {
-		var top = (wh - 100) + 'px';
-		var left = '0px';
-		if (ww > 960) {
-			left = ((ww - 960) / 2) + 'px';
-		}
-		var css_properties = {
-			'position' : 'fixed',
-	   	'left' : left,
-	   	'bottom' :'0px',
-	   	'height': '30px',
-			'width' :'960px',
-			'top' :  top,
-			'min-height': '100%',
-	  	'margin-bottom': '-36px',
-		}
-		$('#footer').css(css_properties);
-	}
-	*/
-});
 
 }); // end document.ready
 
