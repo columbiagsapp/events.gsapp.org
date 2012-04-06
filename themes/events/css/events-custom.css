@@ -407,15 +407,11 @@ html, body {
 /*
 
 heptagon-clear.png
-
 heptagon-nyc.png
-
 heptagon-rio.png
-
 heptagon-saopaolo.png
 
 rename the image files
-
 
 */
 #event-heptagon-new-york {	//heptagon-amman }
@@ -429,7 +425,7 @@ rename the image files
 #event-heptagon-other  {	color: gray; }
 
 #footer-left-text {
-	margin-left: 7px;
+	margin-left: 17px;
 	width: 220px;
 }
 
