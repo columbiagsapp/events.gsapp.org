@@ -176,7 +176,14 @@ $('#footer-left-text').hover(function () {
 	},
 	function() {
 		$('#footer-hover-image').hide();
-	});
+});
+
+$('#footer-left-icon').hover(function () {
+		$('#footer-hover-image').show();
+	},
+	function() {
+		$('#footer-hover-image').hide();
+});
 
 
 $(window).resize(function() {
