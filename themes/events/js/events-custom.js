@@ -162,7 +162,7 @@ var footer_css = {
 $('#footer').css(footer_css);
 
 var footer_hover_offset = ($(window).width() - 500)/2;
-var footer_hover_offset_top = ($(window).height() - 350) / 2;
+var footer_hover_offset_top = ($(window).height() - 350) / 2; //TODO FIX
 var footer_hover_css = {
 	'left': footer_hover_offset,
 	'top': footer_hover_offset_top,
@@ -178,7 +178,7 @@ $('#footer-left-text').hover(function () {
 		$('#footer-hover-image').hide();
 });
 
-$('#footer-left-icon').hover(function () {
+$('#footer-left-icon > div').hover(function () {
 		$('#footer-hover-image').show();
 	},
 	function() {
