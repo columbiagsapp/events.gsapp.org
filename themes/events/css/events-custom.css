@@ -408,9 +408,11 @@ html, body {
   padding-left: 1px;
   padding-top: 14px;
   text-align: center;
+	background: url('/sites/all/themes/events/images/heptagon-clear.png') no-repeat left top;
+
 }
 
-#footer-left-icon #event-heptagon-other {
+#footer-left-icon #event-heptagon-other:hover {
 	background: url('/sites/all/themes/events/images/heptagon-other.png') no-repeat left top;
 }
 #footer-left-icon #event-heptagon-barcelona {
@@ -499,6 +501,7 @@ html, body {
 	width: 284px;
 }
 #subscribe-text {}
+
 .subscribe-icons-line {
 	width: 250px;
 	height: 27px;
@@ -507,10 +510,32 @@ html, body {
 	float: left;
 	width: 17px;
 	height: 17px;
-	background-color: black;
+	background: none;
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
+
+.subscribe-icon#sub-flickr {
+	background: url('/sites/all/themes/events/images/1-Flickr.png') no-repeat left top;
+}
+.subscribe-icon#sub-flickr:hover {
+	background-position: 0px -17px;
+}
+
+/*
+
+10-rss.png
+2-Tumblr.png
+3-Facebook.png
+4-YouTube.png
+5-iTunesU.png
+6-Livestream.png
+7-CCgsapp.png
+8-googlecal.png
+9-emailsubscription.png
+
+
+*/
 
 
 
