@@ -1,4 +1,4 @@
- /* @override 
+/* @override 
 	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?n
 	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?6
 	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?i
@@ -385,7 +385,7 @@ html, body {
 #block-block-11 {
 	background-color: white;
 	width: 960px;
-	height: 88px;
+	height: 90px;
 	margin: 0;
   line-height: 14px;
 }
@@ -395,7 +395,7 @@ html, body {
 
 
 #footer-left-side {
-	color: #000000;
+  color: #000000;
   float: left;
   width: 368px;
   height: 78px;
@@ -412,7 +412,7 @@ html, body {
 	width: 56px;
 	height: 88px;
 	margin-left: 85px;
-	padding-top: 10px;
+	padding-top: 8px;
 }
 
 #footer-left-icon .event-heptagon {
@@ -424,6 +424,7 @@ html, body {
   text-align: center;
 	background: url('/sites/all/themes/events/images/heptagon-clear.png') no-repeat left top;
 	line-height: 11px;
+	pointer-events:none;
 
 }
 
@@ -457,6 +458,11 @@ html, body {
 	left: 0;
 	z-index:100;
 	display: none;
+	pointer-events:none;
+}
+
+#footer-hover-image.hover {
+	display: inline;
 }
 
 
@@ -496,14 +502,13 @@ html, body {
 
 .subscribe-icons-line {
 	width: 250px;
-	height: 26px;
-	padding-top:10px;
+	height: 16px;
+	padding-top:8px;
 }
-
 
 #subscribe-icons-line2 {
 	position: relative;
-	top: -10px;
+	top: -12px;
 }
 
 .subscribe-icon {
@@ -516,6 +521,19 @@ html, body {
 	background: url('/sites/all/themes/events/images/Follow-icons-sprite.png') no-repeat left top;
 	background-position: 0px 0px;
 }
+
+.footer-sub_menu {
+	display: none;
+	z-index: 100;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: yellow;
+	color: #000;
+	padding: 2px;
+	pointer-events:none;
+}
+
 
 .subscribe-icon#sub-flickr {
 	background-position: 0px 0px;	

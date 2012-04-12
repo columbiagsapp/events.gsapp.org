@@ -64,6 +64,10 @@ if (strlen($hover_image_path) > 3) {
 	print '<div id="footer-hover-image">' . 
 		theme('imagecache', 'featured_event_hover', $hover_image_path, 'Featured event:hover image', '', NULL) . '</div>'; 
 }
+
+
+
+
 print '<div class="csslocation" id="' . $css_location .'"></div>' .
 	'<a href="/' . $path . '"><div id="footer-left-side">' . 
 	'<div id="footer-left-icon" class="footer_column">' .
@@ -90,6 +94,26 @@ print '<div id="footer-mid-links" class="footer_column">' .
 	'<a href="mailto:cloud@arch.columbia.edu">Feedback</a> | <a href="/policy"> Terms &amp; Policies</a></div>' .	
 	'</div>';
 
+/*
+
+
+.node-type-event.node-full .event-social .dropdown a {
+    padding: 3px 6px;
+}
+sub_menu
+
+						<div class="sub_menu">
+							<span><a href="http://www.addthis.com/bookmark.php" style="text-decoration:none;" class="addthis addthis_button_email">Email</a></span>
+
+
+.node-type-event.node-full .event-social .share .addthis span {
+	display: none;
+}
+
+
+*/
+
+
 print '<div id="footer-right-links" class="footer_column">' .
 	'<div id="subscribe-text">Follow and Subscribe:</div>' .
 	'<div class="subscribe-icons-line">' . 
@@ -103,14 +127,23 @@ print '<div id="footer-right-links" class="footer_column">' .
 		'<a href="http://ccgsapp.org/follow-cc" target="_blank"><div class="subscribe-icon" id="sub-ccgsapp">&nbsp;</div></a>' .
 	'</div><br/>' .
 	'<div class="subscribe-icons-line" id="subscribe-icons-line2">' . 
-		'<div class="subscribe-icon" id="sub-gcal"><a href="">&nbsp;</a></div>' .
+		'<a href=""><div class="subscribe-icon" id="sub-gcal"><a href="">&nbsp;</div>' .
 		'<a href="http://www.addthis.com/bookmark.php" style="text-decoration:none;" class="addthis addthis_button_email"><div class="subscribe-icon" id="sub-email">&nbsp;</div></a>' .
 		'<a href="http://events.postfog.org/rss.xml" target="_blank"><div class="subscribe-icon" id="sub-rss">&nbsp;</div></a>' .
 	'</div>' .
 	'</div>';
 	
-
-
+print '<div class="footer-sub_menu" id="sub-flickr-menu">Flickr</div>' .
+			'<div class="footer-sub_menu" id="sub-twitter-menu">Twitter</div>' .
+			'<div class="footer-sub_menu" id="sub-fb-menu">Facebook</div>' .
+			'<div class="footer-sub_menu" id="sub-yt-menu">YouTube</div>' .
+			'<div class="footer-sub_menu" id="sub-itunes-menu">iTunes U</div>' .
+			'<div class="footer-sub_menu" id="sub-livestream-menu">Livestream</div>' .
+			'<div class="footer-sub_menu" id="sub-ccgsapp-menu">CC:GSAPP</div>' .
+			'<div class="footer-sub_menu" id="sub-gcal-menu">Subscribe to Google Calendar</div>' .
+			'<div class="footer-sub_menu" id="sub-email-menu">Subscribe to Weekly Email</div>' .
+			'<div class="footer-sub_menu" id="sub-rss-menu">RSS</div>';
+			
 // 960 x 88
 // white with some opacity 95%
 // star filled if today
