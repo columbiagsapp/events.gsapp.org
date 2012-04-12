@@ -633,6 +633,10 @@ body.page-featured-event .teaser-date {
 body.page-featured-event .hide-for-month {
 	display: none;
 }
+body.page-featured-event #page-wrapper {
+	margin-left: 0px;
+}
+
 
 
 .teaser-image-featured {
