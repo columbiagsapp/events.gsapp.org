@@ -302,6 +302,13 @@ a:hover {
 #presentation-slider{
 
 }
+#flickr-slider{
+
+}
+#flickr-slider .slider-item {
+	height: 323px;
+	width: 430px;
+}
 
 
 
@@ -456,7 +463,7 @@ html, body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index:10;
+	z-index:100;
 	display: none;
 	pointer-events:none;
 }
@@ -613,10 +620,26 @@ body.page-featured-event #header {
 body.page-featured-event .node {
 	width: 220px;
 }
+
 body.page-featured-event .teaser-image {
 	display: inline;
 }
 
+body.page-featured-event .teaser-image-featured {
+	display: inline-table;
+	padding-top: 20px;
+}
+
+body.page-featured-event .istoday .teaser-date-box {
+    background: none;
+}
+body.page-featured-event .teaser-date {
+	color: #000;
+}
+
+.teaser-image-featured {
+	display: none;
+}
 
 /* @end */
 

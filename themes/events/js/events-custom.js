@@ -4,7 +4,7 @@ $(document).ready(function() {
 	updateLocation();
 	
 	$('.video .content').css('visibility', 'hidden');
-	$(".teaser-content").hover(
+	$("body[class!=page-featured-event] .teaser-content").hover(
 	  function () {
 		var h = $(window).height();
 		var w = $(window).width();
@@ -234,8 +234,10 @@ $(window).resize(function() {
 
 //-- subscribe icons sub menus --
 $('div.footer-sub_menu').remove().appendTo("body");
+/*
 var mx = null;
 var my = null;
+
 $('div.subscribe-icon').mousemove(function(e){
       mx = e.pageX;
       my = e.pageY;
@@ -266,6 +268,7 @@ $('div.subscribe-icon').hover(function(e) {
 		$('#' + id).css('display', 'none');
 	}
 );
+*/
 
 
 //------ highlight next event in listing
