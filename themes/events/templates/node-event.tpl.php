@@ -215,6 +215,10 @@ if($_GET['q'] != "featured_event") { ?>
 						<?php } ?>
 					</div>
 		<div class="content-left">
+			<div id="slideshow-buttons">
+				<div id="prev-button">PREV</div>
+				<div id="next-button">NEXT</div>
+			</div>
 			<div id="slideshow-area">
 
 				<!-- Image Gallery -->
