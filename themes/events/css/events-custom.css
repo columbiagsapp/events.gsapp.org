@@ -303,7 +303,9 @@ a:hover {
 
 }
 #flickr-slider { 
+	display: none;
 }
+
 #flickr-slider .slider-item {
         width: 430px;
         height: 323px;
