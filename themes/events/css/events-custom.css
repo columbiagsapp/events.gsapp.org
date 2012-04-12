@@ -388,6 +388,17 @@ html, body {
 	margin: 0;
 }
 
+.csslocation { display: none;}
+
+
+#footer-left-side {
+	color: #000000;
+  float: left;
+  width: 368px;
+  height: 78px;
+  position: relative;
+  padding-top:10px;
+}	
 
 .footer_column {
 	float: left;
@@ -395,9 +406,8 @@ html, body {
 }
 #footer-left-icon {
 	width: 56px;
-	height: 78px;
+	height: 88px;
 	margin-left: 85px;
-	padding-top: 10px;
 }
 
 #footer-left-icon .event-heptagon {
@@ -412,33 +422,6 @@ html, body {
 
 }
 
-#footer-left-icon #event-heptagon-other:hover {
-	background: url('/sites/all/themes/events/images/heptagon-other.png') no-repeat left top;
-}
-#footer-left-icon #event-heptagon-barcelona {
-	background: url('/sites/all/themes/events/images/heptagon-barcelona.png') no-repeat left top;
-}
-#footer-left-icon #event-heptagon-new-york {
-	background: url('/sites/all/themes/events/images/heptagon-nyc.png') no-repeat left top;
-}
-#footer-left-icon #event-heptagon-rio-de-janeiro {
-	background: url('/sites/all/themes/events/images/heptagon-rio.png') no-repeat left top;
-}
-#footer-left-icon #event-heptagon-mumbai {
-	background: url('/sites/all/themes/events/images/heptagon-mumbai.png') no-repeat left top;
-}
-#footer-left-icon #event-heptagon-beijing {
-	background: url('/sites/all/themes/events/images/heptagon-beijing.png') no-repeat left top;
-}
-#footer-left-icon #event-heptagon-moscow {
-	background: url('/sites/all/themes/events/images/heptagon-moscow.png') no-repeat left top;
-}
-#footer-left-icon #event-heptagon-amman {
-	background: url('/sites/all/themes/events/images/heptagon-amman.png') no-repeat left top;
-}
-#footer-left-icon #event-heptagon-sao-paulo {
-	background: url('/sites/all/themes/events/images/heptagon-saopaolo.png') no-repeat left top;
-}
 #event-heptagon-amman { color: #ff00a6;}
 #event-heptagon-new-york {color: #00d6ff;	 }
 #event-heptagon-mumbai  {	color: #ff9e00; }
@@ -491,6 +474,8 @@ html, body {
 #footer-mid-links {
 	margin-left: 43px;
 	width: 252px;
+	padding-top: 10px;
+	height: 78px;
 }
 
 .footer-link {}
@@ -499,6 +484,8 @@ html, body {
 #footer-right-links {
 	margin-left: 13px;
 	width: 284px;
+	padding-top:10px;
+	height: 78px;
 }
 #subscribe-text {}
 
@@ -506,6 +493,12 @@ html, body {
 	width: 250px;
 	height: 27px;
 }
+
+#subscribe-icons-line2 {
+	position: relative;
+	top: -10px;
+}
+
 .subscribe-icon {
 	float: left;
 	width: 17px;
@@ -513,29 +506,70 @@ html, body {
 	background: none;
 	margin-right: 10px;
 	margin-bottom: 10px;
+	background: url('/sites/all/themes/events/images/Follow-icons-sprite.png') no-repeat left top;
+	background-position: 0px 0px;
 }
 
 .subscribe-icon#sub-flickr {
-	background: url('/sites/all/themes/events/images/1-Flickr.png') no-repeat left top;
+	background-position: 0px 0px;	
 }
 .subscribe-icon#sub-flickr:hover {
 	background-position: 0px -17px;
 }
-
-/*
-
-10-rss.png
-2-Tumblr.png
-3-Facebook.png
-4-YouTube.png
-5-iTunesU.png
-6-Livestream.png
-7-CCgsapp.png
-8-googlecal.png
-9-emailsubscription.png
-
-
-*/
+.subscribe-icon#sub-twitter {
+	background-position: -26px 0px;	
+}
+.subscribe-icon#sub-twitter:hover {
+	background-position: -26px -17px;
+}
+.subscribe-icon#sub-fb {
+	background-position: -52px 0px;	
+}
+.subscribe-icon#sub-fb:hover {
+	background-position: -52px -17px;
+}
+.subscribe-icon#sub-yt {
+	background-position: -78px 0px;	
+}
+.subscribe-icon#sub-yt:hover {
+	background-position: -78px -17px;
+}
+.subscribe-icon#sub-itunes {
+	background-position: -104px 0px;	
+}
+.subscribe-icon#sub-itunes:hover {
+	background-position: -104px -17px;
+}
+.subscribe-icon#sub-livestream {
+	background-position: -130px 0px;	
+}
+.subscribe-icon#sub-livestream:hover {
+	background-position: -130px -17px;
+}
+.subscribe-icon#sub-ccgsapp {
+	background-position: -156px 0px;	
+}
+.subscribe-icon#sub-ccgsapp:hover {
+	background-position: -156px -17px;
+}
+.subscribe-icon#sub-gcal {
+	background-position: 0px -42px;	
+}
+.subscribe-icon#sub-gcal:hover {
+	background-position: 0px -59px;
+}
+.subscribe-icon#sub-email {
+	background-position: -26px -42px;	
+}
+.subscribe-icon#sub-email:hover {
+	background-position: -26px -59px;
+}
+.subscribe-icon#sub-rss {
+	background-position: -52px -42px;	
+}
+.subscribe-icon#sub-rss:hover {
+	background-position: -52px -59px;
+}
 
 
 

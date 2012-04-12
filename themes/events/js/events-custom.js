@@ -162,7 +162,9 @@ var footer_css = {
 $('#footer').css(footer_css);
 
 var footer_hover_offset = ($(window).width() - 500)/2;
-var footer_hover_offset_top = ($(window).height() - 350) / 2; //TODO FIX
+var page_offset = window.pageYOffset;
+var footer_hover_offset_top = page_offset + 120;
+
 var footer_hover_css = {
 	'left': footer_hover_offset,
 	'top': footer_hover_offset_top,
@@ -171,29 +173,21 @@ var footer_hover_css = {
 $('#footer-hover-image').remove().appendTo("body");
 $('#footer-hover-image').css(footer_hover_css);
 
-$('#footer-left-text').hover(function () {
+
+
+$('#footer-left-side').hover(function () {
 		$('#footer-hover-image').show();
+		switch_heptagon('on');
 	},
 	function() {
 		$('#footer-hover-image').hide();
+		switch_heptagon('off');
 });
 
-$('#footer-left-icon > div').hover(function () {
-		$('#footer-hover-image').show();
-	},
-	function() {
-		$('#footer-hover-image').hide();
-});
-
-
-$(window).resize(function() {
-	var footer_offset = ($(window).width() - 960)/2;
-	var footer_css = {
-		'left': footer_offset,
-	};
-	$('#footer').css(footer_css);
+$(window).scroll(function () { 
 	var footer_hover_offset = ($(window).width() - 500)/2;
-	var footer_hover_offset_top = ($(window).height() - 350) / 2;
+	var page_offset = window.pageYOffset;
+	var footer_hover_offset_top = page_offset + 120;
 	var footer_hover_css = {
 		'left': footer_hover_offset,
 		'top': footer_hover_offset_top,
@@ -201,6 +195,27 @@ $(window).resize(function() {
 	$('#footer-hover-image').css(footer_hover_css);
 
 });
+
+$(window).resize(function() {
+	var footer_hover_offset = ($(window).width() - 500)/2;
+	var page_offset = window.pageYOffset;
+	var footer_hover_offset_top = page_offset + 120;
+	var footer_hover_css = {
+		'left': footer_hover_offset,
+		'top': footer_hover_offset_top,
+	};
+	$('#footer-hover-image').css(footer_hover_css);
+
+
+	var footer_offset = ($(window).width() - 960)/2;
+	var footer_css = {
+		'left': footer_offset,
+	};
+	$('#footer').css(footer_css);
+
+});
+
+
 
 //------ highlight next event in listing
 var checked_next = false;
@@ -298,6 +313,17 @@ function onYouTubePlayerReady(playerId) {
 	// z-indexed content (chrome only)
 }
 
-
-
-  
+/**
+	* switch the heptagon
+	*/
+function switch_heptagon(state) {
+	var loc_id = $('div.csslocation').attr('id');
+	if (state == 'on') {
+		if ((loc_id != undefined) && (loc_id != null)) {
+			$('#event-heptagon-' + loc_id).css('background', 
+				'url(\'/sites/all/themes/events/images/heptagon-' + loc_id + '.png\') no-repeat left top');
+		}
+	} else {
+		$('#event-heptagon-' + loc_id).css('background', 'url(\'/sites/all/themes/events/images/heptagon-clear.png\') no-repeat left top');
+	}
+}

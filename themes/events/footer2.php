@@ -52,20 +52,19 @@
 // should be white, just diff hover target based on event location
 
 //hidden hover image
-print '<div id="footer-hover-image">' . 
-	theme('imagecache', 'featured_event_hover', $hover_image_path, 'Featured event:hover image', '', NULL) . '</div>'; 
+if (strlen($hover_image_path) > 3) {
+	print '<div id="footer-hover-image">' . 
+		theme('imagecache', 'featured_event_hover', $hover_image_path, 'Featured event:hover image', '', NULL) . '</div>'; 
+}
 
 
 
 
-
-print '<div id="footer-left-icon" class="footer_column">' .
+print '<div class="csslocation" id="' . $css_location .'"></div>' .
+	'<a href="/' . $path . '"><div id="footer-left-side">' . 
+	'<div id="footer-left-icon" class="footer_column">' .
 	'<div class="event-heptagon" id="event-heptagon-' . $css_location . '">' . date_format_date($dateobj, "custom", "j") . '<br/>' . date_format_date($dateobj, "custom", "M") . '</div>' .
 	'</div>';
-
-
-
-
 
 print '<div id="footer-left-text" class="footer_column">' .
 	'<a href="/' . $path . '">' .
@@ -76,32 +75,32 @@ print '<div id="footer-left-text" class="footer_column">' .
 	'" class="footer-event-location">' . 
 	$location_sub_name . '</div>' . 
 	'<div id="event-time">, ' . date_format_date($dateobj, "custom", "g:ia") . '</div></a>' .
-	'</div>';
+	'</div></a></div>';
 	
 print '<div id="footer-mid-links" class="footer_column">' .
 	'<div class="footer-link">' . 
-	'<a href="http://www.arch.columbia.edu/event-archive" target="_blank">Event Archive</a></div>' .
+	'<a href="http://www.arch.columbia.edu/event-archive">Event Archive</a></div>' .
 	'<div class="footer-link">' . 
-	'<a href="TBD" target="_blank">Lecture Series Posters</a></div><br/><br/>' .
+	'<a href="/lecture-series-posters">Lecture Series Posters</a></div><br/>' .
 	'<div class="footer-link">' . 
-	'<a href="mailto:cloud@arch.columbia.edu" target="_blank">Feedback</a> | <a href="/policy"> Terms &amp; Policies</a></div>' .	
+	'<a href="mailto:cloud@arch.columbia.edu">Feedback</a> | <a href="/policy"> Terms &amp; Policies</a></div>' .	
 	'</div>';
 
 print '<div id="footer-right-links" class="footer_column">' .
 	'<div id="subscribe-text">Follow and Subscribe:</div>' .
 	'<div class="subscribe-icons-line">' . 
 		'<div class="subscribe-icon" id="sub-flickr"><a href="">&nbsp;</a></div>' .
-		'<div class="subscribe-icon" id="sub-twitter"><a href="">&nbsp;</a></div>' .
-		'<div class="subscribe-icon" id="sub-fb"><a href="">&nbsp;</a></div>' .
-		'<div class="subscribe-icon" id="sub-yt"><a href="">&nbsp;</a></div>' .
-		'<div class="subscribe-icon" id="sub-itunes"><a href="">&nbsp;</a></div>' .
-		'<div class="subscribe-icon" id="sub-livestream"><a href="">&nbsp;</a></div>' .
-		'<div class="subscribe-icon" id="sub-ccgsapp"><a href="">&nbsp;</a></div>' .
+		'<a href="http://twitter.com/#!/gsapponline" target="_blank"><div class="subscribe-icon" id="sub-twitter">&nbsp;</div></a>' .
+		'<a href="http://www.facebook.com/gsapp1881" target="_blank"><div class="subscribe-icon" id="sub-fb">&nbsp;</div></a>' .
+		'<a href="http://www.youtube.com/user/ColumbiaGSAPP" target="_blank"><div class="subscribe-icon" id="sub-yt">&nbsp;</div></a>' .
+		'<a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=499345704" target="_blank"><div class="subscribe-icon" id="sub-itunes">&nbsp;</div></a>' .
+		'<a href="http://www.livestream.com/gsapp" target="_blank"><div class="subscribe-icon" id="sub-livestream">&nbsp;</div></a>' .
+		'<a href="http://ccgsapp.org/follow-cc" target="_blank"><div class="subscribe-icon" id="sub-ccgsapp">&nbsp;</div></a>' .
 	'</div><br/>' .
-	'<div class="subscribe-icons-line">' . 
+	'<div class="subscribe-icons-line" id="subscribe-icons-line2">' . 
 		'<div class="subscribe-icon" id="sub-gcal"><a href="">&nbsp;</a></div>' .
-		'<div class="subscribe-icon" id="sub-email"><a href="">&nbsp;</a></div>' .
-		'<div class="subscribe-icon" id="sub-rss"><a href="">&nbsp;</a></div>' .
+		'<a href="http://www.addthis.com/bookmark.php" style="text-decoration:none;" class="addthis addthis_button_email"><div class="subscribe-icon" id="sub-email">&nbsp;</div></a>' .
+		'<a href="http://events.postfog.org/rss.xml" target="_blank"><div class="subscribe-icon" id="sub-rss">&nbsp;</div></a>' .
 	'</div>' .
 	'</div>';
 	
