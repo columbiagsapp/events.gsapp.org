@@ -720,6 +720,19 @@ body {
 }
 
 
+#slideshow-buttons {
+        position: absolute;
+        z-index: 100;
+        padding-top: 50%;
+}
+
+#slideshow-buttons .button {
+        position: relative;
+        top: 50%;
+        cursor: pointer;
+}
+
+
 /* @end */
 
 /* @group Slideshow navigation */
