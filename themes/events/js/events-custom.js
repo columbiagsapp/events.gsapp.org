@@ -4,7 +4,16 @@ $(document).ready(function() {
 	updateLocation();
 	
 	$('.video .content').css('visibility', 'hidden');
-	$("body[class!=page-featured-event] > .teaser-content").hover(
+	$("body[class!=page-featured-event] #page-wrapper.teaser-content").hover(
+	
+//	html.js body.page div#page-wrapper div#page div#main-wrapper div#main.clearfix div#content.column div.section div#content-area div.views_view div.view-content table.views-view-grid tbody tr.row-2 td.col-2
+
+
+//#content .section #content-area .view-events-browse .view-content table tbody tr td	.node	.teaser-content
+	
+	//div#node-85.node div#teaser-node-85.content div#teaser-image-85.teaser-image
+	
+	
 	  function () {
 		var h = $(window).height();
 		var w = $(window).width();
@@ -50,26 +59,32 @@ $(document).ready(function() {
 //		controlNav: false,
 		speed: 1000, 
 		timeout: 0, 
-    next:   '#next2', 
-    prev:   '#prev2' 
+    next:   '#next-button',  
+    prev:   '#prev-button' 
 	}); 
 	$("#flickr-slider").cycle({
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
 		speed: 1000, 
+    next:   '#next-button',  
+    prev:   '#prev-button' 
 	});
 	$("#presentation-slider").cycle({
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
 		speed: 1000, 
+    next:   '#next-button', 
+    prev:   '#prev-button' 
 	});
 	$("#poster-slider").cycle({
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
 		speed: 1000, 
+    next:   '#next-button', 
+    prev:   '#prev-button' 
 	});
 
 /*
