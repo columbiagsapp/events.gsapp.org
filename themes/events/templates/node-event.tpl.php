@@ -216,8 +216,8 @@ if($_GET['q'] != "featured_event") { ?>
 					</div>
 		<div class="content-left">
 			<div id="slideshow-buttons">
-				<div id="prev-button">PREV</div>
-				<div id="next-button">NEXT</div>
+				<div id="prev-button" class="button">PREV</div>
+				<div id="next-button" class="button">NEXT</div>
 			</div>
 			<div id="slideshow-area">
 

@@ -302,15 +302,6 @@ a:hover {
 #presentation-slider{
 
 }
-#flickr-slider{
-
-}
-#flickr-slider .slider-item {
-	height: 323px;
-	width: 430px;
-	background-repeat:no-repeat;
-	background-position:center center; 
-}
 
 
 
@@ -639,6 +630,11 @@ body.page-featured-event .teaser-date {
 	color: #000;
 }
 
+body.page-featured-event .hide-for-month {
+	display: none;
+}
+
+
 .teaser-image-featured {
 	display: none;
 }
@@ -721,6 +717,19 @@ body {
 	top: 0px;
 	left: 0px;
 	height: 330px;
+}
+
+
+#slideshow-buttons {
+        position: absolute;
+        z-index: 100;
+        padding-top: 50%;
+}
+
+#slideshow-buttons .button {
+        position: relative;
+        top: 50%;
+        cursor: pointer;
 }
 
 
