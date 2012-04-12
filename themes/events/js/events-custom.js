@@ -57,7 +57,8 @@ $(document).ready(function() {
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
-		speed: 1000, 
+		speed: 300, 
+		timeout: 0, 
 		timeout: 0, 
     next:   '#next-button',  
     prev:   '#prev-button' 
@@ -66,7 +67,8 @@ $(document).ready(function() {
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
-		speed: 1000, 
+		speed: 300, 
+		timeout: 0, 
     next:   '#next-button',  
     prev:   '#prev-button' 
 	});
@@ -74,7 +76,8 @@ $(document).ready(function() {
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
-		speed: 1000, 
+		speed: 300, 
+		timeout: 0, 
     next:   '#next-button', 
     prev:   '#prev-button' 
 	});
@@ -82,7 +85,8 @@ $(document).ready(function() {
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
-		speed: 1000, 
+		speed: 300, 
+		timeout: 0, 
     next:   '#next-button', 
     prev:   '#prev-button' 
 	});

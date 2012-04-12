@@ -214,10 +214,11 @@ if($_GET['q'] != "featured_event") { ?>
 							<a class="colorbox-poster" href="<?php print $base_url . "/" . imagecache_create_path('event_lightbox_poster_view', $image['filepath']); ?>"></a>
 						<?php } ?>
 					</div>
+				
 		<div class="content-left">
 			<div id="slideshow-buttons">
-				<div id="prev-button" class="button">PREV</div>
-				<div id="next-button" class="button">NEXT</div>
+				<div id="prev-button" class="button"></div>
+				<div id="next-button" class="button"></div>
 			</div>
 			<div id="slideshow-area">
 
@@ -342,6 +343,11 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				?>
 				<!-- FLICKR GALLERY END -->
 
+				<div id="flickr-lightbox">
+					<?php foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
+						print '<a class="colorbox-flickr" href="' . $flickr_photo['url_o'] . '"></a>' . "\n";
+					 } ?>
+				</div>
 
 
 
@@ -372,9 +378,10 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 							print '<a class="thickbox t-poster" id="tbox-expand" rel="g1" href="/' .
 							$image['filepath'] . '" title="Larger image" style="display: none;">&nbsp;</a>';
 						}
-					}
-					print '</div><!-- close expand-poster-->';
-					print '<div id="expand-imagegallery">';
+					} ?>
+				</div><!-- close expand-poster-->
+				<div id="expand-imagegallery">
+				<?php
 					$first = null;
 					foreach($node->field_event_imagegallery as $image) {
 						if ($first == null) {
@@ -389,6 +396,9 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				
 				?>
 				</div>
+
+				<!-- FLICKR STUFF NEEDS TO GO HERE -->
+
 			</div>
 		<?php } ?>
 		</div>

@@ -292,18 +292,26 @@ a:hover {
 /* @end */
 
 
+.cycle-slider { display: none; }
+
+.cycle-slider img { 
+	top: 0px;
+	left: 0px;
+	position: absolute;
+}
+
 #imagegallery-slider {
 
 }
 #poster-slider {
 	z-index: 10;
 	position: absolute;
+	display: block;
 }
 #presentation-slider{
 
 }
 #flickr-slider { 
-	display: none;
 }
 
 #flickr-slider .slider-item {
@@ -311,6 +319,7 @@ a:hover {
         height: 323px;
 	background-repeat:no-repeat;
 	background-position:center; 
+	background-color: none;
 }
 
 
@@ -737,22 +746,27 @@ body {
 #slideshow-buttons {
         position: absolute;
         z-index: 100;
-        padding-top: 50%;
+        padding-top: 150px;
 	width: 100%;
 }
 
 #slideshow-buttons .button {
         position: relative;
         top: 50%;
-        cursor: pointer;
+	width: 30px;
+	height: 30px;
 }
 
 
 #slideshow-buttons #prev-button {
+        cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
 	float: left;
 }
 
 #slideshow-buttons #next-button {
+        cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) -31px 0;
 	float: right;
 }
 
