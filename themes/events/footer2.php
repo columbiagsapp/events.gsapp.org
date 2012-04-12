@@ -89,7 +89,8 @@ print '<div id="footer-mid-links" class="footer_column">' .
 print '<div id="footer-right-links" class="footer_column">' .
 	'<div id="subscribe-text">Follow and Subscribe:</div>' .
 	'<div class="subscribe-icons-line">' . 
-		'<div class="subscribe-icon" id="sub-flickr"><a href="">&nbsp;</a></div>' .
+		'<a href="http://flickr.com/photos/gsapponline" target="_blank">' .
+		'<div class="subscribe-icon" id="sub-flickr">&nbsp;</div></a>' .
 		'<a href="http://twitter.com/#!/gsapponline" target="_blank"><div class="subscribe-icon" id="sub-twitter">&nbsp;</div></a>' .
 		'<a href="http://www.facebook.com/gsapp1881" target="_blank"><div class="subscribe-icon" id="sub-fb">&nbsp;</div></a>' .
 		'<a href="http://www.youtube.com/user/ColumbiaGSAPP" target="_blank"><div class="subscribe-icon" id="sub-yt">&nbsp;</div></a>' .
