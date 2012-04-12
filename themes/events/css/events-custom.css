@@ -738,6 +738,7 @@ body {
         position: absolute;
         z-index: 100;
         padding-top: 50%;
+	width: 100%;
 }
 
 #slideshow-buttons .button {
@@ -746,6 +747,14 @@ body {
         cursor: pointer;
 }
 
+
+#slideshow-buttons #prev-button {
+	float: left;
+}
+
+#slideshow-buttons #next-button {
+	float: right;
+}
 
 /* @end */
 
