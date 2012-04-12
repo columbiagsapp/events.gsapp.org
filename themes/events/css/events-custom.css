@@ -1,4 +1,4 @@
-/* @override 
+ /* @override 
 	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?n
 	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?6
 	http://postfog.org/events/sites/all/themes/events/css/events-custom.css?i
@@ -385,7 +385,7 @@ html, body {
 #block-block-11 {
 	background-color: white;
 	width: 960px;
-	height: 90px;
+	height: 88px;
 	margin: 0;
   line-height: 14px;
 }
@@ -395,7 +395,7 @@ html, body {
 
 
 #footer-left-side {
-  color: #000000;
+	color: #000000;
   float: left;
   width: 368px;
   height: 78px;
@@ -500,9 +500,10 @@ html, body {
 	padding-top:8px;
 }
 
+
 #subscribe-icons-line2 {
 	position: relative;
-	top: -12px;
+	top: -10px;
 }
 
 .subscribe-icon {

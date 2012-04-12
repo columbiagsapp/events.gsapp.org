@@ -163,7 +163,16 @@ $('#footer').css(footer_css);
 
 var footer_hover_offset = ($(window).width() - 500)/2;
 var page_offset = window.pageYOffset;
-var footer_hover_offset_top = page_offset + 120;
+//console.log("PO " + page_offset);
+//var view_start = $('table.views-view-grid');
+//console.log(view_start);
+//var ot = view_start.offset();
+//console.log("OT " + ot);
+var footer_hover_offset_top = page_offset + 189;
+//console.log("TOTAL " + footer_hover_offset_top);
+
+
+
 
 var footer_hover_css = {
 	'left': footer_hover_offset,
@@ -187,19 +196,17 @@ $('#footer-left-side').hover(function () {
 $(window).scroll(function () { 
 	var footer_hover_offset = ($(window).width() - 500)/2;
 	var page_offset = window.pageYOffset;
-	var footer_hover_offset_top = page_offset + 120;
+	var footer_hover_offset_top = page_offset + 189;
 	var footer_hover_css = {
 		'left': footer_hover_offset,
 		'top': footer_hover_offset_top,
 	};
 	$('#footer-hover-image').css(footer_hover_css);
 
-});
-
 $(window).resize(function() {
 	var footer_hover_offset = ($(window).width() - 500)/2;
 	var page_offset = window.pageYOffset;
-	var footer_hover_offset_top = page_offset + 120;
+	var footer_hover_offset_top = page_offset + 189;
 	var footer_hover_css = {
 		'left': footer_hover_offset,
 		'top': footer_hover_offset_top,

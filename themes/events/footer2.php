@@ -11,7 +11,15 @@
 	// global, should drive heptagon, use taxonomy for name
 	$location_sub = $featured_node->field_event_location[0]['value'];
 	$location_sub_name = $featured_node->taxonomy[$location_sub]->name;
+	
+	// use the hover image if that's set, if not use the first poster image
 	$hover_image_path = $featured_node->field_event_hover_image[0]['filepath'];
+	if (strlen($hover_image_path) < 3) {
+		$hover_image_path = $featured_node->field_event_poster[0]['filepath'];
+	}
+	
+	
+	
 	$path = $featured_node->path;
 	
 	// term id for vocab 4, if found...
@@ -56,10 +64,6 @@ if (strlen($hover_image_path) > 3) {
 	print '<div id="footer-hover-image">' . 
 		theme('imagecache', 'featured_event_hover', $hover_image_path, 'Featured event:hover image', '', NULL) . '</div>'; 
 }
-
-
-
-
 print '<div class="csslocation" id="' . $css_location .'"></div>' .
 	'<a href="/' . $path . '"><div id="footer-left-side">' . 
 	'<div id="footer-left-icon" class="footer_column">' .
