@@ -64,10 +64,6 @@ if (strlen($hover_image_path) > 3) {
 	print '<div id="footer-hover-image">' . 
 		theme('imagecache', 'featured_event_hover', $hover_image_path, 'Featured event:hover image', '', NULL) . '</div>'; 
 }
-
-
-
-
 print '<div class="csslocation" id="' . $css_location .'"></div>' .
 	'<a href="/' . $path . '"><div id="footer-left-side">' . 
 	'<div id="footer-left-icon" class="footer_column">' .

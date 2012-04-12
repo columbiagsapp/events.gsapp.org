@@ -29,6 +29,7 @@
 	http://www.gsappevents.org/sites/all/themes/events/css/events-custom.css?3
 	http://events.gsapp.org/sites/all/themes/events/css/events-custom.css?U
 	http://events.gsapp.org/sites/default/files/css/css_2184b9eecbbe6b58377f5c25c662e006.css
+	http://events.postfog.org/sites/all/themes/events/css/events-custom.css?K
 */
 
 /* @group Everything */
@@ -411,6 +412,7 @@ html, body {
 	width: 56px;
 	height: 88px;
 	margin-left: 85px;
+	padding-top: 10px;
 }
 
 #footer-left-icon .event-heptagon {
@@ -418,9 +420,10 @@ html, body {
 	height: 88px;
  	color: #000000;
   padding-left: 1px;
-  padding-top: 14px;
+  padding-top: 16px;
   text-align: center;
 	background: url('/sites/all/themes/events/images/heptagon-clear.png') no-repeat left top;
+	line-height: 11px;
 
 }
 
@@ -457,7 +460,7 @@ html, body {
 }
 
 
-#event-feature-text {}
+#event-feature-text {line-height: 16px;}
 #event-title { font-weight: bold;}
 #event-type {}
 .footer-event-location {float: left;}
@@ -476,8 +479,8 @@ html, body {
 #footer-mid-links {
 	margin-left: 43px;
 	width: 252px;
-	padding-top: 10px;
-	height: 78px;
+	padding-top: 26px;
+	height: 62px;
 }
 
 .footer-link {}
@@ -489,12 +492,14 @@ html, body {
 	padding-top:10px;
 	height: 78px;
 }
-#subscribe-text {}
+#subscribe-text {line-height:16px}
 
 .subscribe-icons-line {
 	width: 250px;
-	height: 27px;
+	height: 26px;
+	padding-top:10px;
 }
+
 
 #subscribe-icons-line2 {
 	position: relative;

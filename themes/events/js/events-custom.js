@@ -174,9 +174,6 @@ var footer_hover_offset_top = page_offset + 189;
 
 
 
-
-
-
 var footer_hover_css = {
 	'left': footer_hover_offset,
 	'top': footer_hover_offset_top,
@@ -205,8 +202,6 @@ $(window).scroll(function () {
 		'top': footer_hover_offset_top,
 	};
 	$('#footer-hover-image').css(footer_hover_css);
-
-});
 
 $(window).resize(function() {
 	var footer_hover_offset = ($(window).width() - 500)/2;
