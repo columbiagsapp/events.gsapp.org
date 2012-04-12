@@ -307,6 +307,8 @@ a:hover {
 #flickr-slider .slider-item {
         width: 430px;
         height: 323px;
+	background-repeat:no-repeat;
+	background-position:center; 
 }
 
 
