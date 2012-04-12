@@ -456,7 +456,7 @@ html, body {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index:100;
+	z-index:10;
 	display: none;
 	pointer-events:none;
 }
@@ -599,6 +599,28 @@ html, body {
 
 
 /* @end */
+
+/* @group Widget for featured event */
+
+body.page-featured-event #footer {
+	display: none;
+}
+
+body.page-featured-event #header {
+	display: none;
+}
+
+body.page-featured-event .node {
+	width: 220px;
+}
+body.page-featured-event .teaser-image {
+	display: inline;
+}
+
+
+/* @end */
+
+
 
 
 /* @group Node (Overall) */
