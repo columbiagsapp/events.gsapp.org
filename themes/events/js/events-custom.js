@@ -15,16 +15,13 @@ $(document).ready(function() {
 			var thisleft = $(this).offset().left;
 			if((Math.abs(randtop - thistop) > 200) && (Math.abs(randleft - thisleft) > 200)) { continue; }
 		}
-
 		$(this).children(".teaser-image").css({'left': randleft}).css({'top': randtop});
-	    $(this).addClass("hover");
+	  $(this).addClass("hover");
 	  },
 	  function () {
 	    $(this).removeClass("hover");
 	  }
 	);
-
-
 
 	$(".menu-location .loc").click(function() { 
 		$.cookie('gsappevents-loc', $(this).attr("id"));
@@ -96,9 +93,9 @@ $(document).ready(function() {
 			var idname = $(this).attr("name");
 
 
-            /* DTLEDIT 120402 */
-            $(".cycle-slider").hide();
-            $("#" + idname + "-slider").show();
+			/* DTLEDIT 120402 */
+      $(".cycle-slider").hide();
+      $("#" + idname + "-slider").show();
 
 
 			//$('#' + idname + '-nivo').data('nivoslider').stop(); 
@@ -122,11 +119,6 @@ $(document).ready(function() {
 
 		}
 	});
-
-
-
-
-
 
 
 
@@ -155,15 +147,23 @@ $(".overlay").click(function() {
 
 
 //------ footer
-var footer_offset = ($(window).width() - 960)/2;
-var footer_css = {
-	'left': footer_offset,
-};
-$('#footer').css(footer_css);
+if ($(window).width() > 960) {
+	var footer_offset = ($(window).width() - 960)/2;
+	var footer_css = {
+		'left': footer_offset,
+	};
+	$('#footer').css(footer_css);
+}
 
 var footer_hover_offset = ($(window).width() - 500)/2;
 var page_offset = window.pageYOffset;
-var footer_hover_offset_top = page_offset + 120;
+//console.log("PO " + page_offset);
+//var view_start = $('table.views-view-grid');
+//console.log(view_start);
+//var ot = view_start.offset();
+//console.log("OT " + ot);
+var footer_hover_offset_top = page_offset + 189;
+//console.log("TOTAL " + footer_hover_offset_top);
 
 var footer_hover_css = {
 	'left': footer_hover_offset,
@@ -174,47 +174,101 @@ $('#footer-hover-image').remove().appendTo("body");
 $('#footer-hover-image').css(footer_hover_css);
 
 
-
 $('#footer-left-side').hover(function () {
-		$('#footer-hover-image').show();
+		$('#footer-hover-image').addClass("hover");
 		switch_heptagon('on');
 	},
 	function() {
-		$('#footer-hover-image').hide();
+		$('#footer-hover-image').removeClass("hover");
 		switch_heptagon('off');
 });
 
 $(window).scroll(function () { 
 	var footer_hover_offset = ($(window).width() - 500)/2;
 	var page_offset = window.pageYOffset;
-	var footer_hover_offset_top = page_offset + 120;
+	var footer_hover_offset_top = page_offset + 189;
 	var footer_hover_css = {
 		'left': footer_hover_offset,
 		'top': footer_hover_offset_top,
 	};
+	
 	$('#footer-hover-image').css(footer_hover_css);
-
+	if ($(window).width() > 960) {
+		var footer_offset = ($(window).width() - 960)/2;
+		var footer_css = {
+			'left': footer_offset,
+		};
+		$('#footer').css(footer_css);
+	}
 });
+
+
+//		var img_h = $('img.imagecache-featured_event_hover').attr('height');
+//		var img_w = $('img.imagecache-featured_event_hover').attr('width');
 
 $(window).resize(function() {
 	var footer_hover_offset = ($(window).width() - 500)/2;
 	var page_offset = window.pageYOffset;
-	var footer_hover_offset_top = page_offset + 120;
+	var footer_hover_offset_top = page_offset + 189;
 	var footer_hover_css = {
 		'left': footer_hover_offset,
 		'top': footer_hover_offset_top,
 	};
+	
+	if ($(window).height() < 900) {
+		$('img.imagecache-featured_event_hover').attr('z-index', 0);
+	}
+	
 	$('#footer-hover-image').css(footer_hover_css);
 
-
-	var footer_offset = ($(window).width() - 960)/2;
-	var footer_css = {
-		'left': footer_offset,
-	};
-	$('#footer').css(footer_css);
-
+	if ($(window).width() > 960) {
+		var footer_offset = ($(window).width() - 960)/2;
+		var footer_css = {
+			'left': footer_offset,
+		};
+		$('#footer').css(footer_css);
+	}
 });
 
+// TODO maybe add a after resize even to deal with leighas fast window resizing
+
+//-- subscribe icons sub menus --
+$('div.footer-sub_menu').remove().appendTo("body");
+/*
+var mx = null;
+var my = null;
+
+$('div.subscribe-icon').mousemove(function(e){
+      mx = e.pageX;
+      my = e.pageY;
+}); 
+	
+
+$('div.subscribe-icon').hover(function(e) {
+    console.log(mx + " / " + my);
+		var id = $(this).attr('id') + "-menu";
+		console.log('show ' + id);
+		var css_p = {
+			'display': 'inline',
+			'top': mx + 'px',
+			'left': my + 'px'
+		};
+			
+		$('#' + id).css(css_p);
+		console.log($('#' + id).css('top'));
+		console.log($('#' + id).css('left'));
+		
+		
+		
+	},
+	function() {
+
+		var id = $(this).attr('id') + "-menu";
+		console.log('hide ' + id);
+		$('#' + id).css('display', 'none');
+	}
+);
+*/
 
 
 //------ highlight next event in listing
@@ -271,7 +325,11 @@ if(window.location.pathname == '/widget'){
 	
 }
 
-}); // end document.ready
+}); 
+// end document.ready
+
+
+
 
 function updateLoc() {
 	// keep this to get rid of JS error originating in facebook js file
