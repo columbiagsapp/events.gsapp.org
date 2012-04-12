@@ -121,9 +121,6 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 						'style="display:none;" title="' . $ts . '">' . 
 						date_format_date($dateobj, "custom", "Y-n-j") . '</div>';
 
-
-
-
 		?>
 
 	</div>
@@ -160,6 +157,17 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 			print $node->field_event_poster[0]['view'];
 		} ?>
 	</div>
+	
+	<div class="teaser-image-featured">
+		<?php 
+		if($node->field_event_hover_image[0]['view']) {
+			print theme('imagecache', 'event_image_widget', $node->field_event_hover_image[0]['filepath'], '', NULL);
+		} else {
+			print theme('imagecache', 'event_image_widget', $node->field_event_poster[0]['filepath'], '', NULL);
+		} ?>
+	</div>
+		
+	
 
 <?php 
 // don't load images if we're in the widget -- why waste bandwidth? stopping image loading is harder at a js/css level..
