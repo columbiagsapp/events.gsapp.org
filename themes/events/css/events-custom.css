@@ -412,7 +412,7 @@ html, body {
 	width: 56px;
 	height: 88px;
 	margin-left: 85px;
-	padding-top: 10px;
+	padding-top: 8px;
 }
 
 #footer-left-icon .event-heptagon {
@@ -496,13 +496,13 @@ html, body {
 
 .subscribe-icons-line {
 	width: 250px;
-	height: 26px;
-	padding-top:10px;
+	height: 16px;
+	padding-top:8px;
 }
 
 #subscribe-icons-line2 {
 	position: relative;
-	top: -25px;
+	top: -12px;
 }
 
 .subscribe-icon {
