@@ -94,6 +94,8 @@
 			print '<div class="lecture-poster">' . 
 				'<div class="lecture-poster-front">' . 
 					$front_img . '</div><br/>' . 
+				'<div class="lecture-poster-back">' .
+					$back_img . '</div><br/>' . 
 				'<div class="lecture-poster-title">' .
 					$title . '</div>' .
 				'</div>';

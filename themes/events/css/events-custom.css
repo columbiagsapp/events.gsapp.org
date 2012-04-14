@@ -601,6 +601,10 @@ html, body {
 /* @end */
 
 /* @group Widget for featured event */
+body.page-featured-event {
+	background-color: #fff;
+}
+
 
 body.page-featured-event #footer {
 	display: none;
@@ -635,6 +639,7 @@ body.page-featured-event .hide-for-month {
 }
 body.page-featured-event #page-wrapper {
 	margin-left: 0px;
+	padding-top: 0px;
 }
 
 
@@ -645,7 +650,15 @@ body.page-featured-event #page-wrapper {
 
 /* @end */
 
+/* @group lecture series poster */
 
+.lecture-poster-title {
+	font-size: 200%;
+	font-weight: bold;
+	margin-bottom:10px;
+}
+
+/* @end */
 
 
 /* @group Node (Overall) */

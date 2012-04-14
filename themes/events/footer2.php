@@ -94,25 +94,6 @@ print '<div id="footer-mid-links" class="footer_column">' .
 	'<a href="mailto:cloud@arch.columbia.edu">Feedback</a> | <a href="/policy"> Terms &amp; Policies</a></div>' .	
 	'</div>';
 
-/*
-
-
-.node-type-event.node-full .event-social .dropdown a {
-    padding: 3px 6px;
-}
-sub_menu
-
-						<div class="sub_menu">
-							<span><a href="http://www.addthis.com/bookmark.php" style="text-decoration:none;" class="addthis addthis_button_email">Email</a></span>
-
-
-.node-type-event.node-full .event-social .share .addthis span {
-	display: none;
-}
-
-
-*/
-
 
 print '<div id="footer-right-links" class="footer_column">' .
 	'<div id="subscribe-text">Follow and Subscribe:</div>' .
@@ -144,29 +125,6 @@ print '<div class="footer-sub_menu" id="sub-flickr-menu">Flickr</div>' .
 			'<div class="footer-sub_menu" id="sub-email-menu">Subscribe to Weekly Email</div>' .
 			'<div class="footer-sub_menu" id="sub-rss-menu">RSS</div>';
 			
-// 960 x 88
-// white with some opacity 95%
-// star filled if today
-// featured event
-// title
-//type (discussion)
-// where and time
-// is where a link???
-// hover image: featured_event_hover
-
-
-// mid column
-//event archive link to 
-//lecture series posters link to what?
-
-//feedback link to mailto:cloud@arch.columbia
-//terms and policies link http://events.gsapp.org/policy
-
-//follow and subscribe icons: need images
-
-//then remove the subscribe stuff from event page
-
-	
 	
 	
 ?>
