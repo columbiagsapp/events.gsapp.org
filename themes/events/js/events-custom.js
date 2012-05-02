@@ -4,7 +4,7 @@ $(document).ready(function() {
 	updateLocation();
 	
 	$('.video .content').css('visibility', 'hidden');
-	$("body .teaser-content a").hover(
+	$("body:not(.page-featured-event) .teaser-content").hover(
 		
 //	html.js body.page div#page-wrapper div#page div#main-wrapper div#main.clearfix div#content.column div.section div#content-area div.views_view div.view-content table.views-view-grid tbody tr.row-2 td.col-2
 

@@ -621,38 +621,38 @@ html, body {
 
 /* @group Widget for featured event */
 
-body.page-featured-event #footer, body.page-widget-featured #footer {
+body.page-featured-event #footer {
 	display: none;
 }
 
-body.page-featured-event #header, body.page-widget-featured #header {
+body.page-featured-event #header {
 	display: none;
 }
 
-body.page-featured-event .node, body.page-widget-featured .node {
+body.page-featured-event .node {
 	width: 220px;
 }
 
-body.page-featured-event .teaser-image, body.page-widget-featured .teaser-image {
+body.page-featured-event .teaser-image {
 	display: inline;
 }
 
-body.page-featured-event .teaser-image-featured, body.page-widget-featured .teaser-image-featured {
+body.page-featured-event .teaser-image-featured {
 	display: inline-table;
 	padding-top: 20px;
 }
 
-body.page-featured-event .istoday .teaser-date-box, body.page-widget-featured .istoday .teaser-date-box {
+body.page-featured-event .istoday .teaser-date-box {
     background: none;
 }
-body.page-featured-event .teaser-date, body.page-widget-featured .teaser-date {
+body.page-featured-event .teaser-date {
 	color: #000;
 }
 
-body.page-featured-event .hide-for-month, body.page-widget-featured .hide-for-month {
+body.page-featured-event .hide-for-month {
 	display: none;
 }
-body.page-featured-event #page-wrapper, body.page-widget-featured #page-wrapper {
+body.page-featured-event #page-wrapper {
 	margin-left: 0px;
 }
 
@@ -1302,10 +1302,6 @@ background-image: none !important;
 	display: block !important;
 }
 
-.page-featured-event .teaser-content.hover .teaser-image{
-	display: none !important;
-}
-
 /* @end */
 
 .node-type-event.node-teaser a {
@@ -1786,15 +1782,6 @@ Month */
 
 /* @end */
 
-/* @group 
-Utilities */
 
-
-.hidden {
-	display: none;
-}
-
-
-/* @end */
 
 /* @end */
