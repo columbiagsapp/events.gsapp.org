@@ -92,9 +92,9 @@
 			}
 			
 			print '<div class="lecture-poster">' . 
-				'<div class="lecture-poster-front">' . 
-					$front_img . '</div><br/>' . 
-				'<div class="lecture-poster-back">' .
+				'<div id="poster-' . $nid . '" class="lecture-poster-front poster-front-' . $nid . '">' . 
+					$front_img . '</div>' . 
+				'<div id="poster-' . $nid . '-b" class="lecture-poster-back poster-back-' . $nid . '">' .
 					$back_img . '</div><br/>' . 
 				'<div class="lecture-poster-title">' .
 					$title . '</div>' .

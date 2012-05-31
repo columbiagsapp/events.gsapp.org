@@ -99,18 +99,36 @@ print '<div id="footer-right-links" class="footer_column">' .
 	'<div id="subscribe-text">Follow and Subscribe:</div>' .
 	'<div class="subscribe-icons-line">' . 
 		'<a href="http://flickr.com/photos/gsapponline" target="_blank">' .
-		'<div class="subscribe-icon" id="sub-flickr">&nbsp;</div></a>' .
-		'<a href="http://twitter.com/#!/gsapponline" target="_blank"><div class="subscribe-icon" id="sub-twitter">&nbsp;</div></a>' .
-		'<a href="http://www.facebook.com/gsapp1881" target="_blank"><div class="subscribe-icon" id="sub-fb">&nbsp;</div></a>' .
-		'<a href="http://www.youtube.com/user/ColumbiaGSAPP" target="_blank"><div class="subscribe-icon" id="sub-yt">&nbsp;</div></a>' .
-		'<a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=499345704" target="_blank"><div class="subscribe-icon" id="sub-itunes">&nbsp;</div></a>' .
-		'<a href="http://www.livestream.com/gsapp" target="_blank"><div class="subscribe-icon" id="sub-livestream">&nbsp;</div></a>' .
-		'<a href="http://ccgsapp.org/follow-cc" target="_blank"><div class="subscribe-icon" id="sub-ccgsapp">&nbsp;</div></a>' .
-	'</div><br/>' .
-	'<div class="subscribe-icons-line" id="subscribe-icons-line2">' . 
-		'<a href=""><div class="subscribe-icon" id="sub-gcal"><a href="">&nbsp;</div>' .
-		'<a href="http://www.addthis.com/bookmark.php" style="text-decoration:none;" class="addthis addthis_button_email"><div class="subscribe-icon" id="sub-email">&nbsp;</div></a>' .
-		'<a href="http://events.postfog.org/rss.xml" target="_blank"><div class="subscribe-icon" id="sub-rss">&nbsp;</div></a>' .
+		'<div class="subscribe-icon" id="sub-flickr">&nbsp;' . 
+		'<div id="sub-flickr-menu-text" class="subscribe-information">View GSAPP event related images on Flickr</div></div></a>' .
+		'<a href="http://twitter.com/#!/gsapponline" target="_blank"><div class="subscribe-icon" id="sub-twitter">&nbsp;' . 
+		'<div id="sub-twitter-menu-text" class="subscribe-information">Follow GSAPP updates on Twitter</div></div></a>' .
+		'<a href="http://www.facebook.com/gsapp1881" target="_blank"><div class="subscribe-icon" id="sub-fb">&nbsp;' . 
+		'<div id="sub-fb-menu-text" class="subscribe-information">Join GSAPP on Facebook</div>' . 
+		'</div></a>' .
+		'<a href="http://www.youtube.com/user/ColumbiaGSAPP" target="_blank"><div class="subscribe-icon" id="sub-yt">&nbsp;' . 
+		'<div id="sub-yt-menu-text" class="subscribe-information">Subscribe to GSAPP videos on YouTube</div>' .
+		'</div></a>' .
+		'<a href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=499345704" target="_blank"><div class="subscribe-icon" id="sub-itunes">&nbsp;' . 
+		'<div id="sub-itunes-menu-text" class="subscribe-information">Watch GSAPP Event lectures on iTunes University</div>' .
+		'</div></a>' .
+		'<a href="http://www.livestream.com/gsapp" target="_blank"><div class="subscribe-icon" id="sub-livestream">&nbsp;' . 
+		'<div id="sub-livestream-menu-text" class="subscribe-information">Watch GSAPP Event lectures live on Livestream</div>' .
+		'</div></a>' .
+		'<a href="http://ccgsapp.org/follow-cc" target="_blank"><div class="subscribe-icon" id="sub-ccgsapp">&nbsp;' . 
+		'<div id="sub-ccgsapp-menu-text" class="subscribe-information">Follow GSAPP updates via CC:GSAPP</div>' .
+		'</div></a>' .
+		'</div><br/>' .
+		'<div class="subscribe-icons-line" id="subscribe-icons-line2">' . 
+		'<a href=""><div class="subscribe-icon" id="sub-gcal"><a href="">&nbsp;' . 
+		'<div id="sub-gcal-menu-text" class="subscribe-information">Subscribe to GSAPP Events using Google Calendar</div>' .
+		'</div>' .
+		'<a href="http://www.addthis.com/bookmark.php" style="text-decoration:none;" class="addthis addthis_button_email"><div class="subscribe-icon" id="sub-email">&nbsp;' . 
+		'<div id="sub-email-menu-text" class="subscribe-information">Share this event via email</div>' .
+		'</div></a>' .
+		'<a href="http://events.postfog.org/rss.xml" target="_blank"><div class="subscribe-icon" id="sub-rss">&nbsp;' . 
+		'<div id="sub-rss-menu-text" class="subscribe-information">Subscribe to the GSAPP Events RSS feed</div>' .
+		'</div></a>' .
 	'</div>' .
 	'</div>';
 	

@@ -4,7 +4,7 @@ $(document).ready(function() {
 	updateLocation();
 	
 	$('.video .content').css('visibility', 'hidden');
-	$("body:not(.page-featured-event) .teaser-content").hover(
+	$("body .teaser-content a").hover(
 		
 //	html.js body.page div#page-wrapper div#page div#main-wrapper div#main.clearfix div#content.column div.section div#content-area div.views_view div.view-content table.views-view-grid tbody tr.row-2 td.col-2
 
@@ -57,7 +57,8 @@ $(document).ready(function() {
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
-		speed: 1000, 
+		speed: 300, 
+		timeout: 0, 
 		timeout: 0, 
     next:   '#next-button',  
     prev:   '#prev-button' 
@@ -66,7 +67,8 @@ $(document).ready(function() {
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
-		speed: 1000, 
+		speed: 300, 
+		timeout: 0, 
     next:   '#next-button',  
     prev:   '#prev-button' 
 	});
@@ -74,7 +76,8 @@ $(document).ready(function() {
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
-		speed: 1000, 
+		speed: 300, 
+		timeout: 0, 
     next:   '#next-button', 
     prev:   '#prev-button' 
 	});
@@ -82,7 +85,8 @@ $(document).ready(function() {
 		fx: 'fade',
 //		manualAdvance: true,
 //		controlNav: false,
-		speed: 1000, 
+		speed: 300, 
+		timeout: 0, 
     next:   '#next-button', 
     prev:   '#prev-button' 
 	});
@@ -99,6 +103,11 @@ $(document).ready(function() {
 		fx: 'scrollLeft',
 		pager: '#presentation-nav',
 	}); */
+	
+	//removing stock text from thickbox over navigation
+	$('#TB_next a').text('');
+	$('#TB_prev a').text('');
+	
 
 	$("#slideshow-nav .elem").click(function() {
 		if($("#slideshow-nav .elem.selected").attr("name") != $(this).attr("name")) {
@@ -244,6 +253,39 @@ $(window).resize(function() {
 		$('#footer').css(footer_css);
 	}
 });
+
+
+// lecture series hover
+
+$('div.lecture-poster-back').hide(); // TODO move to css
+
+
+$('div.lecture-poster-front').mouseover(function() {
+	// get img from back and write into front
+	var id = $(this).attr('id');
+	$('div#' + id + '-b').show();
+	$(this).hide();
+});
+
+$('div.lecture-poster-back').mouseout(function() {
+	var id = $(this).attr('id');
+	// chop off the -b
+	var new_id = id.substring(0, (id.length-2))
+	$('div#' + new_id).show();
+	$(this).hide();
+});
+
+// new footer icon hovers
+
+$('.subscribe-icon').hover(function() {
+	var id = $(this).attr('id');
+	$('#' + id + '-menu-text').show();
+
+}, function() {
+	var id = $(this).attr('id');
+	$('#' + id + '-menu-text').hide();
+});
+
 
 // TODO maybe add a after resize even to deal with leighas fast window resizing
 

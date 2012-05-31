@@ -214,10 +214,11 @@ if($_GET['q'] != "featured_event") { ?>
 							<a class="colorbox-poster" href="<?php print $base_url . "/" . imagecache_create_path('event_lightbox_poster_view', $image['filepath']); ?>"></a>
 						<?php } ?>
 					</div>
+				
 		<div class="content-left">
 			<div id="slideshow-buttons">
-				<div id="prev-button" class="button">PREV</div>
-				<div id="next-button" class="button">NEXT</div>
+				<div id="prev-button" class="button"></div>
+				<div id="next-button" class="button"></div>
 			</div>
 			<div id="slideshow-area">
 
@@ -286,6 +287,9 @@ if($_GET['q'] != "featured_event") { ?>
 
 				<!-- 120322 FLICKR GALLERY -->
 				<?php
+				$flickr_image_urls = array();
+				
+				
 				/* PHOTOSET EXISTS???? */
 				if($node->field_event_flickr[0]['value']) {
 					
@@ -327,8 +331,8 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 
 							//print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
                             //print "<div class='slider-item' style='width:430px; height:323px; text-align: center;'><img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'></div>\n";
-                                                                                    
-                           print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
+							$flickr_image_urls[] = $flickr_photo['url_o'];
+              print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
 						}?>
 
 						</div> 
@@ -342,6 +346,11 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				?>
 				<!-- FLICKR GALLERY END -->
 
+				<div id="flickr-lightbox">
+					<?php foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
+						print '<a class="colorbox-flickr" href="' . $flickr_photo['url_o'] . '"></a>' . "\n";
+					 } ?>
+				</div>
 
 
 
@@ -372,9 +381,10 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 							print '<a class="thickbox t-poster" id="tbox-expand" rel="g1" href="/' .
 							$image['filepath'] . '" title="Larger image" style="display: none;">&nbsp;</a>';
 						}
-					}
-					print '</div><!-- close expand-poster-->';
-					print '<div id="expand-imagegallery">';
+					} ?>
+				</div><!-- close expand-poster-->
+				<div id="expand-imagegallery">
+				<?php
 					$first = null;
 					foreach($node->field_event_imagegallery as $image) {
 						if ($first == null) {
@@ -389,6 +399,22 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				
 				?>
 				</div>
+					<div id="expand-flickr">
+				<?php
+					$first = null;
+					foreach($flickr_image_urls as $f_url) {
+						if ($first == null) {
+							print '<a class="thickbox t-image1" id="tbox-expand" rel="g2" href="' .
+							$f_url . '" title="Larger image"><img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" /></a>';
+							$first = 1;
+						} else {
+							print '<a class="thickbox t-image" id="tbox-expand" rel="g2" href="' .
+							$f_url . '" title="Larger image" style="display: none;">&nbsp;</a>';
+						}
+					}
+				?>
+				</div><!-- close expand-flickr-->
+
 			</div>
 		<?php } ?>
 		</div>

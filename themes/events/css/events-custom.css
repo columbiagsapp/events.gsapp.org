@@ -292,17 +292,66 @@ a:hover {
 /* @end */
 
 
+.cycle-slider { display: none; }
+
+.cycle-slider img { 
+	top: 0px;
+	left: 0px;
+	position: absolute;
+}
+
 #imagegallery-slider {
 
 }
 #poster-slider {
 	z-index: 10;
 	position: absolute;
+	display: block;
 }
 #presentation-slider{
 
 }
+#flickr-slider { 
+}
 
+#flickr-slider .slider-item {
+        width: 430px;
+        height: 323px;
+	background-repeat:no-repeat;
+	background-position:center; 
+	background-color: none;
+}
+#TB_prev {
+  height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 50%;
+}
+
+#TB_next {
+  height: 100%;
+	left: 50%;
+	position: absolute;
+	top: 0;
+	width: 50%;
+}
+
+#TB_next a:link {
+	height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+}
+
+#TB_prev a:link {
+	height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+}
 
 
 /* @end */
@@ -534,6 +583,17 @@ html, body {
 	pointer-events:none;
 }
 
+.subscribe-information {
+	background-color: white;
+  display: none;
+  font-weight: bold;
+	position: absolute;
+	z-index: 10;
+	filter: alpha(opacity=85);
+	opacity: 0.85;  
+  padding: 2px 5px;
+  color: #000;
+}
 
 .subscribe-icon#sub-flickr {
 	background-position: 0px 0px;	
@@ -541,11 +601,19 @@ html, body {
 .subscribe-icon#sub-flickr:hover {
 	background-position: 0px -17px;
 }
+#sub-flickr-menu-text {
+  left: 680px;
+  top: 50px;
+}
 .subscribe-icon#sub-twitter {
 	background-position: -26px 0px;	
 }
 .subscribe-icon#sub-twitter:hover {
 	background-position: -26px -17px;
+}
+#sub-twitter-menu-text {
+ left: 710px;
+ top: 50px;
 }
 .subscribe-icon#sub-fb {
 	background-position: -52px 0px;	
@@ -553,42 +621,78 @@ html, body {
 .subscribe-icon#sub-fb:hover {
 	background-position: -52px -17px;
 }
+#sub-fb-menu-text {
+  left: 740px;
+  top: 50px;
+}
 .subscribe-icon#sub-yt {
 	background-position: -78px 0px;	
 }
 .subscribe-icon#sub-yt:hover {
 	background-position: -78px -17px;
 }
+#sub-yt-menu-text {
+  left: 770px;
+  top: 50px;
+}
+
 .subscribe-icon#sub-itunes {
 	background-position: -104px 0px;	
 }
 .subscribe-icon#sub-itunes:hover {
 	background-position: -104px -17px;
 }
+#sub-itunes-menu-text {
+  left: 800px;
+  top: 50px;
+}
+
 .subscribe-icon#sub-livestream {
 	background-position: -130px 0px;	
 }
 .subscribe-icon#sub-livestream:hover {
 	background-position: -130px -17px;
 }
+#sub-livestream-menu-text {
+  left: 830px;
+  top: 50px;
+}
+
 .subscribe-icon#sub-ccgsapp {
 	background-position: -156px 0px;	
 }
 .subscribe-icon#sub-ccgsapp:hover {
 	background-position: -156px -17px;
 }
+#sub-ccgsapp-menu-text {
+  left: 850px;
+  top: 50px;
+}
+
 .subscribe-icon#sub-gcal {
 	background-position: 0px -42px;	
 }
 .subscribe-icon#sub-gcal:hover {
 	background-position: 0px -59px;
 }
+#sub-gcal-menu-text {
+  left: 5px;
+  top: 15px;
+}
+
+
 .subscribe-icon#sub-email {
 	background-position: -26px -42px;	
 }
 .subscribe-icon#sub-email:hover {
 	background-position: -26px -59px;
 }
+#sub-email-menu-text {
+  left: 35px;
+  top: 15px;
+}
+
+
 .subscribe-icon#sub-rss {
 	background-position: -52px -42px;	
 }
@@ -596,50 +700,47 @@ html, body {
 	background-position: -52px -59px;
 }
 
-
-
+#sub-rss-menu-text {
+  left: 65px;
+  top: 15px;
+}
 /* @end */
 
 /* @group Widget for featured event */
-body.page-featured-event {
-	background-color: #fff;
-}
 
-
-body.page-featured-event #footer {
+body.page-featured-event #footer, body.page-widget-featured #footer {
 	display: none;
 }
 
-body.page-featured-event #header {
+body.page-featured-event #header, body.page-widget-featured #header {
 	display: none;
 }
 
-body.page-featured-event .node {
+body.page-featured-event .node, body.page-widget-featured .node {
 	width: 220px;
 }
 
-body.page-featured-event .teaser-image {
+body.page-featured-event .teaser-image, body.page-widget-featured .teaser-image {
 	display: inline;
 }
 
-body.page-featured-event .teaser-image-featured {
+body.page-featured-event .teaser-image-featured, body.page-widget-featured .teaser-image-featured {
 	display: inline-table;
 	padding-top: 20px;
 }
 
-body.page-featured-event .istoday .teaser-date-box {
+body.page-featured-event .istoday .teaser-date-box, body.page-widget-featured .istoday .teaser-date-box {
     background: none;
 }
-body.page-featured-event .teaser-date {
+body.page-featured-event .teaser-date, body.page-widget-featured .teaser-date {
 	color: #000;
 }
 
-body.page-featured-event .hide-for-month {
+body.page-featured-event .hide-for-month, body.page-widget-featured .hide-for-month {
 	display: none;
 }
-body.page-featured-event #page-wrapper {
+body.page-featured-event #page-wrapper, body.page-widget-featured #page-wrapper {
 	margin-left: 0px;
-	padding-top: 0px;
 }
 
 
@@ -650,13 +751,30 @@ body.page-featured-event #page-wrapper {
 
 /* @end */
 
+
 /* @group lecture series poster */
 
 .lecture-poster-title {
 	font-size: 200%;
 	font-weight: bold;
 	margin-bottom:10px;
+	pointer-events:none;
 }
+
+.lecture-poster-back {
+	display: none;
+	pointer-events:none;
+	position: absolute;
+	z-index: 0;
+}
+.lecture-poster-back {
+	display: none;
+	pointer-events:none;
+	position: absolute;
+	z-index: 100;
+}
+
+
 
 /* @end */
 
@@ -740,15 +858,29 @@ body {
 #slideshow-buttons {
         position: absolute;
         z-index: 100;
-        padding-top: 50%;
+        padding-top: 150px;
+	width: 100%;
 }
 
 #slideshow-buttons .button {
         position: relative;
         top: 50%;
-        cursor: pointer;
+	width: 30px;
+	height: 30px;
 }
 
+
+#slideshow-buttons #prev-button {
+        cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
+	float: left;
+}
+
+#slideshow-buttons #next-button {
+        cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) -31px 0;
+	float: right;
+}
 
 /* @end */
 
@@ -780,7 +912,7 @@ div#expand-poster {
 	width: 14px;
 	height: 14px;
 }
-div#expand-imagegallery {
+div#expand-imagegallery, div#expand-flickr {
 	float:right;
 	padding-top: 3px;
 	width: 14px;
@@ -1282,6 +1414,10 @@ background-image: none !important;
 	display: block !important;
 }
 
+.page-featured-event .teaser-content.hover .teaser-image{
+	display: none !important;
+}
+
 /* @end */
 
 .node-type-event.node-teaser a {
@@ -1762,6 +1898,15 @@ Month */
 
 /* @end */
 
+/* @group 
+Utilities */
 
+
+.hidden {
+	display: none;
+}
+
+
+/* @end */
 
 /* @end */

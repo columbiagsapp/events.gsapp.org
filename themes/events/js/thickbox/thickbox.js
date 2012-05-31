@@ -87,11 +87,11 @@ function tb_show(caption, url, imageGroup) {//function called when the user clic
 							if (TB_FoundURL) {
 								TB_NextCaption = TB_TempArray[TB_Counter].title;
 								TB_NextURL = TB_TempArray[TB_Counter].href;
-								TB_NextHTML = "<span id='TB_next'>&nbsp;&nbsp;<a href='#'>Next &gt;</a></span>";
+								TB_NextHTML = "<span id='TB_next'>&nbsp;&nbsp;<a href='#'><i>&nbsp;</i></a></span>";
 							} else {
 								TB_PrevCaption = TB_TempArray[TB_Counter].title;
 								TB_PrevURL = TB_TempArray[TB_Counter].href;
-								TB_PrevHTML = "<span id='TB_prev'>&nbsp;&nbsp;<a href='#'>&lt; Prev</a></span>";
+								TB_PrevHTML = "<span id='TB_prev'>&nbsp;&nbsp;<a href='#'><i>&nbsp;</i></a></span>";
 							}
 						} else {
 							TB_FoundURL = true;
