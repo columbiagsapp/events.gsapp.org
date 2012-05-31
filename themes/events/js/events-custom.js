@@ -256,10 +256,6 @@ $(window).resize(function() {
 
 
 // lecture series hover
-
-$('div.lecture-poster-back').hide(); // TODO move to css
-
-
 $('div.lecture-poster-front').mouseover(function() {
 	// get img from back and write into front
 	var id = $(this).attr('id');

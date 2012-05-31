@@ -347,9 +347,13 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				<!-- FLICKR GALLERY END -->
 
 				<div id="flickr-lightbox">
-					<?php foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
+					<?php 
+					/* causes warnings in template ... disable for now (jochen: 5/30/12)
+					foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
 						print '<a class="colorbox-flickr" href="' . $flickr_photo['url_o'] . '"></a>' . "\n";
-					 } ?>
+					 } 
+					 */
+					 ?>
 				</div>
 
 
