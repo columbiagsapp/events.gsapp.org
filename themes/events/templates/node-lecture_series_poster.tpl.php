@@ -91,15 +91,29 @@
 				$pdf_link = $pdf;
 			}
 			
-			print '<div class="lecture-poster">' . 
-				'<div id="poster-' . $nid . '" class="lecture-poster-front poster-front-' . $nid . '">' . 
-					$front_img . '</div>' . 
-				'<div id="poster-' . $nid . '-b" class="lecture-poster-back poster-back-' . $nid . '">' .
-					$back_img . '</div><br/>' . 
-				'<div class="lecture-poster-title">' .
-					$title . '</div>' .
-				'</div>';
-    	
+			if ($pdf_link == null) {
+				print '<div class="lecture-poster">' . 
+					'<div id="poster-' . $nid . '" class="lecture-poster-front poster-front-' . $nid . '">' . 
+						$front_img . '</div>' . 
+					'<div id="poster-' . $nid . '-b" class="lecture-poster-back poster-back-' . $nid . '">' .
+						$back_img . '</div><br/>' . 
+					'<div class="lecture-poster-title">' .
+						$title . '</div>' .
+					'</div>';
+				} else { // add links
+				print '<div class="lecture-poster">' . 
+					'<div id="poster-' . $nid . '" class="lecture-poster-front poster-front-' . $nid . '">' . 
+						'<a target="_blank" href="' . $pdf_link . '" alt="Link to download PDF" title="">' .
+						$front_img . '</a></div>' . 
+					'<div id="poster-' . $nid . '-b" class="lecture-poster-back poster-back-' . $nid . '">' .
+						'<a target="_blank" href="' . $pdf_link . '" alt="Link to download PDF" title="">' .
+						$back_img . '</a></div><br/>' . 
+					'<div class="lecture-poster-title">' .
+						$title . '</div>' .
+					'</div>';
+				
+				}
+				
     	
     ?>
   </div>

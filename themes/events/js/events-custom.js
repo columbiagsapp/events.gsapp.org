@@ -199,7 +199,12 @@ $('#footer-hover-image').css(footer_hover_css);
 
 
 $('#footer-left-side').hover(function () {
+	//checking for existence of .info-section on events page
+	var info_section = null;
+	info_section = $('.info-section')[0];
+	if ((info_section == undefined) || (info_section == null)) {
 		$('#footer-hover-image').addClass("hover");
+	}
 		switch_heptagon('on');
 	},
 	function() {

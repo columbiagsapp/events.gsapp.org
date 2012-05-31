@@ -477,20 +477,6 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 						</div>
 					</div>
 				</div>
-				<div class="follow dropdown">
-					<div><a class="header" href="#"><span class="arrow"><img src="/<?php print path_to_theme(); ?>/images/arrow_white_down.png"></span>Follow</a>
-						<div class="sub_menu">
-							 <span><a target="_new" href="http://ccgsapp.org/follow-cc">Email</a></span>
-							 <span><a target="_new" href="<?php print $base_url . "/rss.xml"; ?>">RSS</a></span>
-							 <span><a target="_new" href="http://www.facebook.com/gsapp1881">Facebook</a></span>
-							 <span><a target="_new" href="http://twitter.com/#!/gsapponline">Twitter</a></span>
-							 <span><a target="_new" href="http://www.youtube.com/user/ColumbiaGSAPP">Youtube</a></span>
-							 <span><a target="_new" href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=499345704">iTunes U</a></span>
-							 <span><a target="_new" href="http://www.livestream.com/gsapp">Livestream</a></span>
-							 <span><a target="_new" href="http://www.ccgsapp.org">CC:GSAPP</a></span>
-						</div>
-					</div>
-				</div> 
 				<div class="gcal dropdown">
 					<?php 
 					$nodebody = substr($node->content['body']['#value'], 0, 2000);

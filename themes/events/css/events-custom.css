@@ -754,6 +754,13 @@ body.page-featured-event #page-wrapper, body.page-widget-featured #page-wrapper 
 
 /* @group lecture series poster */
 
+#lecture-posters-title {
+	/* view title */
+	background-color: yellow;
+	font-size: 250%;
+	font-weight: bold;
+}
+
 .lecture-poster-title {
 	font-size: 200%;
 	font-weight: bold;
