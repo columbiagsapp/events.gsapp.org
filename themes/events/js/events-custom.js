@@ -111,7 +111,6 @@ $(document).ready(function() {
 	// show full date in search result view
 	var search_r = $('dl.search-results')[0];
 	if ((search_r !== null) && (search_r !== undefined)) {
-		$('.node-type-event.node-teaser .teaser-date-box').css('height', '42px');
 		$('.node-type-event.node-teaser .teaser-date-year').show();
 	}
 	

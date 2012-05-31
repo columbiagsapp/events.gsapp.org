@@ -114,8 +114,6 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 		<div class="teaser-date-box"></div>
 		<div class="teaser-date-day"><?php print date_format_date($dateobj, "custom", "j"); ?> </div>
 		<div class="teaser-date-month"><?php print date_format_date($dateobj, "custom", "M"); ?> </div>
-		<div class="teaser-date-year"><?php print date_format_date($dateobj, "custom", "Y"); ?> </div>
-
 		<?php
 			$ts = date_format_date($dateobj, "custom", "U");
 			print '<div class="teaser-date-nid"'. 			
@@ -142,6 +140,7 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
  ?></div>
 
 			<div class="event-time hide-for-semester"><?php print date_format_date($dateobj, "custom", "g:ia"); ?> </div>
+			<div class="teaser-date-year"><?php print date_format_date($dateobj, "custom", "j M Y"); ?> </div>
 
 			<div class="event-people hide-for-semester hide-for-month">
 			<?php  $counter = 0; $max = count($node->field_event_people); 
@@ -371,14 +370,18 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				<?php if($node->field_event_poster[0]['view']) { ?>
 					<div class="elem selected" name="poster">Poster</div>
 				<?php } ?>
-				<?php if($node->field_event_imagegallery[0]['view']) { ?>
-					<div class="elem" name="imagegallery">Image Gallery</div>
-				<?php } ?>
+				<?php 
+				//disabling image gallery for now
+				// we should delete this later
+				//if($node->field_event_imagegallery[0]['view']) { 
+				//	print '<div class="elem" name="imagegallery">Image Gallery</div>';
+				//}
+				?>
 				<?php if($node->field_event_presentation[0]['view']) { ?>
 					<div class="elem" name="presentation">Presentation</div>
 				<?php } ?>
 				<?php if($node->field_event_flickr[0]['value']) { ?>
-					<div class="elem" name="flickr">Flickr</div>
+					<div class="elem" name="flickr">Flickr gallery</div>
 				<?php } ?>
 				<div id="expand-poster">
 				<?php
@@ -396,6 +399,8 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				</div><!-- close expand-poster-->
 				<div id="expand-imagegallery">
 				<?php
+					// disabling image gallery 
+					/*
 					$first = null;
 					foreach($node->field_event_imagegallery as $image) {
 						if ($first == null) {
@@ -407,6 +412,7 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 							$image['filepath'] . '" title="Larger image" style="display: none;">&nbsp;</a>';
 						}
 					}
+					*/
 				
 				?>
 				</div>
