@@ -1462,6 +1462,7 @@ background-image: none !important;
 
 .istoday .teaser-date{
 	color: white;
+	background-color: black;
 }
 
 
@@ -1516,6 +1517,11 @@ background-image: none !important;
 .node-type-event.node-teaser .event-location {
 	float: left;
 	margin-right: 5px;
+}
+
+.node-type-event.node-teaser .teaser-info .event-is-today {
+	position:absolute;
+	top: -14px;
 }
 
 

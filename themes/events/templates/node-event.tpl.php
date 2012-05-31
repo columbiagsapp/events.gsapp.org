@@ -102,7 +102,6 @@ if (strtotime(date("Y-m-d")) <= strtotime(date_format_date($dateobj, "custom", "
 	$isfuture = "isfuture";
 }
 
-
 if($node->field_event_visibility[0]['value'] == "private") $isprivate = "isprivate";
 
 ?>
@@ -128,6 +127,12 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 
 
 	<div class="teaser-info">
+	<?php
+		if ($istoday) {
+			print '<div class="event-is-today">TODAY!</div>';
+		}
+	?>
+	
 		<div class="event-title"><?php if($isprivate) { print "PRIVATE: "; } print $title; ?></div>
 		<div class="content-left">
 			<div class="event-type hide-for-semester"><?php print $node->field_event_taxonomy_type[0]['view']; ?></div>
