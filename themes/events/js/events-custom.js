@@ -108,6 +108,19 @@ $(document).ready(function() {
 	$('#TB_next a').text('');
 	$('#TB_prev a').text('');
 	
+	// show full date in search result view
+	var search_r = $('dl.search-results')[0];
+	if ((search_r !== null) && (search_r !== undefined)) {
+		$('.node-type-event.node-teaser .teaser-date-box').css('height', '42px');
+		$('.node-type-event.node-teaser .teaser-date-year').show();
+	}
+	
+	
+	/*
+	form#node-form div div.form div.column-main div.column-wrapper div#hierarchical-select-2-wrapper-wrapper.form-item div#hierarchical-select-2-wrapper.hierarchical-select-wrapper div.hierarchical-select div.selects select#edit-field-event-taxonomy-semester-tids-hierarchical-select-selects-0.form-select option
+	*/
+	
+	
 
 	$("#slideshow-nav .elem").click(function() {
 		if($("#slideshow-nav .elem.selected").attr("name") != $(this).attr("name")) {

@@ -1492,7 +1492,11 @@ background-image: none !important;
 .node-type-event.node-teaser .teaser-date-month {
 	margin-left: 2px;
 }
-
+.node-type-event.node-teaser .teaser-date-year {
+	margin-left: 2px;
+	margin-top: 2px;
+	display: none;
+}
 
 .node-type-event.node-teaser .teaser-info {
 	margin-left: 45px;

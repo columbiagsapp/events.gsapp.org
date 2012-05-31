@@ -114,6 +114,8 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 		<div class="teaser-date-box"></div>
 		<div class="teaser-date-day"><?php print date_format_date($dateobj, "custom", "j"); ?> </div>
 		<div class="teaser-date-month"><?php print date_format_date($dateobj, "custom", "M"); ?> </div>
+		<div class="teaser-date-year"><?php print date_format_date($dateobj, "custom", "Y"); ?> </div>
+
 		<?php
 			$ts = date_format_date($dateobj, "custom", "U");
 			print '<div class="teaser-date-nid"'. 			
