@@ -1,0 +1,19 @@
+<?php
+
+function gsapp_event_updates_help($path, $arg) {
+  $output = '';
+  switch ($path) {
+    case "admin/help#gsapp_event_updates":
+      $output = '<p>'.  t("Adds custom behavior to the default cron job to perform content updates") .'</p>';
+      break;
+  }
+  return $output;
+}
+
+function gsapp_event_updates_perm() { 
+	return array('Use GSAPP event updates');
+}
+
+function update_events_upon_cron() {
+		watchdog('gsapp_event_updates', t('cron ran ok'), NULL, 'WATCHDOG_NOTICE', NULL);
+}
