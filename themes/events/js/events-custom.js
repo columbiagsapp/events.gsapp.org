@@ -395,6 +395,24 @@ if(window.location.pathname == '/widget'){
 	
 }
 
+
+// masonry test
+$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?",
+
+        function(data){
+          $.each(data.items, function(i,item){
+            $("<img/>").attr("src", item.media.m).appendTo("#item-" + i);
+            if ( i == 10 ) {
+            console.log('ajax done');
+            return false;
+            }
+          });
+
+
+
+
+});
+
 }); 
 // end document.ready
 

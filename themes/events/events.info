@@ -66,6 +66,7 @@ scripts[] = js/thickbox/thickbox.js
 ; needed for YT API embeds
 scripts[] = js/swfobject.js
 scripts[] = js/jquery.cycle.all.pack.js
+scripts[] = js/jquery.masonry.min.js
 ; TODO swap w compressed one
 
 ; scripts[] = js/slicebox/js/jquery.slicebox.min.js

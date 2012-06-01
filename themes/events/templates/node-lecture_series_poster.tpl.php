@@ -115,6 +115,15 @@
 				}
 				
     	
+    	// print body just for now
+    	print '<h1>masonry test start</h1>';
+    	
+    	print $node->field_lec_test[0]['value'];
+    	
+    	
+    	
+    	
+    	
     ?>
   </div>
 
