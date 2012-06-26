@@ -11,9 +11,11 @@ drupal_cron_run();
 
 
 // jochen updated 5/31/12 -- adding additional functionality for event date updates
+
 include_once './includes/module.inc';
+
 if (module_exists('gsapp_event_updates') && function_exists('update_events_upon_cron')) {
-update_events_upon_cron();
+	update_events_upon_cron();
 } else {
     // fail somehow?
 }
