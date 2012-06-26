@@ -75,7 +75,7 @@ print '<div class="csslocation" id="' . $css_location .'"></div>' .
 	'</div>';
 
 print '<div id="footer-left-text" class="footer_column">' .
-	'<a href="/' . $path . '">' .
+	'<a target="_blank" href="/' . $path . '">' .
 	'<div id="event-feature-text">Featured Event:</div>' .
 	'<div id="event-title">'. $title . '</div>' .
 	'<div id="event-type">' . $event_type_name . '</div>' .
