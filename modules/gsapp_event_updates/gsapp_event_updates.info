@@ -1,6 +1,0 @@
-; $Id: gsapp_event_updates.info,v 0.1 2012/05/31 00:00:01 jochen Exp $
-
-name = GSAPP event updates
-description = A custom module that just executes a custom cron job
-core = 6.x
-package = GSAPP
