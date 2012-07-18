@@ -294,11 +294,6 @@ a:hover {
 
 .cycle-slider { display: none; }
 
-.cycle-slider img { 
-	top: 0px;
-	left: 0px;
-	position: absolute;
-}
 
 #imagegallery-slider {
 
@@ -312,6 +307,7 @@ a:hover {
 
 }
 #flickr-slider { 
+	display: none;
 }
 
 #flickr-slider .slider-item {
@@ -319,39 +315,8 @@ a:hover {
         height: 323px;
 	background-repeat:no-repeat;
 	background-position:center; 
-	background-color: none;
-}
-#TB_prev {
-  height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 50%;
 }
 
-#TB_next {
-  height: 100%;
-	left: 50%;
-	position: absolute;
-	top: 0;
-	width: 50%;
-}
-
-#TB_next a:link {
-	height: 100%;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: 100%;
-}
-
-#TB_prev a:link {
-	height: 100%;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: 100%;
-}
 
 
 /* @end */
@@ -405,17 +370,26 @@ html, body {
 /* @end */
 
 /* @group Footer */
+
+#block-block-9{
+	
+}
+
 #footer{
 	font-size: 11px;
 	line-height: 1.5em;
-	position: fixed;
-	bottom: 0px;
-	z-index:100;
-	zoom: 1;
-	filter: alpha(opacity=95);
-	opacity: 0.95;  
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+	height: 40px; /* .push must be the same height as .footer */
+	padding-top: 50px;
+	padding-bottom:50px;
+  
 }
 
+.push {
+	height: 40px;
+}
 
 
 #footer a{
@@ -426,6 +400,17 @@ html, body {
 #footer a:hover{
 	color: gray;
 	
+}
+
+
+#footer-left {
+	float: left;
+}
+
+#footer-right {
+	float: right;
+	text-align: right;
+
 }
 
 /* @end */
@@ -583,17 +568,6 @@ html, body {
 	pointer-events:none;
 }
 
-.subscribe-information {
-	background-color: white;
-  display: none;
-  font-weight: bold;
-	position: absolute;
-	z-index: 10;
-	filter: alpha(opacity=85);
-	opacity: 0.85;  
-  padding: 2px 5px;
-  color: #000;
-}
 
 .subscribe-icon#sub-flickr {
 	background-position: 0px 0px;	
@@ -601,19 +575,11 @@ html, body {
 .subscribe-icon#sub-flickr:hover {
 	background-position: 0px -17px;
 }
-#sub-flickr-menu-text {
-  left: 680px;
-  top: 50px;
-}
 .subscribe-icon#sub-twitter {
 	background-position: -26px 0px;	
 }
 .subscribe-icon#sub-twitter:hover {
 	background-position: -26px -17px;
-}
-#sub-twitter-menu-text {
- left: 710px;
- top: 50px;
 }
 .subscribe-icon#sub-fb {
 	background-position: -52px 0px;	
@@ -621,78 +587,42 @@ html, body {
 .subscribe-icon#sub-fb:hover {
 	background-position: -52px -17px;
 }
-#sub-fb-menu-text {
-  left: 740px;
-  top: 50px;
-}
 .subscribe-icon#sub-yt {
 	background-position: -78px 0px;	
 }
 .subscribe-icon#sub-yt:hover {
 	background-position: -78px -17px;
 }
-#sub-yt-menu-text {
-  left: 770px;
-  top: 50px;
-}
-
 .subscribe-icon#sub-itunes {
 	background-position: -104px 0px;	
 }
 .subscribe-icon#sub-itunes:hover {
 	background-position: -104px -17px;
 }
-#sub-itunes-menu-text {
-  left: 800px;
-  top: 50px;
-}
-
 .subscribe-icon#sub-livestream {
 	background-position: -130px 0px;	
 }
 .subscribe-icon#sub-livestream:hover {
 	background-position: -130px -17px;
 }
-#sub-livestream-menu-text {
-  left: 830px;
-  top: 50px;
-}
-
 .subscribe-icon#sub-ccgsapp {
 	background-position: -156px 0px;	
 }
 .subscribe-icon#sub-ccgsapp:hover {
 	background-position: -156px -17px;
 }
-#sub-ccgsapp-menu-text {
-  left: 850px;
-  top: 50px;
-}
-
 .subscribe-icon#sub-gcal {
 	background-position: 0px -42px;	
 }
 .subscribe-icon#sub-gcal:hover {
 	background-position: 0px -59px;
 }
-#sub-gcal-menu-text {
-  left: 5px;
-  top: 15px;
-}
-
-
 .subscribe-icon#sub-email {
 	background-position: -26px -42px;	
 }
 .subscribe-icon#sub-email:hover {
 	background-position: -26px -59px;
 }
-#sub-email-menu-text {
-  left: 35px;
-  top: 15px;
-}
-
-
 .subscribe-icon#sub-rss {
 	background-position: -52px -42px;	
 }
@@ -700,46 +630,44 @@ html, body {
 	background-position: -52px -59px;
 }
 
-#sub-rss-menu-text {
-  left: 65px;
-  top: 15px;
-}
+
+
 /* @end */
 
 /* @group Widget for featured event */
 
-body.page-featured-event #footer, body.page-widget-featured #footer {
+body.page-featured-event #footer {
 	display: none;
 }
 
-body.page-featured-event #header, body.page-widget-featured #header {
+body.page-featured-event #header {
 	display: none;
 }
 
-body.page-featured-event .node, body.page-widget-featured .node {
+body.page-featured-event .node {
 	width: 220px;
 }
 
-body.page-featured-event .teaser-image, body.page-widget-featured .teaser-image {
+body.page-featured-event .teaser-image {
 	display: inline;
 }
 
-body.page-featured-event .teaser-image-featured, body.page-widget-featured .teaser-image-featured {
+body.page-featured-event .teaser-image-featured {
 	display: inline-table;
 	padding-top: 20px;
 }
 
-body.page-featured-event .istoday .teaser-date-box, body.page-widget-featured .istoday .teaser-date-box {
+body.page-featured-event .istoday .teaser-date-box {
     background: none;
 }
-body.page-featured-event .teaser-date, body.page-widget-featured .teaser-date {
+body.page-featured-event .teaser-date {
 	color: #000;
 }
 
-body.page-featured-event .hide-for-month, body.page-widget-featured .hide-for-month {
+body.page-featured-event .hide-for-month {
 	display: none;
 }
-body.page-featured-event #page-wrapper, body.page-widget-featured #page-wrapper {
+body.page-featured-event #page-wrapper {
 	margin-left: 0px;
 }
 
@@ -752,50 +680,6 @@ body.page-featured-event #page-wrapper, body.page-widget-featured #page-wrapper 
 /* @end */
 
 
-/* @group lecture series poster */
-
-#lecture-posters-title {
-	/* view title */
-		font-size: 2.2em;
-		font-weight: bold;
-    margin-top: 56px;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-}
-
-.lecture-poster-title {
-	font-size: 150%;
-	font-weight: bold;
-	margin-bottom:100px;
-}
-
-.lecture-poster-back {
-	display: none;
-	position: relative;
-	top: 0;
-	left: 0;
-}
-.lecture-poster-front {
-	position: relative;
-	top:0;
-	left:0;
-}
-div.view-lecture-series-posters div.view-content {
-	position:relative;
-	left: -100px;
-	margin-bottom: 80px;
-	padding-top: 112px;
-	
-}
-
-div.view-lecture-series-posters div.view-content table.views-view-grid tbody tr td {
-	padding-left: 100px;
-}
-
-
-
-/* @end */
 
 
 /* @group Node (Overall) */
@@ -888,7 +772,6 @@ body {
 	height: 30px;
 }
 
-
 #slideshow-buttons #prev-button {
         cursor: pointer;
 	background:url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
@@ -931,7 +814,7 @@ div#expand-poster {
 	width: 14px;
 	height: 14px;
 }
-div#expand-imagegallery, div#expand-flickr {
+div#expand-imagegallery {
 	float:right;
 	padding-top: 3px;
 	width: 14px;
@@ -986,7 +869,7 @@ div#scribd-embed {
 
 
 .node-type-event.node-full .event-social {
-	width: 100px;
+	width: 180px;
 	float: left;
 	display: block;
 	overflow: hidden;
@@ -1433,10 +1316,6 @@ background-image: none !important;
 	display: block !important;
 }
 
-.page-featured-event .teaser-content.hover .teaser-image{
-	display: none !important;
-}
-
 /* @end */
 
 .node-type-event.node-teaser a {
@@ -1465,7 +1344,6 @@ background-image: none !important;
 
 .istoday .teaser-date{
 	color: white;
-	background-color: black;
 }
 
 
@@ -1495,15 +1373,7 @@ background-image: none !important;
 .node-type-event.node-teaser .teaser-date-month {
 	margin-left: 2px;
 }
-.node-type-event.node-teaser .teaser-date-year {
-	margin-left: 2px;
-	margin-top: 2px;
-	display: none;
-}
 
-.teaser-date-year {
-	display: none;
-}
 
 .node-type-event.node-teaser .teaser-info {
 	margin-left: 45px;
@@ -1528,11 +1398,6 @@ background-image: none !important;
 .node-type-event.node-teaser .event-location {
 	float: left;
 	margin-right: 5px;
-}
-
-.node-type-event.node-teaser .teaser-info .event-is-today {
-	position:absolute;
-	top: -14px;
 }
 
 
@@ -1931,15 +1796,6 @@ Month */
 
 /* @end */
 
-/* @group 
-Utilities */
 
-
-.hidden {
-	display: none;
-}
-
-
-/* @end */
 
 /* @end */

@@ -102,6 +102,7 @@ if (strtotime(date("Y-m-d")) <= strtotime(date_format_date($dateobj, "custom", "
 	$isfuture = "isfuture";
 }
 
+
 if($node->field_event_visibility[0]['value'] == "private") $isprivate = "isprivate";
 
 ?>
@@ -127,12 +128,6 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 
 
 	<div class="teaser-info">
-	<?php
-		if ($istoday) {
-			print '<div class="event-is-today">TODAY!</div>';
-		}
-	?>
-	
 		<div class="event-title"><?php if($isprivate) { print "PRIVATE: "; } print $title; ?></div>
 		<div class="content-left">
 			<div class="event-type hide-for-semester"><?php print $node->field_event_taxonomy_type[0]['view']; ?></div>
@@ -140,7 +135,6 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
  ?></div>
 
 			<div class="event-time hide-for-semester"><?php print date_format_date($dateobj, "custom", "g:ia"); ?> </div>
-			<div class="teaser-date-year"><?php print date_format_date($dateobj, "custom", "j M Y"); ?> </div>
 
 			<div class="event-people hide-for-semester hide-for-month">
 			<?php  $counter = 0; $max = count($node->field_event_people); 
@@ -293,9 +287,6 @@ if($_GET['q'] != "featured_event") { ?>
 
 				<!-- 120322 FLICKR GALLERY -->
 				<?php
-				$flickr_image_urls = array();
-				
-				
 				/* PHOTOSET EXISTS???? */
 				if($node->field_event_flickr[0]['value']) {
 					
@@ -337,8 +328,8 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 
 							//print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
                             //print "<div class='slider-item' style='width:430px; height:323px; text-align: center;'><img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'></div>\n";
-							$flickr_image_urls[] = $flickr_photo['url_o'];
-              print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
+                                                                                    
+                           print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
 						}?>
 
 						</div> 
@@ -353,12 +344,11 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				<!-- FLICKR GALLERY END -->
 
 				<div id="flickr-lightbox">
-					<?php 
-					/* causes warnings in template ... disable for now (jochen: 5/30/12)
+					<?php /*
+					
 					foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
 						print '<a class="colorbox-flickr" href="' . $flickr_photo['url_o'] . '"></a>' . "\n";
-					 } 
-					 */
+					 } */ 
 					 ?>
 				</div>
 
@@ -370,18 +360,14 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				<?php if($node->field_event_poster[0]['view']) { ?>
 					<div class="elem selected" name="poster">Poster</div>
 				<?php } ?>
-				<?php 
-				//disabling image gallery for now
-				// we should delete this later
-				//if($node->field_event_imagegallery[0]['view']) { 
-				//	print '<div class="elem" name="imagegallery">Image Gallery</div>';
-				//}
-				?>
+				<?php if($node->field_event_imagegallery[0]['view']) { ?>
+					<div class="elem" name="imagegallery">Image Gallery</div>
+				<?php } ?>
 				<?php if($node->field_event_presentation[0]['view']) { ?>
 					<div class="elem" name="presentation">Presentation</div>
 				<?php } ?>
 				<?php if($node->field_event_flickr[0]['value']) { ?>
-					<div class="elem" name="flickr">Flickr gallery</div>
+					<div class="elem" name="flickr">Flickr</div>
 				<?php } ?>
 				<div id="expand-poster">
 				<?php
@@ -399,8 +385,6 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				</div><!-- close expand-poster-->
 				<div id="expand-imagegallery">
 				<?php
-					// disabling image gallery 
-					/*
 					$first = null;
 					foreach($node->field_event_imagegallery as $image) {
 						if ($first == null) {
@@ -412,25 +396,11 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 							$image['filepath'] . '" title="Larger image" style="display: none;">&nbsp;</a>';
 						}
 					}
-					*/
 				
 				?>
 				</div>
-					<div id="expand-flickr">
-				<?php
-					$first = null;
-					foreach($flickr_image_urls as $f_url) {
-						if ($first == null) {
-							print '<a class="thickbox t-image1" id="tbox-expand" rel="g2" href="' .
-							$f_url . '" title="Larger image"><img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" /></a>';
-							$first = 1;
-						} else {
-							print '<a class="thickbox t-image" id="tbox-expand" rel="g2" href="' .
-							$f_url . '" title="Larger image" style="display: none;">&nbsp;</a>';
-						}
-					}
-				?>
-				</div><!-- close expand-flickr-->
+
+				<!-- FLICKR STUFF NEEDS TO GO HERE -->
 
 			</div>
 		<?php } ?>
@@ -490,6 +460,20 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 						</div>
 					</div>
 				</div>
+				<div class="follow dropdown">
+					<div><a class="header" href="#"><span class="arrow"><img src="/<?php print path_to_theme(); ?>/images/arrow_white_down.png"></span>Follow</a>
+						<div class="sub_menu">
+							 <span><a target="_new" href="http://ccgsapp.org/follow-cc">Email</a></span>
+							 <span><a target="_new" href="<?php print $base_url . "/rss.xml"; ?>">RSS</a></span>
+							 <span><a target="_new" href="http://www.facebook.com/gsapp1881">Facebook</a></span>
+							 <span><a target="_new" href="http://twitter.com/#!/gsapponline">Twitter</a></span>
+							 <span><a target="_new" href="http://www.youtube.com/user/ColumbiaGSAPP">Youtube</a></span>
+							 <span><a target="_new" href="http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=499345704">iTunes U</a></span>
+							 <span><a target="_new" href="http://www.livestream.com/gsapp">Livestream</a></span>
+							 <span><a target="_new" href="http://www.ccgsapp.org">CC:GSAPP</a></span>
+						</div>
+					</div>
+				</div> 
 				<div class="gcal dropdown">
 					<?php 
 					$nodebody = substr($node->content['body']['#value'], 0, 2000);
