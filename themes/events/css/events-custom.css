@@ -1556,7 +1556,7 @@ background-image: none !important;
 /* @end */
 
 /* @group Menu */
-
+/* old from prod 8/23/12 - jochen
 .menu-location #new-york  {	color: #00d6ff; }
 .menu-location #mumbai  {	color: #ff9e00; }
 .menu-location #rio-de-janeiro  {	color: #00e652; }
@@ -1566,12 +1566,21 @@ background-image: none !important;
 .menu-location #sao-paulo  {	color: #00e652; }
 .menu-location #barcelona  {	color: #ad20ff; }
 .menu-location #other  {	color: gray; }
+*/
+/* new */
+.menu-location #new-york  {	color: #00d6ff; }
+.menu-location #mumbai  {	color: #ff9e00; }
+.menu-location #rio-de-janeiro, .menu-location #sao-paulo  { color: #00e652; }
+.menu-location #beijing, .menu-location #tokyo  {	color: #ff555a; }
+.menu-location #moscow, .menu-location #paris  {	color: #AD20FF; }
+.menu-location #amman, .menu-location #istanbul  {	color: #ff00a6; }
+.menu-location #johannesburg { color: #008AFF;}
 
 
 /* @end */
 
 /* @group Menu-selected */
-
+/* old pre 8/23/12/ jochen
 .loc-selected-new-york  {	color: #00d6ff !important; }
 
 .loc-selected-new-york  {	color: #00d6ff !important; }
@@ -1583,6 +1592,17 @@ background-image: none !important;
 .loc-selected-sao-paulo  {	color: #00e652 !important; }
 .loc-selected-barcelona  {	color: #ad20ff !important; }
 .loc-selected-other  {	color: gray !important; }
+*/
+/* new */
+
+.loc-selected-new-york  {	color: #00d6ff !important; }
+.loc-selected-mumbai  {	color: #ff9e00 !important; }
+.loc-selected-rio-de-janeiro, .loc-selected-sao-paulo  {	color: #00e652 !important; }
+.loc-selected-beijing, .loc-selected-tokyo  {	color: #ff555a !important; }
+.loc-selected-moscow, .loc-selected-paris  {	color: #AD20FF !important; }
+.loc-selected-amman, .loc-selected-istanbul  {	color: #ff00a6 !important; }
+.loc-selected-johannesburg { color: #008AFF !important;}
+
 
 /* @end */
 
