@@ -1501,37 +1501,41 @@ background-image: none !important;
 
 /* @group Date Box */
 
-
-
-
-
-.node-type-event.node-teaser.new-york .hover .teaser-date-box {
+.node-type-event.node-teaser.new-york .hover .teaser-date-box,
+.node-type-event.node-teaser.other-north-america .hover .teaser-date-box {
 	background-color: #00d6ff; 
 }
-.node-type-event.node-teaser.mumbai .hover .teaser-date-box  {
+.node-type-event.node-teaser.mumbai .hover .teaser-date-box,
+.node-type-event.node-teaser.other-south-asia .hover .teaser-date-box  {
 	background-color: #ff9e00; 
 }
-.node-type-event.node-teaser.rio-de-janeiro .hover .teaser-date-box  {
-	background-color: #00e652; 
-}
-.node-type-event.node-teaser.beijing .hover .teaser-date-box  {
-	background-color: #ff555a; 
-}
-.node-type-event.node-teaser.moscow .hover .teaser-date-box  {
-	background-color: #008aff; 
-}
-.node-type-event.node-teaser.amman .hover .teaser-date-box  {
-	background-color: #ff00a6; 
-}
+.node-type-event.node-teaser.rio-de-janeiro .hover .teaser-date-box,
+.node-type-event.node-teaser.other-latin-america .hover .teaser-date-box,
 .node-type-event.node-teaser.sao-paulo .hover .teaser-date-box  {
 	background-color: #00e652; 
 }
-.node-type-event.node-teaser.barcelona .hover .teaser-date-box  {
-	background-color: #ad20ff; 
+.node-type-event.node-teaser.beijing .hover .teaser-date-box,
+.node-type-event.node-teaser.tokyo .hover .teaser-date-box,
+.node-type-event.node-teaser.other-east-asia .hover .teaser-date-box {
+	background-color: #ff555a; 
 }
-.node-type-event.node-teaser.other .hover .teaser-date-box {
-	background-color: gray; 
+.node-type-event.node-teaser.moscow .hover .teaser-date-box,
+.node-type-event.node-teaser.paris .hover .teaser-date-box,
+.node-type-event.node-teaser.other-europe .hover .teaser-date-box  {
+	background-color: #008aff; 
 }
+.node-type-event.node-teaser.amman .hover .teaser-date-box,
+.node-type-event.node-teaser.other-middle-east .hover .teaser-date-box,
+.node-type-event.node-teaser.istanbul .hover .teaser-date-box  {
+	background-color: #ff00a6; 
+}
+
+.node-type-event.node-teaser.other-africa .hover .teaser-date-box,
+.node-type-event.node-teaser.johannesburg .hover .teaser-date-box {
+	background-color: #008AFF; 
+}
+
+
 
 
 /* @end */
@@ -1604,6 +1608,15 @@ background-image: none !important;
 .loc-selected-other  {	color: gray !important; }
 */
 /* new */
+
+.loc-selected-new-york  {	color: #00d6ff !important; }
+.loc-selected-mumbai  {	color: #ff9e00 !important; }
+.loc-selected-rio-de-janeiro, .loc-selected-sao-paulo  {	color: #00e652 !important; }
+.loc-selected-beijing, .loc-selected-tokyo  {	color: #ff555a !important; }
+.loc-selected-moscow, .loc-selected-paris  {	color: #AD20FF !important; }
+.loc-selected-amman, .loc-selected-istanbul  {	color: #ff00a6 !important; }
+.loc-selected-johannesburg { color: #008AFF !important;}
+
 
 .loc-selected-new-york  {	color: #00d6ff !important; }
 .loc-selected-mumbai  {	color: #ff9e00 !important; }
