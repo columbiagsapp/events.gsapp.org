@@ -449,7 +449,13 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 				<div class="event-type"><?php print $node->field_event_taxonomy_type[0]['view']; ?></div>
 				<div class="event-time"><?php print date_format_date($dateobj, "custom", "l, F j, Y g:ia"); ?> </div>
 				<div class="event-location"><?php print $node->field_event_location[0]['view']; ?></div>
-			</div>
+				<?php
+					if (strlen($node->field_event_map_link[0]['url']) > 3) {
+						print '<div class="event-location-map-link">' . 
+									$node->field_event_map_link[0]['view'] . '</div>';
+					}
+				?>
+		</div>
 			<div class="event-social">
 				 <div class="share dropdown">
 					<div><a class="header" href="#"><span class="arrow"><img src="/<?php print path_to_theme(); ?>/images/arrow_white_down.png"></span>Share</a>
