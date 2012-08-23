@@ -95,12 +95,21 @@ $dateobj = date_make_date($node->field_event_date[0]['value'], 'UTC');
 $dateutcobj = clone $dateobj;
 date_timezone_set($dateobj, timezone_open(date_default_timezone_name(TRUE)));
 
-if (strtotime(date("Y-m-d")) == strtotime(date_format_date($dateobj, "custom", "Y-m-d"))) { 
-	$istoday = "istoday";
-}
 if (strtotime(date("Y-m-d")) <= strtotime(date_format_date($dateobj, "custom", "Y-m-d"))) { 
 	$isfuture = "isfuture";
 }
+
+// revised today and next logic based on python script
+if ($node->field_event_sys_istoday[0]['value'] == 1) {
+	$istoday = 'istoday';
+}
+if ($node->field_event_sys_isnext[0]['value'] == 1) {
+	$isnext = 'isnext';
+}
+if ($node->field_event_sys_isfeatured[0]['value'] == 1) {
+	$isfeatured = 'isfeatured';
+}
+
 
 
 if($node->field_event_visibility[0]['value'] == "private") $isprivate = "isprivate";
@@ -109,9 +118,16 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 
 <?php if($teaser) { ?>
 	<?php if($isfuture) { print '<a class="futureanchor" name="future"></a>'; } ?>
-  <div class="content teaser-content <?php print $istoday . " " . $isprivate; ?>" id="teaser-node-<?php print $nid; ?>">
+  <div class="content teaser-content <?php print $istoday . " " . $isprivate .
+  " " . $isnext; ?>" id="teaser-node-<?php print $nid; ?>">
 	<a href="<?php print $node_url; ?>"<?php if($_GET['q'] == "widget") { print ' target="_blank"'; } ?>>
 	<div class="teaser-date">
+	<?php
+		if ($isfeatured == 'isfeatured') {
+			print '<div class="teaser-date-featured">&nbsp;</div>';
+		}
+	?>
+		
 		<div class="teaser-date-box"></div>
 		<div class="teaser-date-day"><?php print date_format_date($dateobj, "custom", "j"); ?> </div>
 		<div class="teaser-date-month"><?php print date_format_date($dateobj, "custom", "M"); ?> </div>
