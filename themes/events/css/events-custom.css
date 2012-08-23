@@ -1539,7 +1539,7 @@ background-image: none !important;
 /* @group Node */
 
 
-
+/* old pre 8/23 update jochen
 .new-york .event-location {	color: #00d6ff; }
 .mumbai .event-location {	color: #ff9e00; }
 .rio-de-janeiro .event-location {	color: #00e652; }
@@ -1549,6 +1549,16 @@ background-image: none !important;
 .sao-paulo .event-location {	color: #00e652; }
 .barcelona .event-location {	color: #ad20ff; }
 .other .event-location {	color: gray; }
+*/
+
+/* new */
+.other-north-america .event-location, .new-york .event-location {	color: #00d6ff; }
+.other-south-asia .event-location, .mumbai .event-location {	color: #ff9e00; }
+.other-latin-america .event-location, .rio-de-janeiro .event-location, .sao-paulo .event-location {	color: #00e652; }
+.other-east-asia .event-location, .beijing .event-location, .tokyo .event-location {	color: #ff555a; }
+.other-europe .event-location, .moscow .event-location, .paris .event-location {	color: #AD20FF; }
+.other-middle-east .event-location, .amman .event-location, .istanbul .event-location {	color: #ff00a6; }
+.other-africa .event-location, .johannesburg .event-location { color: #008AFF;}
 
 
 
