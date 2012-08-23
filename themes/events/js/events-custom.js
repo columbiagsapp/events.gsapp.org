@@ -424,6 +424,7 @@ function updateLoc() {
 }
 
 function updateLocation() { 
+	console.log('updating location');
 	if($(".node-type-event.node-full").length) {  $.cookie('gsappevents-loc', "all"); $.cookie('gsappevents-loc-name', "All Locations"); } 
 
 	if(!($.cookie('gsappevents-loc'))) { 
@@ -433,14 +434,20 @@ function updateLocation() {
 	$("#currentloc a").html($.cookie('gsappevents-loc-name'));
 	$("#currentloc a").removeClass();
 	$("#currentloc a").addClass("loc-selected-" + $.cookie('gsappevents-loc'));
+	
+	if ($.cookie('gsappevents-loc-name') == 'Other') {
+		console.log("COOKIE IS other");
+		$(".node-teaser").addClass("teaserhidden");
+		$('div[class*=other-]').removeClass("teaserhidden");
 
-//	$(".node-teaser").css("visibility", "visible");
-	$(".node-teaser").removeClass("teaserhidden");
-	if($.cookie('gsappevents-loc') != "all") {
-//		$(".node-teaser").not("." + $.cookie('gsappevents-loc')).css("visibility","hidden");
-		$(".node-teaser").not("." + $.cookie('gsappevents-loc')).addClass("teaserhidden");
+	} else {
+		$(".node-teaser").removeClass("teaserhidden");
+		if($.cookie('gsappevents-loc') != "all") {
+			$(".node-teaser").not("." + $.cookie('gsappevents-loc')).addClass("teaserhidden");
+		}
 	}
-   }
+
+}
 
     function livestreamPlayerCallback(event) {
 /* if (event == 'ready') {

@@ -16,13 +16,15 @@ foreach($locationterms as $locterm) {
 	if($locterm->depth != 0) continue; 
 	
 	if (strpos($locterm->name, 'Other') !== false) {
-	
+		
 	} else {
 		$locname = transliteration_clean_filename(strtolower(preg_replace("/ /", "-", $locterm->name)));
         print '<span><a href="#" id="' . $locname . '" class="loc">' . 
         	ucwords($locterm->name) . '</a></span>';
 	}
 }
+
+print '<span><a href="#" id="all-other-locations" class="loc">Other</a></span>';
 print '</div></div></div>';
 
 /* function at events-custom.js */
