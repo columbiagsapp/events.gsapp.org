@@ -129,6 +129,7 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 	?>
 		
 		<div class="teaser-date-box"></div>
+
 		<div class="teaser-date-day"><?php print date_format_date($dateobj, "custom", "j"); ?> </div>
 		<div class="teaser-date-month"><?php print date_format_date($dateobj, "custom", "M"); ?> </div>
 		<?php
@@ -144,6 +145,13 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 
 
 	<div class="teaser-info">
+<?php
+		if ($istoday) {
+			print '<div class="event-is-today">TODAY!</div>';
+		}
+	?>
+
+
 		<div class="event-title"><?php if($isprivate) { print "PRIVATE: "; } print $title; ?></div>
 		<div class="content-left">
 			<div class="event-type hide-for-semester"><?php print $node->field_event_taxonomy_type[0]['view']; ?></div>
@@ -524,6 +532,32 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 			<div class="event-subtitle"><?php print $node->field_event_subtitle[0]['view']; ?></div>
 			<div class="event-description"><?php print $node->content['body']['#value']; ?></div>
 			<div class="event-imagecredits"><?php print $node->field_event_imagecredits[0]['view']; ?></div>
+
+	<!-- START jochen testing remove later -->
+ 			<div><pre>
+ 			<?php 
+ 				
+ 				print "<!--VID -- $node->vid-->";
+ 				print "<!-- TODAY -- " . $node->field_event_sys_istoday[0]['value'] . "-->";
+ 				print "<!--NEXT -- " . $node->field_event_sys_isnext[0]['value'] . "-->";
+ 				print "<!--FEATURED --" .  $node->field_event_sys_isfeatured[0]['value'] . "-->";
+				
+				// testing reloading it
+				$n = node_load($node->nid, NULL, True);
+				print "<!--NODE RELOADED-->";
+ 				print "<!--VID -- " . $n->vid . "-->";
+ 				print "<!--TODAY -- " . $n->field_event_sys_istoday[0]['value'] . "-->";
+ 				print "<!--NEXT -- " . $n->field_event_sys_isnext[0]['value'] . "-->";
+ 				print "<!--FEATURED --" .  $n->field_event_sys_isfeatured[0]['value'] . "-->";
+
+
+
+			
+ 			?>
+ 			
+ 			</pre></div>
+
+
 
 
 		</div>
