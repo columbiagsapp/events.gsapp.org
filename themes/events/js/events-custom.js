@@ -151,12 +151,17 @@ $(document).ready(function() {
 			$('#slideshow-area #' + idname).css("z-index", "5");
 			$('#expand-' + oldidname).hide();
 			$('#expand-' + idname).show();
+			$('#poster-slider-large-wrapper').hide();
+			$('#flickr-slider-large-wrapper').hide();
+			
+
 		}
 	});
 
 // new expand logic minus thickbox
 	$('#expand-poster').click(function() {
 		$('#poster-slider-large-wrapper').show();
+		$('#poster-slider-large').show();
 		// adjust the buttons
 		var prev = $('#prev-button-poster');
 		var next = $('#next-button-poster');
@@ -188,34 +193,19 @@ $(document).ready(function() {
 	});
 	
 	$('#poster-large-close').click(function() {
-		$('#poster-slider-large-wrapper').hide();
+		close_flickr_and_poster();
 	});
 
 	$(document).keyup(function(e) { 
 		if (e.keyCode == 27) {
-			$('#poster-slider-large-wrapper').hide();
-			var old_css = {
-				'width': '430px',
-				'padding-left': '0px'		
-			}
-			$('#slideshow-buttons').css(old_css);
+			close_flickr_and_poster();
 		}
 	});
 	
 		$('#flickr-large-close').click(function() {
-		$('#flickr-slider-large-wrapper').hide();
+		close_flickr_and_poster();
 	});
 
-	$(document).keyup(function(e) { 
-		if (e.keyCode == 27) {
-			$('#flickr-slider-large-wrapper').hide();
-			var old_css = {
-				'width': '430px',
-				'padding-left': '0px'		
-			}
-			$('#slideshow-buttons').css(old_css);
-		}
-	});
 	
 
 
@@ -489,7 +479,7 @@ function updateLoc() {
 }
 
 function updateLocation() { 
-	console.log('updating location');
+	
 	if($(".node-type-event.node-full").length) {  $.cookie('gsappevents-loc', "all"); $.cookie('gsappevents-loc-name', "All Locations"); } 
 
 	if(!($.cookie('gsappevents-loc'))) { 
@@ -501,7 +491,7 @@ function updateLocation() {
 	$("#currentloc a").addClass("loc-selected-" + $.cookie('gsappevents-loc'));
 	
 	if ($.cookie('gsappevents-loc-name') == 'Other') {
-		console.log("COOKIE IS other");
+		
 		$(".node-teaser").addClass("teaserhidden");
 		$('div[class*=other-]').removeClass("teaserhidden");
 
@@ -544,4 +534,14 @@ function switch_heptagon(state) {
 	} else {
 		$('#event-heptagon-' + loc_id).css('background', 'url(\'/sites/all/themes/events/images/heptagon-clear.png\') no-repeat left top');
 	}
+}
+
+function close_flickr_and_poster() {
+	$('#poster-slider-large-wrapper').hide();
+	$('#flickr-slider-large-wrapper').hide();
+	var old_css = {
+		'width': '430px',
+		'padding-left': '0px'		
+	}
+	$('#slideshow-buttons').css(old_css);
 }

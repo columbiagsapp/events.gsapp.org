@@ -452,7 +452,7 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 	print '<div class="large-menu">' .
 		'<div id="prev-button-poster" class="button large"></div>' .
 		'<div id="next-button-poster" class="button large"></div>' .
-		'<div id="poster-large-close">X</div>' .
+		'<div id="poster-large-close">CLOSE THIS</div>' .
 		'</div>';
 	print '</div>'; // end wrapper
 
@@ -481,7 +481,7 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 	print '<div class="large-menu">' .
 		'<div id="prev-button-flickr" class="button large"></div>' .
 		'<div id="next-button-flickr" class="button large"></div>' .
-		'<div id="poster-large-close">X</div>' .
+		'<div id="flickr-large-close">CLOSE THIS</div>' .
 		'</div>';
 	print '</div>'; // end wrapper
 
