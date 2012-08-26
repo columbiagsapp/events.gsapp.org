@@ -160,6 +160,7 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
  ?></div>
 
 			<div class="event-time hide-for-semester"><?php print date_format_date($dateobj, "custom", "g:ia"); ?> </div>
+			<div class="teaser-date-year"><?php print date_format_date($dateobj, "custom", "j M Y"); ?> </div>
 
 			<div class="event-people hide-for-semester hide-for-month">
 			<?php  $counter = 0; $max = count($node->field_event_people); 

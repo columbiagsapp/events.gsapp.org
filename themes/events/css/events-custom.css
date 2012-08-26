@@ -1382,6 +1382,18 @@ background-image: none !important;
 	margin-left: 2px;
 }
 
+.node-type-event.node-teaser .teaser-date-year {
+	margin-left: 2px;
+	margin-top: 2px;
+	display: none;
+}
+
+.teaser-date-year {
+	display: none;
+}
+
+
+
 
 .node-type-event.node-teaser .teaser-info {
 	margin-left: 45px;
