@@ -1346,6 +1346,14 @@ background-image: none !important;
 	color: white;
 }
 
+.teaser-date-featured {
+	position: absolute;
+	left: 221px;
+	top: 2px;
+	width: 11px;
+	height: 12px;
+	background: transparent url('/sites/all/themes/events/images/hept-icon.png') no-repeat top left;
+}
 
 .isprivate .teaser-date-box {
 	background-color: #cdcdcd !important;

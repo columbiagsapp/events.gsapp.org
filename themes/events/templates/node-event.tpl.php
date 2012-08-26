@@ -79,7 +79,7 @@ $nodeloc_top_class = transliteration_clean_filename(strtolower(preg_replace("/ /
 
 global $base_url;
 
-
+// ----------------------------   PROD
 
 ?>
 
@@ -121,6 +121,7 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
   <div class="content teaser-content <?php print $istoday . " " . $isprivate .
   " " . $isnext; ?>" id="teaser-node-<?php print $nid; ?>">
 	<a href="<?php print $node_url; ?>"<?php if($_GET['q'] == "widget") { print ' target="_blank"'; } ?>>
+	
 	<div class="teaser-date">
 	<?php
 		if ($isfeatured == 'isfeatured') {

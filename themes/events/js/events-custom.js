@@ -342,7 +342,9 @@ $('div.subscribe-icon').hover(function(e) {
 
 
 //------ highlight next event in listing
+/* old date logic no longer needed for now
 var checked_next = false;
+
 
 if ($("div.istoday").length == 0) {
 	// highlight the next event
@@ -371,6 +373,8 @@ if ($("div.istoday").length == 0) {
 		}
 	}
 }
+end old date logic 
+*/
 //------ end highlight next event in listing
 /*--------------FOR-----------------*/
 /*--------------WIDGET--------------*/
