@@ -70,6 +70,13 @@ $(document).ready(function() {
     next:   '#next-button-flickr',  
     prev:   '#prev-button-flickr' 
 	});
+	$("#flickr-slider-large").cycle({
+		fx: 'fade',
+		speed: 300, 
+		timeout: 0, 
+    next:   '#next-button-flickr',
+    prev:   '#prev-button-flickr' 
+	});
 	$("#presentation-slider").cycle({
 		fx: 'fade',
 //		manualAdvance: true,
@@ -167,9 +174,10 @@ $(document).ready(function() {
 
 	$('#expand-flickr').click(function() {
 		$('#flickr-slider-large-wrapper').show();
+		$('#flickr-slider-large').show();
 		// adjust the buttons
-		var prev = $('#prev-button-poster');
-		var next = $('#next-button-poster');
+		var prev = $('#prev-button-flickr');
+		var next = $('#next-button-flickr');
 		
 		// reposition the button container div
 		var new_css = {

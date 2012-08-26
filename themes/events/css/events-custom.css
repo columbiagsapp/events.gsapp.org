@@ -308,7 +308,7 @@ a:hover {
 	display: block;
 }
 
-#poster-slider-large-wrapper {
+#poster-slider-large-wrapper, #flickr-slider-large-wrapper {
 	z-index: 20;
 	position: absolute;
 	display: none;
@@ -316,13 +316,19 @@ a:hover {
 	left: 25px;
 }
 
-#poster-slider-large {
+#poster-slider-large{
 	width: 900px;
 height: 100%;
 display: inline-table;
 }
 
-#poster-slider-large:after {
+#flickr-slider-large {
+	width: 900px;
+	height: 100%;
+	display: inline-table;
+}
+
+#poster-slider-large:after, #flickr-slider-large:after {
  visibility: hidden;
      display: block;
      font-size: 0;
@@ -331,7 +337,7 @@ display: inline-table;
      height: 0;
 }
 
-#poster-slider-large-wrapper .large-menu {
+#poster-slider-large-wrapper .large-menu, #flickr-slider-large-wrapper .large-menu {
 	background-color: none;
 	position: absolute;
 	z-index: 30;
@@ -343,8 +349,6 @@ display: inline-table;
 
 #presentation-slider{
 
-}
-#flickr-slider { 
 }
 
 #flickr-slider .slider-item {
