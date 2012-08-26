@@ -392,7 +392,7 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 					<div class="elem" name="presentation">Presentation</div>
 				<?php } ?>
 				<?php if($node->field_event_flickr[0]['value']) { ?>
-					<div class="elem" name="flickr">Flickr</div>
+					<div class="elem" name="flickr">Image Gallery</div>
 				<?php } ?>
 				<div id="expand-poster">
 				<?php
