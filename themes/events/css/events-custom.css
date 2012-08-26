@@ -290,10 +290,14 @@ a:hover {
 
 
 /* @end */
-
-
 .cycle-slider { display: none; }
 
+
+.cycle-slider img { 
+	top: 0px;
+	left: 0px;
+	position: absolute;
+}
 
 #imagegallery-slider {
 
@@ -303,11 +307,44 @@ a:hover {
 	position: absolute;
 	display: block;
 }
+
+#poster-slider-large-wrapper {
+	z-index: 20;
+	position: absolute;
+	display: none;
+	top: -50px;
+	left: 25px;
+}
+
+#poster-slider-large {
+	width: 900px;
+height: 100%;
+display: inline-table;
+}
+
+#poster-slider-large:after {
+ visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+
+#poster-slider-large-wrapper .large-menu {
+	background-color: white;
+	position: absolute;
+	z-index: 30;
+	height: 25px;
+	width: 100%;
+	color: #000;
+}
+
+
 #presentation-slider{
 
 }
 #flickr-slider { 
-	display: none;
 }
 
 #flickr-slider .slider-item {
@@ -315,6 +352,7 @@ a:hover {
         height: 323px;
 	background-repeat:no-repeat;
 	background-position:center; 
+	background-color: none;
 }
 
 
@@ -569,11 +607,27 @@ html, body {
 }
 
 
+.subscribe-information {
+	background-color: white;
+  display: none;
+  font-weight: bold;
+	position: absolute;
+	z-index: 10;
+	filter: alpha(opacity=85);
+	opacity: 0.85;  
+  padding: 2px 5px;
+  color: #000;
+}
+
 .subscribe-icon#sub-flickr {
 	background-position: 0px 0px;	
 }
 .subscribe-icon#sub-flickr:hover {
 	background-position: 0px -17px;
+}
+#sub-flickr-menu-text {
+  left: 680px;
+  top: 50px;
 }
 .subscribe-icon#sub-twitter {
 	background-position: -26px 0px;	
@@ -581,11 +635,19 @@ html, body {
 .subscribe-icon#sub-twitter:hover {
 	background-position: -26px -17px;
 }
+#sub-twitter-menu-text {
+ left: 710px;
+ top: 50px;
+}
 .subscribe-icon#sub-fb {
 	background-position: -52px 0px;	
 }
 .subscribe-icon#sub-fb:hover {
 	background-position: -52px -17px;
+}
+#sub-fb-menu-text {
+  left: 740px;
+  top: 50px;
 }
 .subscribe-icon#sub-yt {
 	background-position: -78px 0px;	
@@ -593,36 +655,68 @@ html, body {
 .subscribe-icon#sub-yt:hover {
 	background-position: -78px -17px;
 }
+#sub-yt-menu-text {
+  left: 770px;
+  top: 50px;
+}
+
 .subscribe-icon#sub-itunes {
 	background-position: -104px 0px;	
 }
 .subscribe-icon#sub-itunes:hover {
 	background-position: -104px -17px;
 }
+#sub-itunes-menu-text {
+  left: 800px;
+  top: 50px;
+}
+
 .subscribe-icon#sub-livestream {
 	background-position: -130px 0px;	
 }
 .subscribe-icon#sub-livestream:hover {
 	background-position: -130px -17px;
 }
+#sub-livestream-menu-text {
+  left: 830px;
+  top: 50px;
+}
+
 .subscribe-icon#sub-ccgsapp {
 	background-position: -156px 0px;	
 }
 .subscribe-icon#sub-ccgsapp:hover {
 	background-position: -156px -17px;
 }
+#sub-ccgsapp-menu-text {
+  left: 850px;
+  top: 50px;
+}
+
 .subscribe-icon#sub-gcal {
 	background-position: 0px -42px;	
 }
 .subscribe-icon#sub-gcal:hover {
 	background-position: 0px -59px;
 }
+#sub-gcal-menu-text {
+  left: 5px;
+  top: 15px;
+}
+
+
 .subscribe-icon#sub-email {
 	background-position: -26px -42px;	
 }
 .subscribe-icon#sub-email:hover {
 	background-position: -26px -59px;
 }
+#sub-email-menu-text {
+  left: 35px;
+  top: 15px;
+}
+
+
 .subscribe-icon#sub-rss {
 	background-position: -52px -42px;	
 }
@@ -630,8 +724,10 @@ html, body {
 	background-position: -52px -59px;
 }
 
-
-
+#sub-rss-menu-text {
+  left: 65px;
+  top: 15px;
+}
 /* @end */
 
 /* @group Widget for featured event */
@@ -760,7 +856,7 @@ body {
 
 #slideshow-buttons {
         position: absolute;
-        z-index: 100;
+        z-index: 40;
         padding-top: 150px;
 	width: 100%;
 }
@@ -772,8 +868,9 @@ body {
 	height: 30px;
 }
 
+
 #slideshow-buttons #prev-button {
-        cursor: pointer;
+	cursor: pointer;
 	background:url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
 	float: left;
 }
@@ -783,6 +880,55 @@ body {
 	background:url(/sites/all/themes/events/images/slider-arrows.png) -31px 0;
 	float: right;
 }
+
+#slideshow-buttons #prev-button-poster {
+	cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
+	float: left;
+}
+
+#slideshow-buttons #next-button-poster {
+        cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) -31px 0;
+	float: right;
+}
+
+#slideshow-buttons #prev-button-flickr {
+	cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
+	float: left;
+	display: none;
+}
+
+#slideshow-buttons #next-button-flickr {
+	cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) -31px 0;
+	float: right;
+	display: none;
+}
+
+#prev-button-poster-large {
+	cursor: pointer;
+	background: url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
+	float: left;
+	width: 30px;
+	height: 30px;
+	position: relative;
+	top: 300px;
+}
+
+#next-button-poster-large {
+	cursor: pointer;
+	background: url(/sites/all/themes/events/images/slider-arrows.png) -31px 0;
+	float: left;
+	width: 30px;
+	height: 30px;
+	position: relative;
+	top: 300px;
+	left: 93%;
+}
+
+
 
 /* @end */
 
@@ -813,15 +959,17 @@ div#expand-poster {
 	padding-top: 3px;
 	width: 14px;
 	height: 14px;
+	cursor: pointer;
 }
-div#expand-imagegallery {
+
+div#expand-imagegallery, div#expand-flickr {
 	float:right;
 	padding-top: 3px;
 	width: 14px;
 	height: 14px;
 	display: none;
+	cursor: pointer;
 }
-
 
 div#scribd-embed {
 	width: 430px;
@@ -829,6 +977,7 @@ div#scribd-embed {
 	overflow: hidden;
 
 }
+
 
 
 /* @end */
