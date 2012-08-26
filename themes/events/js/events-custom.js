@@ -65,12 +65,10 @@ $(document).ready(function() {
 	}); 
 	$("#flickr-slider").cycle({
 		fx: 'fade',
-//		manualAdvance: true,
-//		controlNav: false,
 		speed: 300, 
 		timeout: 0, 
-    next:   '#next-button',  
-    prev:   '#prev-button' 
+    next:   '#next-button-flickr',  
+    prev:   '#prev-button-flickr' 
 	});
 	$("#presentation-slider").cycle({
 		fx: 'fade',
@@ -83,12 +81,17 @@ $(document).ready(function() {
 	});
 	$("#poster-slider").cycle({
 		fx: 'fade',
-//		manualAdvance: true,
-//		controlNav: false,
 		speed: 300, 
 		timeout: 0, 
-    next:   '#next-button', 
-    prev:   '#prev-button' 
+    next:   '#next-button-poster', 
+    prev:   '#prev-button-poster' 
+	});
+	$("#poster-slider-large").cycle({
+		fx: 'fade',
+		speed: 300, 
+		timeout: 0, 
+    next:   '#next-button-poster',
+    prev:   '#prev-button-poster' 
 	});
 
 /*
@@ -104,9 +107,6 @@ $(document).ready(function() {
 		pager: '#presentation-nav',
 	}); */
 	
-	//removing stock text from thickbox over navigation
-	$('#TB_next a').text('');
-	$('#TB_prev a').text('');
 	
 	// show full date in search result view
 	var search_r = $('dl.search-results')[0];
@@ -120,7 +120,9 @@ $(document).ready(function() {
 	*/
 	
 	
-
+/**
+	 * show/hide the various slideshow containers
+	 */
 	$("#slideshow-nav .elem").click(function() {
 		if($("#slideshow-nav .elem.selected").attr("name") != $(this).attr("name")) {
 			var oldidname = $("#slideshow-nav .elem.selected").attr("name");
@@ -128,34 +130,60 @@ $(document).ready(function() {
 			$(this).addClass("selected");
 			var idname = $(this).attr("name");
 
-
 			/* DTLEDIT 120402 */
       $(".cycle-slider").hide();
       $("#" + idname + "-slider").show();
 
+			// show hide buttons
+			$('#prev-button-' + oldidname).hide();
+			$('#next-button-' + oldidname).hide();
+			$('#prev-button-' + idname).show();
+			$('#next-button-' + idname).show();
 
-			//$('#' + idname + '-nivo').data('nivoslider').stop(); 
-			//$('#' + oldidname + '-nivo').data('nivoslider').start();
-			//console.log("fade from " + oldidname + " to " + idname);
-	//		$('#slideshow-area #' + oldidname).fadeOut(100);
 			$('#slideshow-area #' + oldidname).css("z-index", "0");
-	//		$('#slideshow-area #' + idname).fadeIn(100);
 			$('#slideshow-area #' + idname).css("z-index", "5");
 			$('#expand-' + oldidname).hide();
 			$('#expand-' + idname).show();
-			
-			
-/*			$("#slideshow-area .item").fadeOut("100");
-			$("#slideshow-area .item").css("z-index","0");
-			$("#slideshow-area #" + idname).css("z-index","999");
-			$("#slideshow-area #" + idname).fadeIn("80");
-*/
-			//$("#slideshow-area #" + idname).css("z-index","1000").fadeIn("300");
-			//$("#slideshow-area .item").css("z-index","0").fadeOut("300");
-
 		}
 	});
 
+// new expand logic minus thickbox
+	$('#expand-poster').click(function() {
+		$('#poster-slider-large-wrapper').show();
+		// adjust the buttons
+		var prev = $('#prev-button-poster');
+		var next = $('#next-button-poster');
+		
+		// reposition the button container div
+		var new_css = {
+			'width': '900px',
+			'padding-left': '25px'		
+		}
+		$('#slideshow-buttons').css(new_css);
+		
+		
+		
+	});
+
+	$('#expand-flickr').click(function() {
+		$('#flickr-slider-large-wrapper').show();
+	});
+	
+	$('#poster-large-close').click(function() {
+		$('#poster-slider-large-wrapper').hide();
+	});
+	
+	$(document).keyup(function(e) { 
+		if (e.keyCode == 27) {
+			$('#poster-slider-large-wrapper').hide();
+			var old_css = {
+				'width': '430px',
+				'padding-left': '0px'		
+			}
+			$('#slideshow-buttons').css(old_css);
+		}
+	});
+	
 
 
 //------ YT API for player
