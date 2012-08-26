@@ -792,6 +792,50 @@ body.page-featured-event #page-wrapper {
 /* @end */
 
 
+/* @group lecture series poster */
+
+#lecture-posters-title {
+	/* view title */
+		font-size: 2.2em;
+		font-weight: bold;
+    margin-top: 56px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.lecture-poster-title {
+	font-size: 150%;
+	font-weight: bold;
+	margin-bottom:100px;
+}
+
+.lecture-poster-back {
+	display: none;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+.lecture-poster-front {
+	position: relative;
+	top:0;
+	left:0;
+}
+div.view-lecture-series-posters div.view-content {
+	position:relative;
+	left: -100px;
+	margin-bottom: 80px;
+	padding-top: 112px;
+	
+}
+
+div.view-lecture-series-posters div.view-content table.views-view-grid tbody tr td {
+	padding-left: 100px;
+}
+
+
+
+/* @end */
 
 
 /* @group Node (Overall) */
