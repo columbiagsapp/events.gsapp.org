@@ -167,15 +167,40 @@ $(document).ready(function() {
 
 	$('#expand-flickr').click(function() {
 		$('#flickr-slider-large-wrapper').show();
+		// adjust the buttons
+		var prev = $('#prev-button-poster');
+		var next = $('#next-button-poster');
+		
+		// reposition the button container div
+		var new_css = {
+			'width': '900px',
+			'padding-left': '25px'		
+		}
+		$('#slideshow-buttons').css(new_css);
 	});
 	
 	$('#poster-large-close').click(function() {
 		$('#poster-slider-large-wrapper').hide();
 	});
-	
+
 	$(document).keyup(function(e) { 
 		if (e.keyCode == 27) {
 			$('#poster-slider-large-wrapper').hide();
+			var old_css = {
+				'width': '430px',
+				'padding-left': '0px'		
+			}
+			$('#slideshow-buttons').css(old_css);
+		}
+	});
+	
+		$('#flickr-large-close').click(function() {
+		$('#flickr-slider-large-wrapper').hide();
+	});
+
+	$(document).keyup(function(e) { 
+		if (e.keyCode == 27) {
+			$('#flickr-slider-large-wrapper').hide();
 			var old_css = {
 				'width': '430px',
 				'padding-left': '0px'		

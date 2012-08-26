@@ -337,22 +337,21 @@ if($_GET['q'] != "featured_event") { ?>
 					<div id="flickr" class="item">
 						<div class="slider-wrapper theme-default">
 						<div id="flickr-slider" class="cycle-slider">
+			<?php foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
+				// pix is 430x323
+				// resize to height of 323
+				// so get original dimensions, calculate required width, use sencha to resize.
+				$reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 
+				//print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
+				//print "<div class='slider-item' style='width:430px; height:323px; text-align: center;'><img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'></div>\n";
+				$flickr_image_urls[] = array($flickr_photo['url_o'], $flickr_photo['width_o'], $flickr_photo['height_o']);
 
-
-						<?php foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
-
-// pix is 430x323
-// resize to height of 323
-// so get original dimensions, calculate required width, use sencha to resize.
-$reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
-
-							//print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
-                            //print "<div class='slider-item' style='width:430px; height:323px; text-align: center;'><img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'></div>\n";
-              $flickr_image_urls[] = $flickr_photo['url_o'];                         
-                           print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
-						}?>
-
+				$sencha_url = "http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'];
+				print '<!--sencha small ' . $sencha_url . '-->';
+				print "<div class='slider-item' style='background-image: url(" . $sencha_url . ");'></div>\n";
+				//print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
+			}?>
 						</div> 
 						</div>
 					</div>
@@ -458,6 +457,39 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 		'</div>';
 	print '</div>'; // end wrapper
 
+
+	// large size flickr slider
+	print '<div id="flickr-slider-large-wrapper">' . 
+	'<div id="flickr-slider-large" class="cycle-slider">';
+	
+
+	foreach($flickr_image_urls as $flickr_url) {
+		//$flickr_image_urls[] = array($flickr_photo['url_o'], $flickr_photo['width_o'], $flickr_photo['height_o']);
+		$reqwidth = 900;
+		
+		$sencha_url = "http://src.sencha.io/" . $reqwidth . "/" . $flickr_url[0];
+		
+		print "<!--sencha large: " . $sencha_url . "-->";
+		print '<div class="large-image-slide">' . 
+						'<img src="' . $sencha_url . '" />' .
+					'</div>';
+	}
+
+
+	
+	print '</div>'; // end slider
+	// add menu
+	
+	print '<div class="large-menu">' .
+		'<div id="prev-button-flickr" class="button large"></div>' .
+		'<div id="next-button-flickr" class="button large"></div>' .
+		'<div id="poster-large-close">X</div>' .
+		'</div>';
+	print '</div>'; // end wrapper
+
+
+
+
 ?>
 
 
@@ -530,9 +562,10 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 			<div class="event-imagecredits"><?php print $node->field_event_imagecredits[0]['view']; ?></div>
 
 	<!-- START jochen testing remove later -->
- 			<div><pre>
+ 			
  			<?php 
- 				
+ 			/*
+ 				print '<div><pre>';	
  				print "<!--VID -- $node->vid-->";
  				print "<!-- TODAY -- " . $node->field_event_sys_istoday[0]['value'] . "-->";
  				print "<!--NEXT -- " . $node->field_event_sys_isnext[0]['value'] . "-->";
@@ -545,13 +578,13 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
  				print "<!--TODAY -- " . $n->field_event_sys_istoday[0]['value'] . "-->";
  				print "<!--NEXT -- " . $n->field_event_sys_isnext[0]['value'] . "-->";
  				print "<!--FEATURED --" .  $n->field_event_sys_isfeatured[0]['value'] . "-->";
-
-
+ 				print '</pre></div>';
+		*/
 
 			
  			?>
  			
- 			</pre></div>
+ 			
 
 
 

@@ -332,7 +332,7 @@ display: inline-table;
 }
 
 #poster-slider-large-wrapper .large-menu {
-	background-color: white;
+	background-color: none;
 	position: absolute;
 	z-index: 30;
 	height: 25px;
