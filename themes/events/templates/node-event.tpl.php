@@ -95,6 +95,7 @@ $dateobj = date_make_date($node->field_event_date[0]['value'], 'UTC');
 $dateutcobj = clone $dateobj;
 date_timezone_set($dateobj, timezone_open(date_default_timezone_name(TRUE)));
 
+// not sure if we still need this but keeping it for now
 if (strtotime(date("Y-m-d")) <= strtotime(date_format_date($dateobj, "custom", "Y-m-d"))) { 
 	$isfuture = "isfuture";
 }
@@ -226,25 +227,12 @@ if($_GET['q'] != "featured_event") { ?>
 	
 	?>
 	<div class="section image-section">
-					<div id="imagegallery-lightbox">
-						<?php foreach($node->field_event_imagegallery as $image) { ?>
-							<a class="colorbox-imagegallery" href="<?php print $base_url . "/" . imagecache_create_path('event_lightbox_poster_view', $image['filepath']); ?>"></a>
-						<?php } ?>
-					</div>
-					<div id="poster-lightbox">
-						<?php foreach($node->field_event_poster as $image) { 
-							if ($first_poster_image_path == null) {
-								$first_poster_image_path = $image['filepath'];
-							}
-						?>
-							<a class="colorbox-poster" href="<?php print $base_url . "/" . imagecache_create_path('event_lightbox_poster_view', $image['filepath']); ?>"></a>
-						<?php } ?>
-					</div>
-				
 		<div class="content-left">
 			<div id="slideshow-buttons">
-				<div id="prev-button" class="button"></div>
-				<div id="next-button" class="button"></div>
+				<div id="prev-button-poster" class="button"></div>
+				<div id="next-button-poster" class="button"></div>
+				<div id="prev-button-flickr" class="button"></div>
+				<div id="next-button-flickr" class="button"></div>
 			</div>
 			<div id="slideshow-area">
 
@@ -252,12 +240,20 @@ if($_GET['q'] != "featured_event") { ?>
 				<?php if($node->field_event_imagegallery[0]['view']) { ?>
 				<div id="imagegallery" class="item">
 					<div class="slider-wrapper theme-default">
-					<div id="ribbon"></div>
-					<div id="imagegallery-slider" class="nivoSlider cycle-slider">
-						<?php foreach($node->field_event_imagegallery as $image) { ?>
-							<?php print $image['view']; ?>
-						<?php } ?>
+					<div id="imagegallery-slider" class="cycle-slider">
+						<?php foreach($node->field_event_imagegallery as $image) {
+										print $image['view']; 
+									} ?>
 					</div>
+					<!-- large size slideshow -->
+						<div id="imagegallery-slider-large" class="cycle-slider">
+							<?php foreach($node->field_event_imagegallery as $image) { 
+											print_r($image);
+											//TODO confirm with leigha/troy that we are still using 'image-gallery'...
+											
+											} ?>
+						</div>
+						<!-- end large size slideshow -->
 					</div>
 				</div>
 				<?php } ?>
@@ -268,11 +264,10 @@ if($_GET['q'] != "featured_event") { ?>
 				<?php if($node->field_event_poster[0]['view']) { ?>
 				<div id="poster" class="item">
 					<div class="slider-wrapper theme-default">
-					<div id="ribbon"></div>
-					<div id="poster-slider" class="nivoSlider cycle-slider">
-						<?php foreach($node->field_event_poster as $imagep) { ?>
-							<?php print $imagep['view']; ?>
-						<?php } ?>
+					<div id="poster-slider" class="cycle-slider">
+						<?php foreach($node->field_event_poster as $imagep) {
+										print $imagep['view'];
+									} ?>
 					</div>
 					</div>
 				</div>
@@ -313,6 +308,7 @@ if($_GET['q'] != "featured_event") { ?>
 
 				<!-- 120322 FLICKR GALLERY -->
 				<?php
+					$flickr_image_urls = array();
 				/* PHOTOSET EXISTS???? */
 				if($node->field_event_flickr[0]['value']) {
 					
@@ -340,8 +336,7 @@ if($_GET['q'] != "featured_event") { ?>
 
 					<div id="flickr" class="item">
 						<div class="slider-wrapper theme-default">
-						<div id="ribbon"></div>
-						<div id="flickr-slider" class="nivoSlider cycle-slider">
+						<div id="flickr-slider" class="cycle-slider">
 
 
 
@@ -354,7 +349,7 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 
 							//print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
                             //print "<div class='slider-item' style='width:430px; height:323px; text-align: center;'><img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'></div>\n";
-                                                                                    
+              $flickr_image_urls[] = $flickr_photo['url_o'];                         
                            print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
 						}?>
 
@@ -369,15 +364,7 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				?>
 				<!-- FLICKR GALLERY END -->
 
-				<div id="flickr-lightbox">
-					<?php /*
-					
-					foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
-						print '<a class="colorbox-flickr" href="' . $flickr_photo['url_o'] . '"></a>' . "\n";
-					 } */ 
-					 ?>
-				</div>
-
+			
 
 
 			</div>
@@ -386,47 +373,29 @@ $reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 				<?php if($node->field_event_poster[0]['view']) { ?>
 					<div class="elem selected" name="poster">Poster</div>
 				<?php } ?>
-				<?php if($node->field_event_imagegallery[0]['view']) { ?>
-					<div class="elem" name="imagegallery">Image Gallery</div>
-				<?php } ?>
+				<?php 
+					//if($node->field_event_imagegallery[0]['view']) { 
+					//print '<div class="elem" name="imagegallery">Image Gallery</div>';
+					//} 
+				?>
 				<?php if($node->field_event_presentation[0]['view']) { ?>
 					<div class="elem" name="presentation">Presentation</div>
 				<?php } ?>
 				<?php if($node->field_event_flickr[0]['value']) { ?>
 					<div class="elem" name="flickr">Image Gallery</div>
 				<?php } ?>
-				<div id="expand-poster">
-				<?php
-					$first = null;
-					foreach($node->field_event_poster as $image) {
-						if ($first == null) {
-							print '<a class="thickbox t-poster1" id="tbox-expand" rel="g1" href="/' .
-							$image['filepath'] . '" title="Larger image"><img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" /></a>';
-							$first = 1;
-						} else {
-							print '<a class="thickbox t-poster" id="tbox-expand" rel="g1" href="/' .
-							$image['filepath'] . '" title="Larger image" style="display: none;">&nbsp;</a>';
-						}
-					} ?>
-				</div><!-- close expand-poster-->
-				<div id="expand-imagegallery">
-				<?php
-					$first = null;
-					foreach($node->field_event_imagegallery as $image) {
-						if ($first == null) {
-							print '<a class="thickbox t-image1" id="tbox-expand" rel="g2" href="/' .
-							$image['filepath'] . '" title="Larger image"><img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" /></a>';
-							$first = 1;
-						} else {
-							print '<a class="thickbox t-image" id="tbox-expand" rel="g2" href="/' .
-							$image['filepath'] . '" title="Larger image" style="display: none;">&nbsp;</a>';
-						}
-					}
 				
-				?>
+				<!-- expand divs -->
+				<div id="expand-poster">
+					<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />
 				</div>
+				<div id="expand-flickr">
+					<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />
+				</div>
+				<!-- end expand divs -->
 
-				<!-- FLICKR STUFF NEEDS TO GO HERE -->
+
+
 
 			</div>
 		<?php } ?>
@@ -467,6 +436,31 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 		</div>
 	</div> <!-- /image-content -->
 <?php }  // ending monster check for various image-based conditions ?>
+
+<?php
+	// writing the large-size slideshows here, outside of the image-section since it clips overflow for all inner content.
+	print '<div id="poster-slider-large-wrapper">' . 
+	'<div id="poster-slider-large" class="cycle-slider">';
+	
+	foreach($node->field_event_poster as $imagep) { 
+		$path = $imagep['filepath'];
+		$large_img = theme('imagecache', 'event_image_large-size', $imagep['filepath'], '', NULL);
+		print '<div class="large-image-slide">' . $large_img . '</div>';
+	} 
+	
+	print '</div>'; // end slider
+	// add menu
+	
+	print '<div class="large-menu">' .
+		'<div id="prev-button-poster" class="button large"></div>' .
+		'<div id="next-button-poster" class="button large"></div>' .
+		'<div id="poster-large-close">X</div>' .
+		'</div>';
+	print '</div>'; // end wrapper
+
+?>
+
+
 
 	<div class="section info-section">
 		<div class="event-title"><?php print $title; ?></div>
