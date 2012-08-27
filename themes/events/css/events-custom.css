@@ -440,17 +440,6 @@ html, body {
 	opacity: 0.95;  
 }
 
-.region-footer {
-	font-size: 11px;
-	line-height: 1.5em;
-	position: fixed;
-	bottom: 0px;
-	z-index:100;
-	zoom: 1;
-	filter: alpha(opacity=95);
-	opacity: 0.95;  
-}
-
 
 #footer a{
 	text-decoration:none;
