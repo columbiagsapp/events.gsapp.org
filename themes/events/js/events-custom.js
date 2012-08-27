@@ -5,30 +5,34 @@ $(document).ready(function() {
 	
 	$('.video .content').css('visibility', 'hidden');
 	$("body .teaser-content a").hover(
-		
-//	html.js body.page div#page-wrapper div#page div#main-wrapper div#main.clearfix div#content.column div.section div#content-area div.views_view div.view-content table.views-view-grid tbody tr.row-2 td.col-2
-
-
-//#content .section #content-area .view-events-browse .view-content table tbody tr td	.node	.teaser-content
-	
-	//div#node-85.node div#teaser-node-85.content div#teaser-image-85.teaser-image
-	
-	
 	  function () {
+
 		var h = $(window).height();
 		var w = $(window).width();
+		var randtop = null;
+		var randleft = null;
+			
 		for (var i = 0; i < 5; i++) {
-			var randtop = Math.floor(Math.random()*($(window).height() - 300)) + 150;
-			var randleft = Math.floor(Math.random()*($(window).width() - 500)) + 150;
+			randtop = Math.floor(Math.random()*($(window).height() - 300)) + 150;
+			randleft = Math.floor(Math.random()*($(window).width() - 500)) + 150;
 			var thistop = $(this).offset().top;
 			var thisleft = $(this).offset().left;
 			if((Math.abs(randtop - thistop) > 200) && (Math.abs(randleft - thisleft) > 200)) { continue; }
+
 		}
-		$(this).children(".teaser-image").css({'left': randleft}).css({'top': randtop});
-	  $(this).addClass("hover");
+		var css_for_image = {
+			'left': randleft,
+			'top': randtop,
+			'display': 'inline',
+		}
+
+		$(this).parent().children(".teaser-image").css(css_for_image);
+		$(this).addClass("hover");
 	  },
 	  function () {
 	    $(this).removeClass("hover");
+		$(this).parent().children(".teaser-image").css('display', 'none');
+
 	  }
 	);
 
@@ -37,7 +41,7 @@ $(document).ready(function() {
 		$.cookie('gsappevents-loc-name', $(this).html());
 		updateLocation();
 	});
-
+//
 	$('#event-twitter-control').click(function() {
 	    if($("#event-twitter-embed").hasClass('open') == false) {
 		$("#event-twitter-embed").addClass('open');
@@ -55,37 +59,23 @@ $(document).ready(function() {
 	
 	$("#imagegallery-slider").cycle({
 		fx: 'fade',
-//		manualAdvance: true,
-//		controlNav: false,
 		speed: 300, 
 		timeout: 0, 
 		timeout: 0, 
     next:   '#next-button',  
     prev:   '#prev-button' 
 	}); 
-	$("#flickr-slider").cycle({
-		fx: 'fade',
-		speed: 300, 
-		timeout: 0, 
-    next:   '#next-button-flickr',  
-    prev:   '#prev-button-flickr' 
-	});
-	$("#flickr-slider-large").cycle({
-		fx: 'fade',
-		speed: 300, 
-		timeout: 0, 
-    next:   '#next-button-flickr',
-    prev:   '#prev-button-flickr' 
-	});
+
+	
+
 	$("#presentation-slider").cycle({
 		fx: 'fade',
-//		manualAdvance: true,
-//		controlNav: false,
 		speed: 300, 
 		timeout: 0, 
     next:   '#next-button', 
     prev:   '#prev-button' 
 	});
+	
 	$("#poster-slider").cycle({
 		fx: 'fade',
 		speed: 300, 
@@ -101,18 +91,6 @@ $(document).ready(function() {
     prev:   '#prev-button-poster' 
 	});
 
-/*
-	$("#imagegallery-slider").cycle({
-		fx: 'scrollLeft',
-		timeout:  0,
-		speed: 300,
-		pager: '#imagegallery-nav',
-	});
-
-	$("#presentation-slider").cycle({
-		fx: 'scrollLeft',
-		pager: '#presentation-nav',
-	}); */
 	
 	
 	// show full date in search result view
@@ -206,7 +184,7 @@ $(document).ready(function() {
 		close_flickr_and_poster();
 	});
 
-	
+	//
 
 
 //------ YT API for player
@@ -240,6 +218,7 @@ if ($(window).width() > 960) {
 		'left': footer_offset,
 	};
 	$('#footer').css(footer_css);
+
 }
 
 var footer_hover_offset = ($(window).width() - 500)/2;

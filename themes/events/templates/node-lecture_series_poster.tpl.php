@@ -78,7 +78,9 @@
     <?php 
     	$front_image = $node->field_poster_image_front[0]['filepath'];
     	$back_image = $node->field_poster_image_back[0]['filepath'];
-    	$pdf = $node->field_poster_image_pdf[0]['filepath'];
+    	
+    	$pdf = $node->field_poster_pdf[0]['filepath'];
+
     	$title = $node->title;
     	
     	$front_img = theme('imagecache', 'lecture_series_poster_view', $front_image, 'Lecture Series Poster - Front', '', NULL);
@@ -86,7 +88,9 @@
 			if (strlen($back_image) > 3) {
 				$back_img = theme('imagecache', 'lecture_series_poster_view', $back_image, 'Lecture Series Poster - Front', '', NULL);
 			}
+			
 			$pdf_link = null;
+			
 			if (strlen($pdf) > 3) {
 				$pdf_link = $pdf;
 			}
@@ -116,9 +120,9 @@
 				
     	
     	// print body just for now
-    	print '<h1>masonry test start</h1>';
+    	//print '<h1>masonry test start</h1>';
     	
-    	print $node->field_lec_test[0]['value'];
+    	//print $node->field_lec_test[0]['value'];
     	
     	
     	

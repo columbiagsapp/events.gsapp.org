@@ -353,6 +353,24 @@ if($_GET['q'] != "featured_event") { ?>
 			}?>
 						</div> 
 						</div>
+<script type="text/javascript">
+$("#flickr-slider").cycle({
+		fx: 'fade',
+		speed: 300, 
+		timeout: 0, 
+    next:   '#next-button-flickr',  
+    prev:   '#prev-button-flickr' 
+	});
+
+	$("#flickr-slider-large").cycle({
+		fx: 'fade',
+		speed: 300, 
+		timeout: 0, 
+    next:   '#next-button-flickr',
+    prev:   '#prev-button-flickr' 
+	});
+</script>
+
 					</div>
 
 					<?php
