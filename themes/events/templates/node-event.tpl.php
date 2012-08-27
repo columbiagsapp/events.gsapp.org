@@ -113,6 +113,8 @@ if ($node->field_event_sys_isfeatured[0]['value'] == 1) {
 
 
 
+$flickr_image_urls = array();
+
 if($node->field_event_visibility[0]['value'] == "private") $isprivate = "isprivate";
 
 ?>
@@ -233,26 +235,47 @@ if($_GET['q'] != "featured_event") { ?>
 				<div id="next-button-poster" class="button"></div>
 				<div id="prev-button-flickr" class="button"></div>
 				<div id="next-button-flickr" class="button"></div>
+				<div id="prev-button-gallery" class="button"></div>
+				<div id="next-button-gallery" class="button"></div>
 			</div>
 			<div id="slideshow-area">
 
 				<!-- Image Gallery -->
 				<?php if($node->field_event_imagegallery[0]['view']) { ?>
-				<div id="imagegallery" class="item">
+				<div id="gallery" class="item">
 					<div class="slider-wrapper theme-default">
-					<div id="imagegallery-slider" class="cycle-slider">
+					<div id="gallery-slider" class="cycle-slider">
 						<?php foreach($node->field_event_imagegallery as $image) {
 										print $image['view']; 
 									} ?>
 					</div>
 					<!-- large size slideshow -->
-						<div id="imagegallery-slider-large" class="cycle-slider">
+						<div id="gallery-slider-large" class="cycle-slider">
 							<?php foreach($node->field_event_imagegallery as $image) { 
-											print_r($image);
+											print $image['view']; 
 											//TODO confirm with leigha/troy that we are still using 'image-gallery'...
 											
 											} ?>
 						</div>
+						<script type="text/javascript">
+$("#gallery-slider").cycle({
+		fx: 'fade',
+		speed: 300, 
+		timeout: 0, 
+    next:   '#next-button-gallery',  
+    prev:   '#prev-button-gallery' 
+	});
+
+	$("#gallery-slider-large").cycle({
+		fx: 'fade',
+		speed: 300, 
+		timeout: 0, 
+    next:   '#next-button-gallery',
+    prev:   '#prev-button-gallery' 
+	});
+</script>
+
+
 						<!-- end large size slideshow -->
 					</div>
 				</div>
@@ -308,7 +331,7 @@ if($_GET['q'] != "featured_event") { ?>
 
 				<!-- 120322 FLICKR GALLERY -->
 				<?php
-					$flickr_image_urls = array();
+					
 				/* PHOTOSET EXISTS???? */
 				if($node->field_event_flickr[0]['value']) {
 					
@@ -386,13 +409,30 @@ $("#flickr-slider").cycle({
 			</div>
 		<?php if($node->field_event_imagegallery[0]['view'] || $node->field_event_poster[0]['view'] || $node->field_event_presentation[0]['view']) { ?>
 			<div id="slideshow-nav">
-				<?php if($node->field_event_poster[0]['view']) { ?>
-					<div class="elem selected" name="poster">Poster</div>
-				<?php } ?>
+
 				<?php 
-					//if($node->field_event_imagegallery[0]['view']) { 
-					//print '<div class="elem" name="imagegallery">Image Gallery</div>';
-					//} 
+				$no_poster = false;
+				$no_gallery = true;
+				if($node->field_event_poster[0]['view']) {
+					print '<div class="elem selected" name="poster">Poster</div>';
+				} else {
+					// no poster !
+					$no_poster = true;
+				}
+
+				if($node->field_event_imagegallery[0]['view']) {
+					$no_gallery = false;
+				} 
+				?>
+				
+				<?php 
+					if ($no_gallery == false) {
+						if ($no_poster == true) {
+							print '<div class="elem selected" name="gallery">Image Gallery</div>';
+						} else {
+							print '<div class="elem" name="gallery">Image Gallery</div>';
+						}
+					} 
 				?>
 				<?php if($node->field_event_presentation[0]['view']) { ?>
 					<div class="elem" name="presentation">Presentation</div>
@@ -402,7 +442,16 @@ $("#flickr-slider").cycle({
 				<?php } ?>
 				
 				<!-- expand divs -->
-				<div id="expand-poster">
+				<?php 
+
+					if ($no_poster == false) {
+						print '<div id="expand-poster">' .
+								'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
+								'</div>		';
+					}
+				?>
+				
+				<div id="expand-gallery">
 					<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />
 				</div>
 				<div id="expand-flickr">
@@ -474,6 +523,30 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 		'</div>';
 	print '</div>'; // end wrapper
 
+	// GALLERY --------------------------------------------------------------------------------------------------------------------------------------------
+
+	print '<div id="gallery-slider-large-wrapper">' . 
+	'<div id="gallery-slider-large" class="cycle-slider">';
+								
+
+	foreach($node->field_event_imagegallery as $imagep) {
+		$path = $imagep['filepath'];
+		$large_img = theme('imagecache', 'event_image_large-size', $imagep['filepath'], '', NULL);
+		print '<div class="large-image-slide">' . $large_img . '</div>';
+	} 
+	
+	print '</div>'; // end slider
+	// add menu
+	
+	print '<div class="large-menu">' .
+		'<div id="prev-button-gallery" class="button large"></div>' .
+		'<div id="next-button-gallery" class="button large"></div>' .
+		'<div id="gallery-large-close">CLOSE THIS</div>' .
+		'</div>';
+	print '</div>'; // end wrapper
+
+
+// GALLERY --------------------------------------------------------------------------------------------------------------------------------------------
 
 	// large size flickr slider
 	print '<div id="flickr-slider-large-wrapper">' . 

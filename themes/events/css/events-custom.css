@@ -302,13 +302,13 @@ a:hover {
 #imagegallery-slider {
 
 }
-#poster-slider {
+#poster-slider, #gallery-slider {
 	z-index: 10;
 	position: absolute;
 	display: block;
 }
 
-#poster-slider-large-wrapper, #flickr-slider-large-wrapper {
+#gallery-slider-large-wrapper, #poster-slider-large-wrapper, #flickr-slider-large-wrapper {
 	z-index: 20;
 	position: absolute;
 	display: none;
@@ -328,7 +328,13 @@ display: inline-table;
 	display: inline-table;
 }
 
-#poster-slider-large:after, #flickr-slider-large:after {
+#gallery-slider-large {
+	width: 900px;
+	height: 100%;
+	display: inline-table;
+}
+
+#gallery-slider-large:after, #poster-slider-large:after, #flickr-slider-large:after {
  visibility: hidden;
      display: block;
      font-size: 0;
@@ -337,7 +343,7 @@ display: inline-table;
      height: 0;
 }
 
-#poster-slider-large-wrapper .large-menu, #flickr-slider-large-wrapper .large-menu {
+#gallery-slider-large-wrapper .large-menu, #poster-slider-large-wrapper .large-menu, #flickr-slider-large-wrapper .large-menu {
 	background-color: none;
 	position: absolute;
 	z-index: 30;
@@ -359,7 +365,7 @@ display: inline-table;
 	background-color: none;
 }
 
-#poster-large-close, #flickr-large-close {
+#gallery-large-close, #poster-large-close, #flickr-large-close {
 	background: white;
 	width: 90px;
 	padding: 5px;
@@ -951,6 +957,19 @@ body {
 	float: right;
 	display: none;
 }
+#slideshow-buttons #prev-button-gallery {
+	cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
+	float: left;
+	display: none;
+}
+
+#slideshow-buttons #next-button-gallery {
+	cursor: pointer;
+	background:url(/sites/all/themes/events/images/slider-arrows.png) -31px 0;
+	float: right;
+	display: none;
+}
 
 #prev-button-poster-large {
 	cursor: pointer;
@@ -1007,7 +1026,7 @@ div#expand-poster {
 	cursor: pointer;
 }
 
-div#expand-imagegallery, div#expand-flickr {
+div#expand-gallery, div#expand-flickr {
 	float:right;
 	padding-top: 3px;
 	width: 14px;

@@ -2,6 +2,20 @@ var ytplayer = undefined;
 $(document).ready(function() {
 //
 	updateLocation();
+
+
+	var poster_tab = $('div.elem[name="poster"').length;
+	if (poster_tab < 1) {
+
+		$('#expand-gallery').show();
+
+									
+
+	}
+
+
+
+
 	
 	$('.video .content').css('visibility', 'hidden');
 	$("body .teaser-content a").hover(
@@ -57,17 +71,6 @@ $(document).ready(function() {
 	});
 	var current_image = null;
 	
-	$("#imagegallery-slider").cycle({
-		fx: 'fade',
-		speed: 300, 
-		timeout: 0, 
-		timeout: 0, 
-    next:   '#next-button',  
-    prev:   '#prev-button' 
-	}); 
-
-	
-
 	$("#presentation-slider").cycle({
 		fx: 'fade',
 		speed: 300, 
@@ -115,6 +118,9 @@ $(document).ready(function() {
 			$(this).addClass("selected");
 			var idname = $(this).attr("name");
 
+			console.log('oldname to hide ' + oldidname + ' new name to show ' + idname);
+
+
 			/* DTLEDIT 120402 */
       $(".cycle-slider").hide();
       $("#" + idname + "-slider").show();
@@ -122,16 +128,20 @@ $(document).ready(function() {
 			// show hide buttons
 			$('#prev-button-' + oldidname).hide();
 			$('#next-button-' + oldidname).hide();
+			console.log('hiding oldidname buttons');
 			$('#prev-button-' + idname).show();
 			$('#next-button-' + idname).show();
+			console.log('showing new idenmae buttons');
+
 
 			$('#slideshow-area #' + oldidname).css("z-index", "0");
 			$('#slideshow-area #' + idname).css("z-index", "5");
 			$('#expand-' + oldidname).hide();
 			$('#expand-' + idname).show();
+
 			$('#poster-slider-large-wrapper').hide();
 			$('#flickr-slider-large-wrapper').hide();
-			
+			$('#gallery-slider-large-wrapper').hide();
 
 		}
 	});
@@ -150,9 +160,21 @@ $(document).ready(function() {
 			'padding-left': '25px'		
 		}
 		$('#slideshow-buttons').css(new_css);
+	});
+
+	$('#expand-gallery').click(function() {
+		$('#gallery-slider-large-wrapper').show();
+		$('#gallery-slider-large').show();
+		// adjust the buttons
+		var prev = $('#prev-button-gallery');
+		var next = $('#next-button-gallery');
 		
-		
-		
+		// reposition the button container div
+		var new_css = {
+			'width': '900px',
+			'padding-left': '25px'		
+		}
+		$('#slideshow-buttons').css(new_css);
 	});
 
 	$('#expand-flickr').click(function() {
@@ -181,6 +203,9 @@ $(document).ready(function() {
 	});
 	
 		$('#flickr-large-close').click(function() {
+		close_flickr_and_poster();
+	});
+	$('#gallery-large-close').click(function() {
 		close_flickr_and_poster();
 	});
 
@@ -518,6 +543,7 @@ function switch_heptagon(state) {
 function close_flickr_and_poster() {
 	$('#poster-slider-large-wrapper').hide();
 	$('#flickr-slider-large-wrapper').hide();
+	$('#gallery-slider-large-wrapper').hide();
 	var old_css = {
 		'width': '430px',
 		'padding-left': '0px'		
