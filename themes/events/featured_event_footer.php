@@ -123,7 +123,7 @@ print '<div id="footer-right-links" class="footer_column">' .
 		'<a href=""><div class="subscribe-icon" id="sub-gcal"><a href="">&nbsp;' . 
 		'<div id="sub-gcal-menu-text" class="subscribe-information">Add to Cal</div>' .
 		'</div>' .
-		'<a href="http://www.addthis.com/bookmark.php" style="text-decoration:none;" class="addthis addthis_button_email"><div class="subscribe-icon" id="sub-email">&nbsp;' . 
+		'<a href="http://www.arch.columbia.edu/sign-weekly-event-listing-email-cc" style="text-decoration:none;" class="addthis addthis_button_email"><div class="subscribe-icon" id="sub-email">&nbsp;' . 
 		'<div id="sub-email-menu-text" class="subscribe-information">Email</div>' .
 		'</div></a>' .
 		'<a href="http://events.postfog.org/rss.xml" target="_blank"><div class="subscribe-icon" id="sub-rss">&nbsp;' . 

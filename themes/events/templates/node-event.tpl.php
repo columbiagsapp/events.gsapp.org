@@ -438,7 +438,7 @@ $("#flickr-slider").cycle({
 					<div class="elem" name="presentation">Presentation</div>
 				<?php } ?>
 				<?php if($node->field_event_flickr[0]['value']) { ?>
-					<div class="elem" name="flickr">Image Gallery</div>
+					<div class="elem" name="flickr">Flickr Gallery</div>
 				<?php } ?>
 				
 				<!-- expand divs -->
@@ -449,11 +449,17 @@ $("#flickr-slider").cycle({
 								'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
 								'</div>		';
 					}
+				
+				if ($no_gallery == false) {
+				print '<div id="expand-gallery">' .
+					'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
+				'</div>';
+			}
+				
+
+
 				?>
 				
-				<div id="expand-gallery">
-					<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />
-				</div>
 				<div id="expand-flickr">
 					<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />
 				</div>
