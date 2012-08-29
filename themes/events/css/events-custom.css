@@ -577,7 +577,20 @@ html, body {
 	padding-top:10px;
 	height: 78px;
 }
-#subscribe-text {line-height:16px}
+
+.subscribe-info-line {
+	line-height: 16px;
+	height: 16px;
+}
+
+#subscribe-text {
+	float: left;
+}
+
+#subscribe-service-name {
+	float: left;
+	margin-left: 10px;
+}
 
 .subscribe-icons-line {
 	width: 250px;

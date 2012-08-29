@@ -346,12 +346,13 @@ $('div.lecture-poster-back').mouseout(function() {
 // new footer icon hovers
 
 $('.subscribe-icon').hover(function() {
-	//var id = $(this).attr('id');
-	//$('#' + id + '-menu-text').show();
-
+	var id = $(this).attr('id');
+	var txt = $('#' + id + ' div:first-child').text();
+	$('#subscribe-service-name').text(txt);
+	
 }, function() {
-	//var id = $(this).attr('id');
-	//$('#' + id + '-menu-text').hide();
+	$('#subscribe-service-name').text('');
+
 });
 
 

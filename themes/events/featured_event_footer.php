@@ -96,7 +96,7 @@ print '<div id="footer-mid-links" class="footer_column">' .
 
 
 print '<div id="footer-right-links" class="footer_column">' .
-	'<div id="subscribe-text">Follow and Subscribe:</div>' .
+	'<div class="subscribe-info-line"><div id="subscribe-text">Follow and Subscribe: </div><div id="subscribe-service-name"></div></div>' .
 	'<div class="subscribe-icons-line">' . 
 		'<a href="http://flickr.com/photos/gsapponline" target="_blank">' .
 		'<div class="subscribe-icon" id="sub-flickr">&nbsp;' . 
