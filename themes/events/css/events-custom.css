@@ -1429,6 +1429,7 @@ background-image: none !important;
 
 .node-type-event.node-full .event-description {
 	clear: both;
+	padding-bottom: 90px; /* accounting for footer height */
 }
 
 .node-type-event.node-full .label {
