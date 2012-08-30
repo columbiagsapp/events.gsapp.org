@@ -227,6 +227,57 @@ if($_GET['q'] != "featured_event") { ?>
 	$node->field_event_scribd[0]['safe'] ||
 	$node->field_event_emvideo[0]['view']) { 
 	
+	$poster_found = false;
+	$gallery_found = false;
+	$flickr_found = false;
+	$presentation_found = false;
+
+		// check images
+		if (strlen($node->field_event_poster[0]['fid']) > 1) {
+			if (count($node->field_event_poster) > 1) {
+				print '<div style="display:none" id="posters_many">&nbsp;</div>';
+			} else{
+				print '<div style="display:none" id="posters_1">&nbsp;</div>';
+			}
+			$poster_found = true;
+		}
+
+		if (strlen($node->field_event_imagegallery[0]['fid']) > 1) {
+			if (count($node->field_event_imagegallery) > 1) {
+				print '<div style="display:none" id="gallery_many">&nbsp;</div>';
+			} else{
+				print '<div style="display:none" id="gallery_1">&nbsp;</div>';
+			}
+			$gallery_found = true;
+		}
+
+		if (strlen($node->field_event_flickr[0]['value']) > 1) {
+			if (count($node->field_event_flickr) > 1) {
+				print '<div style="display:none" id="flickr_many">&nbsp;</div>';
+			} else{
+				print '<div style="display:none" id="flickr_1">&nbsp;</div>';
+			}
+			$flickr_found = true;
+		}
+
+		if (strlen($node->field_event_flickr[0]['value']) > 1) {
+			if (count($node->field_event_flickr) > 1) {
+				print '<div style="display:none" id="flickr_many">&nbsp;</div>';
+			} else{
+				print '<div style="display:none" id="flickr_1">&nbsp;</div>';
+			}
+			$flickr_found = true;
+		}
+
+
+		if(strlen($node->field_event_presentation[0]['view']) > 1) { 
+			if (count($node->ield_event_presentation) > 1) {
+				print '<div style="display:none" id="presentation_many">&nbsp;</div>';
+			} else{
+				print '<div style="display:none" id="presentation_1">&nbsp;</div>';
+			}
+			$presentation_found = true;
+		}
 	?>
 	<div class="section image-section">
 		<div class="content-left">
@@ -249,34 +300,6 @@ if($_GET['q'] != "featured_event") { ?>
 										print $image['view']; 
 									} ?>
 					</div>
-					<!-- large size slideshow -->
-						<div id="gallery-slider-large" class="cycle-slider">
-							<?php foreach($node->field_event_imagegallery as $image) { 
-											print $image['view']; 
-											//TODO confirm with leigha/troy that we are still using 'image-gallery'...
-											
-											} ?>
-						</div>
-						<script type="text/javascript">
-$("#gallery-slider").cycle({
-		fx: 'fade',
-		speed: 300, 
-		timeout: 0, 
-    next:   '#next-button-gallery',  
-    prev:   '#prev-button-gallery' 
-	});
-
-	$("#gallery-slider-large").cycle({
-		fx: 'fade',
-		speed: 300, 
-		timeout: 0, 
-    next:   '#next-button-gallery',
-    prev:   '#prev-button-gallery' 
-	});
-</script>
-
-
-						<!-- end large size slideshow -->
 					</div>
 				</div>
 				<?php } ?>
@@ -376,24 +399,6 @@ $("#gallery-slider").cycle({
 			}?>
 						</div> 
 						</div>
-<script type="text/javascript">
-$("#flickr-slider").cycle({
-		fx: 'fade',
-		speed: 300, 
-		timeout: 0, 
-    next:   '#next-button-flickr',  
-    prev:   '#prev-button-flickr' 
-	});
-
-	$("#flickr-slider-large").cycle({
-		fx: 'fade',
-		speed: 300, 
-		timeout: 0, 
-    next:   '#next-button-flickr',
-    prev:   '#prev-button-flickr' 
-	});
-</script>
-
 					</div>
 
 					<?php
@@ -407,69 +412,69 @@ $("#flickr-slider").cycle({
 
 
 			</div>
-		<?php if($node->field_event_imagegallery[0]['view'] || $node->field_event_poster[0]['view'] || $node->field_event_presentation[0]['view']) { ?>
+		<?php if (($poster_found == true) || ($gallery_found == true) || ($flickr_found == true) || ($presentation_found == true)) { ?>
 			<div id="slideshow-nav">
 
 				<?php 
-				$no_poster = false;
-				$no_gallery = true;
-				if($node->field_event_poster[0]['view']) {
+				if ($poster_found == true) {
 					print '<div class="elem selected" name="poster">Poster</div>';
-				} else {
-					// no poster !
-					$no_poster = true;
-				}
-
-				if($node->field_event_imagegallery[0]['view']) {
-					$no_gallery = false;
-				} 
-				?>
-				
-				<?php 
-					if ($no_gallery == false) {
-						if ($no_poster == true) {
-							print '<div class="elem selected" name="gallery">Image Gallery</div>';
-						} else {
-							print '<div class="elem" name="gallery">Image Gallery</div>';
-						}
-					} 
-				?>
-				<?php if($node->field_event_presentation[0]['view']) { ?>
-					<div class="elem" name="presentation">Presentation</div>
-				<?php } ?>
-				<?php if($node->field_event_flickr[0]['value']) { ?>
-					<div class="elem" name="flickr">Flickr Gallery</div>
-				<?php } ?>
-				
-				<!-- expand divs -->
-				<?php 
-
-					if ($no_poster == false) {
-						print '<div id="expand-poster">' .
-								'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
+					print '<div id="expand-poster">' .
+									'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
 								'</div>		';
+					if ($gallery_found == true) {
+						print '<div class="elem" name="gallery">Image Gallery</div>';
+						print '<div id="expand-gallery">' .
+										'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
+									'</div>';
 					}
-				
-				if ($no_gallery == false) {
-				print '<div id="expand-gallery">' .
-					'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
-				'</div>';
+					if ($flickr_found == true) {
+						print '<div class="elem" name="flickr">Flickr Gallery</div>';
+						print '<div id="expand-flickr">' .
+										'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
+									'</div>';
+					}
+					if ($presentation_found == true) {
+						print '<div class="elem" name="presentation">Presentation</div>';
+					}
+				} else {
+					// no poster
+					if ($gallery_found == true) {
+						print '<div class="elem selected" name="gallery">Image Gallery</div>';
+						print '<div id="expand-gallery">' .
+										'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
+									'</div>';
+						if ($flickr_found == true) {
+							print '<div class="elem" name="flickr">Flickr Gallery</div>';
+							print '<div id="expand-flickr">' .
+										'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
+									'</div>';
+						}
+						if ($presentation_found == true) {
+							print '<div class="elem" name="presentation">Presentation</div>';
+						}
+					} else {
+						// no poster, no gallery, but flickr
+						if ($flickr_found == true) {
+							print '<div class="elem selected" name="flickr">Flickr Gallery</div>';
+							print '<div id="expand-flickr">' .
+										'<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />' .
+									'</div>';
+							if ($presentation_found == true) {
+								print '<div class="elem" name="presentation">Presentation</div>';
+							}
+						} else {
+							// no poster, gallery or flickr
+							if ($presentation_found == true) {
+								print '<div class="elem selected" name="presentation">Presentation</div>';
+							}
+
+						}
+					}
+				}
 			}
-				
-
-
-				?>
-				
-				<div id="expand-flickr">
-					<img src="/sites/all/themes/events/images/makebig.png" width="14" height="14" />
-				</div>
-				<!-- end expand divs -->
-
-
-
+			?>
 
 			</div>
-		<?php } ?>
 		</div>
 		<div class="content-right">
 			<div class="video">
@@ -549,7 +554,8 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 		'<div id="next-button-gallery" class="button large"></div>' .
 		'<div id="gallery-large-close">CLOSE THIS</div>' .
 		'</div>';
-	print '</div>'; // end wrapper
+	print '</div>';
+	// end wrapper
 
 
 // GALLERY --------------------------------------------------------------------------------------------------------------------------------------------

@@ -2,19 +2,7 @@ var ytplayer = undefined;
 $(document).ready(function() {
 //
 	updateLocation();
-
-
-	var poster_tab = $('div.elem[name="poster"').length;
-	if (poster_tab < 1) {
-
-		$('#expand-gallery').show();
-
-									
-
-	}
-
-
-
+	hide_nav_if_needed();
 
 	
 	$('.video .content').css('visibility', 'hidden');
@@ -70,15 +58,6 @@ $(document).ready(function() {
  	    }
 	});
 	var current_image = null;
-	
-	$("#presentation-slider").cycle({
-		fx: 'fade',
-		speed: 300, 
-		timeout: 0, 
-    next:   '#next-button', 
-    prev:   '#prev-button' 
-	});
-	
 	$("#poster-slider").cycle({
 		fx: 'fade',
 		speed: 300, 
@@ -94,8 +73,24 @@ $(document).ready(function() {
     prev:   '#prev-button-poster' 
 	});
 
-	
-	
+	$("#gallery-slider").cycle({
+		fx: 'fade',
+		speed: 300, 
+		timeout: 0, 
+		next:   '#next-button-gallery',
+		prev:   '#prev-button-gallery'
+	});
+
+	$("#gallery-slider-large").cycle({
+		fx: 'fade',
+		speed: 300, 
+		timeout: 0, 
+		next:   '#next-button-gallery',
+		prev:   '#prev-button-gallery'
+	});
+
+
+
 	// show full date in search result view
 	var search_r = $('dl.search-results')[0];
 	if ((search_r !== null) && (search_r !== undefined)) {
@@ -112,26 +107,27 @@ $(document).ready(function() {
 	 * show/hide the various slideshow containers
 	 */
 	$("#slideshow-nav .elem").click(function() {
+		hide_nav_if_needed();
 		if($("#slideshow-nav .elem.selected").attr("name") != $(this).attr("name")) {
 			var oldidname = $("#slideshow-nav .elem.selected").attr("name");
 			$("#slideshow-nav .elem").removeClass("selected");
 			$(this).addClass("selected");
 			var idname = $(this).attr("name");
 
-			console.log('oldname to hide ' + oldidname + ' new name to show ' + idname);
+			//console.log('oldname to hide ' + oldidname + ' new name to show ' + idname);
 
 
 			/* DTLEDIT 120402 */
-      $(".cycle-slider").hide();
+      //$(".cycle-slider").hide();
       $("#" + idname + "-slider").show();
 
 			// show hide buttons
 			$('#prev-button-' + oldidname).hide();
 			$('#next-button-' + oldidname).hide();
-			console.log('hiding oldidname buttons');
+			//console.log('hiding oldidname buttons');
 			$('#prev-button-' + idname).show();
 			$('#next-button-' + idname).show();
-			console.log('showing new idenmae buttons');
+			//console.log('showing new idenmae buttons');
 
 
 			$('#slideshow-area #' + oldidname).css("z-index", "0");
@@ -163,8 +159,8 @@ $(document).ready(function() {
 	});
 
 	$('#expand-gallery').click(function() {
-		$('#gallery-slider-large-wrapper').show();
-		$('#gallery-slider-large').show();
+		$("#gallery-slider-large-wrapper").show();
+		$("#gallery-slider-large").show();
 		// adjust the buttons
 		var prev = $('#prev-button-gallery');
 		var next = $('#next-button-gallery');
@@ -550,4 +546,21 @@ function close_flickr_and_poster() {
 		'padding-left': '0px'		
 	}
 	$('#slideshow-buttons').css(old_css);
+}
+
+function hide_nav_if_needed() {
+		// hide chevrons for next and so on if only 1 image
+	var poster_slides = $("#poster-slider img");
+	if ((poster_slides.length < 2) || (poster_slides.length == undefined)) {
+		// hide chevrons
+		$('#next-button-poster').hide();
+		$('#prev-button-poster').hide();
+	}
+	var gallery_slides = $("#gallery-slider img");
+	if ((gallery_slides.length < 2) || (gallery_slides.length == undefined)) {
+		// hide chevrons
+		$('#next-button-gallery').hide();
+		$('#prev-button-gallery').hide();
+	}
+
 }
