@@ -3,17 +3,16 @@ var win_h = undefined;
 var win_w = undefined;
 
 $(document).ready(function() {
-//
+	win_h = $(window).height();
+	win_w = $(window).width();
 	updateLocation();
 	hide_nav_if_needed();
 	
+
+
+
 	$('.video .content').css('visibility', 'hidden');
-	$("body .teaser-content a").hover(
-
-	  function () {
-
-		win_h = $(window).height();
-		win_w = $(window).width();
+	$("body .teaser-content a").hover(function () {
 		var randtop = null;
 		var randleft = null;
 			
@@ -480,8 +479,7 @@ function hide_nav_if_needed() {
 function resizeStuff() {
 	win_w = $(window).width();
 	win_h = $(window).height();
- 	//Time consuming resize stuff here
- 	var footer_hover_offset = (win_w - 500)/2;
+	var footer_hover_offset = (win_w - 500)/2;
 	var page_offset = window.pageYOffset;
 	var footer_hover_offset_top = page_offset + 189;
 	var footer_hover_css = {
