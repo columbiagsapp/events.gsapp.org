@@ -1,22 +1,25 @@
 var ytplayer = undefined;
+var win_h = undefined;
+var win_w = undefined;
+
 $(document).ready(function() {
 //
 	updateLocation();
 	hide_nav_if_needed();
-
 	
 	$('.video .content').css('visibility', 'hidden');
 	$("body .teaser-content a").hover(
+
 	  function () {
 
-		var h = $(window).height();
-		var w = $(window).width();
+		win_h = $(window).height();
+		win_w = $(window).width();
 		var randtop = null;
 		var randleft = null;
 			
 		for (var i = 0; i < 5; i++) {
-			randtop = Math.floor(Math.random()*($(window).height() - 300)) + 150;
-			randleft = Math.floor(Math.random()*($(window).width() - 500)) + 150;
+			randtop = Math.floor(Math.random()*(win_h - 300)) + 150;
+			randleft = Math.floor(Math.random()*(win_w - 500)) + 150;
 			var thistop = $(this).offset().top;
 			var thisleft = $(this).offset().left;
 			if((Math.abs(randtop - thistop) > 200) && (Math.abs(randleft - thisleft) > 200)) { continue; }
@@ -191,8 +194,8 @@ $(".overlay").click(function() {
 
 
 //------ footer
-if ($(window).width() > 960) {
-	var footer_offset = ($(window).width() - 960)/2;
+if (win_w > 960) {
+	var footer_offset = (win_w - 960)/2;
 	var footer_css = {
 		'left': footer_offset,
 	};
@@ -200,7 +203,7 @@ if ($(window).width() > 960) {
 
 }
 
-var footer_hover_offset = ($(window).width() - 500)/2;
+var footer_hover_offset = (win_w - 500)/2;
 var page_offset = window.pageYOffset;
 var footer_hover_offset_top = page_offset + 189;
 
@@ -228,7 +231,7 @@ $('#footer-left-side').hover(function () {
 });
 
 $(window).scroll(function () { 
-	var footer_hover_offset = ($(window).width() - 500)/2;
+	var footer_hover_offset = (win_w - 500)/2;
 	var page_offset = window.pageYOffset;
 	var footer_hover_offset_top = page_offset + 189;
 	var footer_hover_css = {
@@ -237,43 +240,14 @@ $(window).scroll(function () {
 	};
 	
 	$('#footer-hover-image').css(footer_hover_css);
-	if ($(window).width() > 960) {
-		var footer_offset = ($(window).width() - 960)/2;
+	if (win_w > 960) {
+		var footer_offset = (win_w - 960)/2;
 		var footer_css = {
 			'left': footer_offset,
 		};
 		$('#footer').css(footer_css);
 	}
 });
-
-
-//		var img_h = $('img.imagecache-featured_event_hover').attr('height');
-//		var img_w = $('img.imagecache-featured_event_hover').attr('width');
-
-$(window).resize(function() {
-	var footer_hover_offset = ($(window).width() - 500)/2;
-	var page_offset = window.pageYOffset;
-	var footer_hover_offset_top = page_offset + 189;
-	var footer_hover_css = {
-		'left': footer_hover_offset,
-		'top': footer_hover_offset_top,
-	};
-	
-	if ($(window).height() < 900) {
-		$('img.imagecache-featured_event_hover').attr('z-index', 0);
-	}
-	
-	$('#footer-hover-image').css(footer_hover_css);
-
-	if ($(window).width() > 960) {
-		var footer_offset = ($(window).width() - 960)/2;
-		var footer_css = {
-			'left': footer_offset,
-		};
-		$('#footer').css(footer_css);
-	}
-});
-
 
 // lecture series hover
 $('div.lecture-poster-front').mouseover(function() {
@@ -303,8 +277,6 @@ $('.subscribe-icon').hover(function() {
 
 });
 
-
-// TODO maybe add a after resize even to deal with leighas fast window resizing
 
 //-- subscribe icons sub menus --
 $('div.footer-sub_menu').remove().appendTo("body");
@@ -351,6 +323,7 @@ $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmo
 
 }); 
 // end document.ready
+
 
 
 
@@ -504,3 +477,35 @@ function hide_nav_if_needed() {
 
 }
 
+function resizeStuff() {
+	win_w = $(window).width();
+	win_h = $(window).height();
+ 	//Time consuming resize stuff here
+ 	var footer_hover_offset = (win_w - 500)/2;
+	var page_offset = window.pageYOffset;
+	var footer_hover_offset_top = page_offset + 189;
+	var footer_hover_css = {
+	'left': footer_hover_offset,
+	'top': footer_hover_offset_top,
+	};
+
+	if (win_h < 900) {
+		$('img.imagecache-featured_event_hover').attr('z-index', 0);
+	}
+
+	$('#footer-hover-image').css(footer_hover_css);
+
+	if (win_w > 960) {
+		var footer_offset = (win_w - 960)/2;
+		var footer_css = {
+		'left': footer_offset,
+		};
+		$('#footer').css(footer_css);
+	}
+}
+var TO = false;
+$(window).resize(function(){
+ if(TO !== false)
+    clearTimeout(TO);
+ TO = setTimeout(resizeStuff, 200); //200 is time in miliseconds
+});
