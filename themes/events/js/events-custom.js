@@ -473,7 +473,6 @@ function hide_nav_if_needed() {
 			prev:   '#prev-button-flickr'
 		});
 	}
-
 }
 
 function resizeStuff() {
@@ -499,8 +498,13 @@ function resizeStuff() {
 		'left': footer_offset,
 		};
 		$('#footer').css(footer_css);
+	} else {
+		// lets see window < 960
+		// whats the page size? 960
+		$('#footer').css('left', '0px');
 	}
 }
+
 var TO = false;
 $(window).resize(function(){
  if(TO !== false)
