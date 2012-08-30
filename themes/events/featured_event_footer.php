@@ -89,7 +89,7 @@ print '<div id="footer-mid-links" class="footer_column">' .
 	'<div class="footer-link">' . 
 	'<a href="http://www.arch.columbia.edu/event-archive">Event Archive</a></div>' .
 	'<div class="footer-link">' . 
-	'<a href="/lecture-series-posters">Lecture Series Posters</a></div><br/>' .
+	'<a href="/posters">Lecture Series Posters</a></div><br/>' .
 	'<div class="footer-link">' . 
 	'<a href="mailto:cloud@arch.columbia.edu">Feedback</a> | <a href="/policy"> Terms &amp; Policies</a></div>' .	
 	'</div>';
