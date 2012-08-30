@@ -133,12 +133,10 @@
     <div id="skip-link"><a href="#main-menu"><?php print t('Jump to Navigation'); ?></a></div>
   <?php endif; ?>
 
-  <div id="page-wrapper"><div id="page">
-
+  <div id="page-wrapper">
+    <div id="page">
     <div id="header">
-   
     <div class="section clearfix">
-
       <?php if ($logo): ?>
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
       <?php endif; ?>
@@ -265,6 +263,6 @@
   <?php print $page_closure; ?>
 
   <?php print $closure; ?>
-
+<div id="page-cover">&nbsp;</div>
 </body>
 </html>

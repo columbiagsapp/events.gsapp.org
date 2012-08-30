@@ -111,6 +111,7 @@ $(document).ready(function() {
 			'padding-left': '25px'		
 		}
 		$('#slideshow-buttons').css(new_css);
+		show_cover();
 	});
 
 	$('#expand-gallery').click(function() {
@@ -126,6 +127,7 @@ $(document).ready(function() {
 			'padding-left': '25px'		
 		}
 		$('#slideshow-buttons').css(new_css);
+		show_cover();
 	});
 
 	$('#expand-flickr').click(function() {
@@ -141,6 +143,7 @@ $(document).ready(function() {
 			'padding-left': '25px'		
 		}
 		$('#slideshow-buttons').css(new_css);
+		show_cover();
 	});
 	
 	$('#poster-large-close').click(function() {
@@ -418,11 +421,16 @@ function close_flickr_and_poster() {
 	$('#poster-slider-large-wrapper').hide();
 	$('#flickr-slider-large-wrapper').hide();
 	$('#gallery-slider-large-wrapper').hide();
+	$('#page-cover').hide();
 	var old_css = {
 		'width': '430px',
 		'padding-left': '0px'		
 	}
 	$('#slideshow-buttons').css(old_css);
+}
+
+function show_cover() {
+	$('#page-cover').show();
 }
 
 function hide_nav_if_needed() {
@@ -495,3 +503,4 @@ function hide_nav_if_needed() {
 	}
 
 }
+

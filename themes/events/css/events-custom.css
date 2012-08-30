@@ -51,6 +51,20 @@ a:hover {
 	color: black;
 }
 
+#page-cover {
+	display: none;
+	position: absolute;
+	background-color: inherit;
+	top: 0;
+	left: 0;
+	width: 200%;
+	min-height: 150%;
+	z-index: 28;
+	zoom: 1;
+	filter: alpha(opacity=95);
+	opacity: 0.95;  
+}
+
 #page-wrapper {
 	min-height: 100%;
 	height: auto !important;
@@ -309,7 +323,7 @@ a:hover {
 }
 
 #gallery-slider-large-wrapper, #poster-slider-large-wrapper, #flickr-slider-large-wrapper {
-	z-index: 20;
+	z-index: 29;
 	position: absolute;
 	display: none;
 	top: -50px;
