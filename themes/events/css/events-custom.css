@@ -984,50 +984,6 @@ body {
 	display: none;
 }
 
-#prev-button-poster-large {
-	cursor: pointer;
-	background: url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
-	float: left;
-	width: 30px;
-	height: 30px;
-	position: relative;
-	top: 300px;
-}
-
-#next-button-poster-large {
-	cursor: pointer;
-	background: url(/sites/all/themes/events/images/slider-arrows.png) -31px 0;
-	float: left;
-	width: 30px;
-	height: 30px;
-	position: relative;
-	top: 300px;
-	left: 93%;
-}
-
-#prev-button-gallery-large {
-	cursor: pointer;
-	background: url(/sites/all/themes/events/images/slider-arrows.png) 0 0;
-	float: left;
-	width: 30px;
-	height: 30px;
-	position: relative;
-	top: 300px;
-}
-
-#next-button-gallery-large {
-	cursor: pointer;
-	background: url(/sites/all/themes/events/images/slider-arrows.png) -31px 0;
-	float: left;
-	width: 30px;
-	height: 30px;
-	position: relative;
-	top: 300px;
-	left: 93%;
-}
-
-
-
 /* @end */
 
 /* @group Slideshow navigation */
