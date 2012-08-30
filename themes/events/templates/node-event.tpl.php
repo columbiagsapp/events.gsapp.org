@@ -73,7 +73,12 @@
 //dsm($node->field_event_poster);
 
 $nodeloc = ($node->field_event_location[0]['view'] ? $node->field_event_location[0]['view'] . ", " : "");
-$nodeloc_top = end($node->field_event_location);
+$nodeloc_top = null;
+
+if (count($node->field_event_location) > 0) {
+	$nodeloc_top = end($node->field_event_location);
+}
+
 if($nodeloc_top) $nodeloc_top_class = $nodeloc_top['view'];
 $nodeloc_top_class = transliteration_clean_filename(strtolower(preg_replace("/ /", "-", trim($nodeloc_top_class))));
 
@@ -520,7 +525,7 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 	
 	foreach($node->field_event_poster as $imagep) { 
 		$path = $imagep['filepath'];
-		$large_img = theme('imagecache', 'event_image_large-size', $imagep['filepath'], '', NULL);
+		$large_img = theme('imagecache', 'event_image_hover_700h', $imagep['filepath'], '', NULL);
 		print '<div class="large-image-slide">' . $large_img . '</div>';
 	} 
 	
@@ -542,7 +547,7 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 
 	foreach($node->field_event_imagegallery as $imagep) {
 		$path = $imagep['filepath'];
-		$large_img = theme('imagecache', 'event_image_large-size', $imagep['filepath'], '', NULL);
+		$large_img = theme('imagecache', 'event_image_hover_700h', $imagep['filepath'], '', NULL);
 		print '<div class="large-image-slide">' . $large_img . '</div>';
 	} 
 	

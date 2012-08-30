@@ -9,8 +9,6 @@ $(document).ready(function() {
 	hide_nav_if_needed();
 	
 
-
-
 	$('.video .content').css('visibility', 'hidden');
 	$("body .teaser-content a").hover(function () {
 		var randtop = null;
@@ -70,7 +68,7 @@ $(document).ready(function() {
 	}
 	
 	$("#slideshow-nav .elem").click(function() {
-		hide_nav_if_needed();
+		
 		if($("#slideshow-nav .elem.selected").attr("name") != $(this).attr("name")) {
 			var oldidname = $("#slideshow-nav .elem.selected").attr("name");
 			$("#slideshow-nav .elem").removeClass("selected");
@@ -95,6 +93,7 @@ $(document).ready(function() {
 			$('#poster-slider-large-wrapper').hide();
 			$('#flickr-slider-large-wrapper').hide();
 			$('#gallery-slider-large-wrapper').hide();
+			hide_nav_if_needed();
 
 		}
 	});
@@ -406,7 +405,8 @@ function show_cover() {
 }
 
 function hide_nav_if_needed() {
-		// hide chevrons for next and so on if only 1 image
+	// hide chevrons for next and so on if only 1 image
+
 	var poster_slides = $("#poster-slider img");
 	if ((poster_slides.length < 2) || (poster_slides.length == undefined)) {
 		// hide chevrons
