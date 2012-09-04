@@ -326,7 +326,6 @@ if($_GET['q'] != "featured_event") { ?>
 				?>
 					<div id="presentation" class="item">
 						<div class="slider-wrapper theme-default">
-						<div id="ribbon"></div>
 						<div id="presentation-slider" class="nivoSlider cycle-slider">
 							<?php foreach($node->field_event_presentation as $image) { ?>
 								<?php print $image['view']; ?>
@@ -404,23 +403,23 @@ if($_GET['q'] != "featured_event") { ?>
 					}
 
 				?>
-					</div>
+				</div>
 
-					<?php
+				<?php
 
-					}
 				}
+				}
+				
 				?>
 				<!-- FLICKR GALLERY END -->
 
-			
+		</div>
+		<?php 
 
+			if (($poster_found == true) || ($gallery_found == true) || ($flickr_found == true) || ($presentation_found == true)) {
+				print '<div id="slideshow-nav">';
 
-			</div>
-		<?php if (($poster_found == true) || ($gallery_found == true) || ($flickr_found == true) || ($presentation_found == true)) { ?>
-			<div id="slideshow-nav">
-
-				<?php 
+				
 				if ($poster_found == true) {
 					print '<div class="elem selected" name="poster">Poster</div>';
 					print '<div id="expand-poster">' .
@@ -476,11 +475,13 @@ if($_GET['q'] != "featured_event") { ?>
 						}
 					}
 				}
+			print '</div><!-- end slideshow nav -->';
 			}
+			print '</div><!-- zending all the image check stuff -->';
 			?>
 
-			</div>
-		</div>
+			
+		<!--endcheck-->
 		<div class="content-right">
 			<div class="video">
 				<?php if($node->field_event_video_preview[0]['view']) { ?>
