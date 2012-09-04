@@ -400,6 +400,7 @@ if($_GET['q'] != "featured_event") { ?>
 
 				$sencha_url = "http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'];
 				print "<div class='slider-item' style='background-image: url(" . $sencha_url . ");'></div>\n";
+
 				//print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
 			}?>
 						</div> 
@@ -572,9 +573,11 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 
 	foreach($flickr_image_urls as $flickr_url) {
 		//$flickr_image_urls[] = array($flickr_photo['url_o'], $flickr_photo['width_o'], $flickr_photo['height_o']);
-		$reqwidth = 900;
+		$reqwidth = 'x1';
+		$reqheight = 650; // scale by height rather than width
+
 		
-		$sencha_url = "http://src.sencha.io/" . $reqwidth . "/" . $flickr_url[0];
+		$sencha_url = "http://src.sencha.io/" . $reqwidth . "/" . $reqheight . "/" . $flickr_url[0];
 		
 		print '<div class="large-image-slide">' . 
 						'<img src="' . $sencha_url . '" />' .
