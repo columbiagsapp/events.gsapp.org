@@ -241,7 +241,7 @@ if($_GET['q'] != "featured_event") { ?>
 		if (strlen($node->field_event_poster[0]['fid']) > 1) {
 			if (count($node->field_event_poster) > 1) {
 				print '<div style="display:none" id="posters_many">&nbsp;</div>';
-			} else{
+			} else {
 				print '<div style="display:none" id="posters_1">&nbsp;</div>';
 			}
 			$poster_found = true;
@@ -396,7 +396,7 @@ if($_GET['q'] != "featured_event") { ?>
 					}
 
 					print '</div></div>';
-					
+
 					if ($counter == 1) {
 						print '<div style="display:none" id="flickr_1">&nbsp;</div>';
 					} else {

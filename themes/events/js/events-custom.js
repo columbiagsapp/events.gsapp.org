@@ -6,8 +6,9 @@ $(document).ready(function() {
 	win_h = $(window).height();
 	win_w = $(window).width();
 	updateLocation();
-	hide_nav_if_needed();
 	init_slideshows();
+	hide_nav_if_needed();
+	
 
 
 	
@@ -440,18 +441,19 @@ function init_slideshows() {
 		}
 
 	} else {
-		// no poster, no gallery
-		if ((f1 > 0) || (fm > 0)) {
-			$('#expand-gallery').show();
-		}
+		if ((g1 == 0) && (gm == 0)) {
+			// no poster, no gallery
+			if ((f1 > 0) || (fm > 0)) {
+				$('#expand-gallery').show();
+			}
 		
-		if (fm > 0) {
-			$('#next-button-flickr').show();
-			$('#prev-button-flickr').show();
+			if (fm > 0) {
+				$('#next-button-flickr').show();
+				$('#prev-button-flickr').show();
+			}
 		}
 	}
 }
-
 
 
 function hide_nav_if_needed() {
