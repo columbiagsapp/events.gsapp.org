@@ -250,7 +250,7 @@ if($_GET['q'] != "featured_event") { ?>
 		if (strlen($node->field_event_imagegallery[0]['fid']) > 1) {
 			if (count($node->field_event_imagegallery) > 1) {
 				print '<div style="display:none" id="gallery_many">&nbsp;</div>';
-			} else{
+			} else {
 				print '<div style="display:none" id="gallery_1">&nbsp;</div>';
 			}
 			$gallery_found = true;

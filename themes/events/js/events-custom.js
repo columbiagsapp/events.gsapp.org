@@ -453,7 +453,14 @@ function hide_nav_if_needed() {
 		$('#next-button-gallery').hide();
 		$('#prev-button-gallery').hide();
 		slides_found['gallery'] = 1;
+		
 	} else {
+		// in the case of there not being a poster, the buttons need to show in gallery
+		if (slides_found['poster'] == 1) {
+			$('#next-button-gallery').show();
+			$('#prev-button-gallery').show();
+		}
+
 		$("#gallery-slider").cycle({
 			fx: 'fade',
 			speed: 300, 
@@ -481,6 +488,12 @@ function hide_nav_if_needed() {
 		slides_found['flickr'] = 1;
 
 	} else {
+
+		if ((slides_found['poster'] == 1) && (slides_found['gallery'] == 1)) {
+			$('#next-button-flickr').show();
+			$('#prev-button-flickr').show();
+		}
+
 		$("#flickr-slider").cycle({
 			fx: 'fade',
 			speed: 300, 
