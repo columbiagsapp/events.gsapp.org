@@ -264,6 +264,11 @@ a:hover {
 	border: 2px solid black;
 }
 
+/* search results */
+.box {
+	padding-bottom:100px;
+}
+
 /* @end */
 
 /* @group Pager */
@@ -279,6 +284,18 @@ a:hover {
 	margin-top: -20px !important;
 }
 
+/* search results */
+.box .content .item-list ul.pager li a {
+	color: white;
+	text-decoration: none;
+	border: none;
+}
+
+.box .content .item-list ul.pager li a:hover {
+	color: white;
+	text-decoration: underline;
+	border: none;
+}
 
 /* @group Event Pager */
 
@@ -923,6 +940,7 @@ body {
 .node-type-event.node-full .content-right {
 	width: 430px;
 	float: left;
+	padding-bottom: 100px;
 }
 
 /* @end */
