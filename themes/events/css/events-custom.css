@@ -57,7 +57,7 @@ a:hover {
 	background-color: inherit;
 	top: 0;
 	left: 0;
-	width: 200%;
+	width: 100%;
 	min-height: 150%;
 	z-index: 28;
 	zoom: 1;
@@ -326,8 +326,8 @@ a:hover {
 	z-index: 29;
 	position: absolute;
 	display: none;
-	top: -50px;
-	left: 25px;
+	top: -30px;
+	left: 0;
 }
 
 #poster-slider-large{
@@ -358,8 +358,8 @@ display: inline-table;
 }
 
 #gallery-slider-large-wrapper .large-menu, #poster-slider-large-wrapper .large-menu, #flickr-slider-large-wrapper .large-menu {
-	background-color: none;
 	position: absolute;
+	top: 0px;
 	z-index: 30;
 	height: 25px;
 	width: 100%;
@@ -392,6 +392,17 @@ display: inline-table;
 	cursor: pointer;
 }
 
+.large-image-slide {
+	width: 960px;
+	height: 650px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.large-image-slide img {
+	position:relative;
+	margin: 0 auto;
+}
 
 /* @end */
 
