@@ -265,16 +265,6 @@ if($_GET['q'] != "featured_event") { ?>
 			$flickr_found = true;
 		}
 
-		if (strlen($node->field_event_flickr[0]['value']) > 1) {
-			if (count($node->field_event_flickr) > 1) {
-				print '<div style="display:none" id="flickr_many">&nbsp;</div>';
-			} else{
-				print '<div style="display:none" id="flickr_1">&nbsp;</div>';
-			}
-			$flickr_found = true;
-		}
-
-
 		if(strlen($node->field_event_presentation[0]['view']) > 1) { 
 			if (count($node->ield_event_presentation) > 1) {
 				print '<div style="display:none" id="presentation_many">&nbsp;</div>';

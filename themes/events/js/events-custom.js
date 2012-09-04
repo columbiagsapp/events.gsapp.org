@@ -447,6 +447,7 @@ function hide_nav_if_needed() {
 			before: recenter_image
 		});
 		slides_found['poster'] = 2;
+
 	}
 	var gallery_slides = $("#gallery-slider img");
 	if ((gallery_slides.length < 2) || (gallery_slides.length == undefined)) {
@@ -454,13 +455,15 @@ function hide_nav_if_needed() {
 		$('#next-button-gallery').hide();
 		$('#prev-button-gallery').hide();
 		slides_found['gallery'] = 1;
+
 		
 	} else {
-		// in the case of there not being a poster, the buttons need to show in gallery
+		// in the case of there not being a poster at all, the buttons need to show in gallery
+		
+		
 		if (slides_found['poster'] == 1) {
 			$('#next-button-gallery').show();
 			$('#prev-button-gallery').show();
-			$('#expand-gallery').show();
 		}
 
 		$("#gallery-slider").cycle({
