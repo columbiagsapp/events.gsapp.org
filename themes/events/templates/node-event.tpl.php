@@ -257,11 +257,6 @@ if($_GET['q'] != "featured_event") { ?>
 		}
 
 		if (strlen($node->field_event_flickr[0]['value']) > 1) {
-			if (count($node->field_event_flickr) > 1) {
-				print '<div style="display:none" id="flickr_many">&nbsp;</div>';
-			} else{
-				print '<div style="display:none" id="flickr_1">&nbsp;</div>';
-			}
 			$flickr_found = true;
 		}
 
@@ -369,7 +364,7 @@ if($_GET['q'] != "featured_event") { ?>
 					$flickr_rsp = file_get_contents($flickr_url);
 					$flickr_rsp_obj = unserialize($flickr_rsp);
 
-					if ($flickr_rsp_obj['stat'] == 'ok'){
+					if ($flickr_rsp_obj['stat'] == 'ok') {
 
 						/* CALL WORKED AND IMAGES EXIST */
 					?>
@@ -378,21 +373,34 @@ if($_GET['q'] != "featured_event") { ?>
 					<div id="flickr" class="item">
 						<div class="slider-wrapper theme-default">
 						<div id="flickr-slider" class="cycle-slider">
-			<?php foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
-				// pix is 430x323
-				// resize to height of 323
-				// so get original dimensions, calculate required width, use sencha to resize.
-				$reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
+			<?php 
 
-				//print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
-				//print "<div class='slider-item' style='width:430px; height:323px; text-align: center;'><img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'></div>\n";
-				$flickr_image_urls[] = array($flickr_photo['url_o'], $flickr_photo['width_o'], $flickr_photo['height_o']);
+				$counter = 0;
 
-				$sencha_url = "http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'];
-				print "<div class='slider-item' style='background-image: url(" . $sencha_url . ");'></div>\n";
+				foreach($flickr_rsp_obj['photoset']['photo'] as $key => $flickr_photo) {
+					// pix is 430x323
+					// resize to height of 323
+					// so get original dimensions, calculate required width, use sencha to resize.
+					$reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 
-				//print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
-			}?>
+					//print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
+					//print "<div class='slider-item' style='width:430px; height:323px; text-align: center;'><img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'></div>\n";
+					$flickr_image_urls[] = array($flickr_photo['url_o'], $flickr_photo['width_o'], $flickr_photo['height_o']);
+
+					$sencha_url = "http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'];
+					print "<div class='slider-item' style='background-image: url(" . $sencha_url . ");'></div>\n";
+
+					//print "<div class='slider-item' style='background-image: url(http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . ");'></div>\n";
+					$counter++;
+
+					}
+					if ($counter == 1) {
+						print '<div style="display:none" id="flickr_1">&nbsp;</div>';
+					} else {
+						print '<div style="display:none" id="flickr_many">&nbsp;</div>';
+					}
+
+				?>
 						</div> 
 						</div>
 					</div>
