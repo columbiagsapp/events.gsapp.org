@@ -115,7 +115,12 @@ if ($node->field_event_sys_isnext[0]['value'] == 1) {
 if ($node->field_event_sys_isfeatured[0]['value'] == 1) {
 	$isfeatured = 'isfeatured';
 }
-
+if ($node->field_event_sys_islast[0]['value'] > 0) {
+		$islast = 'islast';
+}
+if ($node->field_event_sys_isfirst[0]['value'] > 0) {
+		$isfirst = 'isfirst';
+}
 
 
 $flickr_image_urls = array();
@@ -134,6 +139,12 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 	<?php
 		if ($isfeatured == 'isfeatured') {
 			print '<div class="teaser-date-featured">&nbsp;</div>';
+		}
+		if ($isfirst == 'isfirst') {
+			print '<div class="teaser-date-first">&nbsp;</div>';
+		}
+		if ($islast == 'islast') {
+			print '<div class="teaser-date-last">&nbsp;</div>';
 		}
 	?>
 		
@@ -224,7 +235,19 @@ if($_GET['q'] != "featured_event") { ?>
 
   <div class="content">
 	<?php 
+		
+	if ($node->field_event_sys_islast[0]['value'] > 0) {
+		print '<div id="last-event">&nbsp;</div>';
+	}
 	
+	if ($node->field_event_sys_isfirst[0]['value'] > 0) {
+		print '<div id="first-event">&nbsp;</div>';
+	}
+
+	
+
+	
+
 	$first_poster_image_path = null;
 	
 	if($node->field_event_imagegallery[0]['view'] || $node->field_event_poster[0]['view'] ||
@@ -237,6 +260,7 @@ if($_GET['q'] != "featured_event") { ?>
 	$flickr_found = false;
 	$presentation_found = false;
 
+	
 		// check images
 		if (strlen($node->field_event_poster[0]['fid']) > 1) {
 			if (count($node->field_event_poster) > 1) {

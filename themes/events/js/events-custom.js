@@ -64,6 +64,16 @@ $(document).ready(function() {
 	var current_image = null;
 	
 
+	if (($('#first-event').length > 0) || ($('.teaser-date .teaser-date-first').length > 0)) {
+		$('#block-block-8 .content .event-pager .date-prev').hide();
+		$('.view-display-id-date_nav_1 .view-content .date-nav-new .date-prev').hide();
+	}
+
+	if (($('#last-event').length > 0) || ($('.teaser-date .teaser-date-last').length > 0)) {
+		$('#block-block-8 .content .event-pager .date-next').hide();
+		$('.view-display-id-date_nav_1 .view-content .date-nav-new .date-next').hide();
+	}
+
 	// show full date in search result view
 	var search_r = $('dl.search-results')[0];
 	if ((search_r !== null) && (search_r !== undefined)) {

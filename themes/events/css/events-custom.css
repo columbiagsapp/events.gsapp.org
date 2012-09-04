@@ -927,9 +927,15 @@ body {
 
 /* @end */
 
+#last-event, #first-event {
+	display: none;
+}
+
 /* @group Slideshow */
 
 /* @group Slideshow Area */
+
+
 
 #slideshow-area {
 	height: 330px;
@@ -1582,6 +1588,10 @@ background-image: none !important;
 	width: 11px;
 	height: 12px;
 	background: transparent url('/sites/all/themes/events/images/hept-icon.png') no-repeat top left;
+}
+
+.teaser-date-first, .teaser-date-last {
+	display: none;
 }
 
 .isprivate .teaser-date-box {
