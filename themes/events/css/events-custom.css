@@ -265,9 +265,10 @@ a:hover {
 }
 
 /* search results */
-.box {
+.box, .view-id-events_browse_semester {
 	padding-bottom:100px;
 }
+
 
 /* @end */
 
