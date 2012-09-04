@@ -67,11 +67,13 @@ $(document).ready(function() {
 	if (($('#first-event').length > 0) || ($('.teaser-date .teaser-date-first').length > 0)) {
 		$('#block-block-8 .content .event-pager .date-prev').hide();
 		$('.view-display-id-date_nav_1 .view-content .date-nav-new .date-prev').hide();
+		$('view-id-events_browse_semester .view-header .semester-pager .date-prev').hide();
 	}
 
 	if (($('#last-event').length > 0) || ($('.teaser-date .teaser-date-last').length > 0)) {
 		$('#block-block-8 .content .event-pager .date-next').hide();
 		$('.view-display-id-date_nav_1 .view-content .date-nav-new .date-next').hide();
+		$('view-id-events_browse_semester .view-header .semester-pager .date-next').hide();
 	}
 
 	// show full date in search result view
