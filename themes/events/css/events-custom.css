@@ -360,7 +360,7 @@ display: inline-table;
 #gallery-slider-large-wrapper .large-menu, #poster-slider-large-wrapper .large-menu, #flickr-slider-large-wrapper .large-menu {
 	position: absolute;
 	top: 0px;
-	z-index: 30;
+	z-index: 999;
 	height: 25px;
 	width: 100%;
 	color: #000;

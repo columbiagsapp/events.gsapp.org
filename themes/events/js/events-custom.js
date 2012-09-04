@@ -429,6 +429,7 @@ function hide_nav_if_needed() {
 		$('#next-button-poster').hide();
 		$('#prev-button-poster').hide();
 		slides_found['poster'] = 1;
+
 	} else {
 		$("#poster-slider").cycle({
 			fx: 'fade',
@@ -459,6 +460,7 @@ function hide_nav_if_needed() {
 		if (slides_found['poster'] == 1) {
 			$('#next-button-gallery').show();
 			$('#prev-button-gallery').show();
+			$('#expand-gallery').show();
 		}
 
 		$("#gallery-slider").cycle({
@@ -492,6 +494,7 @@ function hide_nav_if_needed() {
 		if ((slides_found['poster'] == 1) && (slides_found['gallery'] == 1)) {
 			$('#next-button-flickr').show();
 			$('#prev-button-flickr').show();
+			$('#expand-flickr').show();
 		}
 
 		$("#flickr-slider").cycle({
@@ -521,9 +524,6 @@ function recenter_image(moment) {
 		// should do something here... if image is not upscaled.
 
 	}
-
-
-
 }
 
 function resize_window() {
