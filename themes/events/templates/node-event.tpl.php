@@ -394,6 +394,9 @@ if($_GET['q'] != "featured_event") { ?>
 					$counter++;
 
 					}
+
+					print '</div></div>';
+					
 					if ($counter == 1) {
 						print '<div style="display:none" id="flickr_1">&nbsp;</div>';
 					} else {
@@ -401,8 +404,6 @@ if($_GET['q'] != "featured_event") { ?>
 					}
 
 				?>
-						</div> 
-						</div>
 					</div>
 
 					<?php

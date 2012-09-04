@@ -7,6 +7,9 @@ $(document).ready(function() {
 	win_w = $(window).width();
 	updateLocation();
 	hide_nav_if_needed();
+	init_slideshows();
+
+
 	
 	$('.video .content').css('visibility', 'hidden');
 	$("body .teaser-content a").hover(function () {
@@ -415,6 +418,42 @@ function show_cover() {
 	$('#page-cover').show();
 }
 
+function init_slideshows() {
+	// figure out the initial state of expands and paging
+	// based on which tabs are present
+	var p1 = $('#posters_1').length;
+	var pm = $('#posters_many').length;
+	var g1 = $('#gallery_1').length;
+	var gm = $('#gallery_many').length;
+	var f1 = $('#flickr_1').length;
+	var fm = $('#flickr_many').length;
+
+	if ((p1 == 0) && (pm == 0)) {
+		// no poster tab - so figure out what else to show
+		if ((g1 > 0) || (gm > 0)) {
+			$('#expand-gallery').show();
+		}
+		
+		if (gm > 0) {
+			$('#next-button-gallery').show();
+			$('#prev-button-gallery').show();
+		}
+
+	} else {
+		// no poster, no gallery
+		if ((f1 > 0) || (fm > 0)) {
+			$('#expand-gallery').show();
+		}
+		
+		if (fm > 0) {
+			$('#next-button-flickr').show();
+			$('#prev-button-flickr').show();
+		}
+	}
+}
+
+
+
 function hide_nav_if_needed() {
 	// hide chevrons for next and so on if only 1 image
 	var slides_found = {
@@ -458,13 +497,6 @@ function hide_nav_if_needed() {
 
 		
 	} else {
-		// in the case of there not being a poster at all, the buttons need to show in gallery
-		
-		
-		if (slides_found['poster'] == 1) {
-			$('#next-button-gallery').show();
-			$('#prev-button-gallery').show();
-		}
 
 		$("#gallery-slider").cycle({
 			fx: 'fade',
@@ -493,12 +525,6 @@ function hide_nav_if_needed() {
 		slides_found['flickr'] = 1;
 
 	} else {
-
-		if ((slides_found['poster'] == 1) && (slides_found['gallery'] == 1)) {
-			$('#next-button-flickr').show();
-			$('#prev-button-flickr').show();
-			$('#expand-flickr').show();
-		}
 
 		$("#flickr-slider").cycle({
 			fx: 'fade',
