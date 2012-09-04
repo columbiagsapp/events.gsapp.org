@@ -123,6 +123,7 @@ if ($node->field_event_sys_isfirst[0]['value'] > 0) {
 }
 
 
+
 $flickr_image_urls = array();
 
 if($node->field_event_visibility[0]['value'] == "private") $isprivate = "isprivate";
@@ -149,10 +150,10 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 	?>
 		
 		<div class="teaser-date-box"></div>
-
 		<div class="teaser-date-day"><?php print date_format_date($dateobj, "custom", "j"); ?> </div>
 		<div class="teaser-date-month"><?php print date_format_date($dateobj, "custom", "M"); ?> </div>
 		<?php
+
 			$ts = date_format_date($dateobj, "custom", "U");
 			print '<div class="teaser-date-nid"'. 			
 						'style="display:none;" title="' . $ts . '">' . 
@@ -161,6 +162,7 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
 		?>
 
 	</div>
+
 
 
 
@@ -179,7 +181,17 @@ if($node->field_event_visibility[0]['value'] == "private") $isprivate = "ispriva
  ?></div>
 
 			<div class="event-time hide-for-semester"><?php print date_format_date($dateobj, "custom", "g:ia"); ?> </div>
-			<div class="teaser-date-year"><?php print date_format_date($dateobj, "custom", "j M Y"); ?> </div>
+			
+			<?php
+				
+				print '<div class="teaser-date-year">' . date_format_date($dateobj, "custom", "j M Y");
+
+				if ($_GET['q'] == 'search') {
+					$semester = taxonomy_get_term($node->field_event_taxonomy_semester[0]['value']);
+					print '<div class="teaser-date-semester">' . $semester->name . '</div>';
+				}
+				print '</div>';
+			?>	
 
 			<div class="event-people hide-for-semester hide-for-month">
 			<?php  $counter = 0; $max = count($node->field_event_people); 
@@ -598,7 +610,7 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 	foreach($flickr_image_urls as $flickr_url) {
 		//$flickr_image_urls[] = array($flickr_photo['url_o'], $flickr_photo['width_o'], $flickr_photo['height_o']);
 		$reqwidth = 'x1';
-		$reqheight = 650; // scale by height rather than width
+		$reqheight = 600; // scale by height rather than width
 
 		
 		$sencha_url = "http://src.sencha.io/" . $reqwidth . "/" . $reqheight . "/" . $flickr_url[0];

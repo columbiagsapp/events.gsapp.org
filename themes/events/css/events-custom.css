@@ -826,11 +826,16 @@ body.page-featured-event .teaser-date {
 body.page-featured-event .hide-for-month {
 	display: none;
 }
+
+.teaser-date-semester {
+	margin-left: 10px;
+	border-left: 1px solid black;
+	padding-left: 10px;
+	display: inline;
+}
 body.page-featured-event #page-wrapper {
 	margin-left: 0px;
 }
-
-
 
 .teaser-image-featured {
 	display: none;
@@ -1592,18 +1597,18 @@ background-image: none !important;
 	z-index: -1; /* troy added for widget */
 }
 
-.istoday .teaser-date-box {
+.istoday .teaser-date-box, .isnext .teaser-date-box {
 	background-color: black;
 }
 
-.istoday .teaser-date{
+.istoday .teaser-date, .isnext .teaser-date {
 	color: white;
 }
 
 .teaser-date-featured {
 	position: absolute;
-	left: 221px;
-	top: 2px;
+	left: -20px;
+	top: 0px;
 	width: 11px;
 	height: 12px;
 	background: transparent url('/sites/all/themes/events/images/hept-icon.png') no-repeat top left;
@@ -2125,3 +2130,4 @@ Month */
 
 
 /* @end */
+ 
