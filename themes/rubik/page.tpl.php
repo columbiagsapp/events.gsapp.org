@@ -25,17 +25,6 @@
   </div>
 
   <div id='page'>
-    <?php
-    if ($user != null) {
-      foreach($user->roles as $role) {
-        if (($role == 'SuperEditor') || ($user->uid == 1)) {
-            print '<div id="super-editor-found">&nbsp;</div>';
-            break;
-        }
-      }
-    }
-    ?>
-
     <?php if ($tabs2): ?><div class='secondary-tabs clear-block'><?php print $tabs2 ?></div><?php endif; ?>
     <?php if ($help) print $help ?>
     <div class='page-content clear-block'>
