@@ -610,7 +610,7 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 	foreach($flickr_image_urls as $flickr_url) {
 		//$flickr_image_urls[] = array($flickr_photo['url_o'], $flickr_photo['width_o'], $flickr_photo['height_o']);
 		$reqwidth = 'x1';
-		$reqheight = 600; // scale by height rather than width
+		$reqheight = 550; // scale by height rather than width
 
 		
 		$sencha_url = "http://src.sencha.io/" . $reqwidth . "/" . $reqheight . "/" . $flickr_url[0];
@@ -628,7 +628,7 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 	print '<div class="large-menu">' .
 		'<div id="prev-button-flickr" class="button large"></div>' .
 		'<div id="next-button-flickr" class="button large"></div>' .
-		'<div id="flickr-large-close">CLOSE THIS</div>' .
+		'<div id="flickr-large-close">CLOSE THIS<br/>(or hit ESC)</div>' .
 		'</div>';
 	print '</div>'; // end wrapper
 

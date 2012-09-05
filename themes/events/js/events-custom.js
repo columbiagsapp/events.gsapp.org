@@ -132,8 +132,8 @@ $(document).ready(function() {
 		
 		// reposition the button container div
 		var new_css = {
-			'width': '900px',
-			'padding-left': '25px'		
+			'width': '920px',
+			'padding-left': '19px'		
 		}
 		$('#slideshow-buttons').css(new_css);
 		show_cover();
@@ -158,8 +158,8 @@ $(document).ready(function() {
 		
 		// reposition the button container div
 		var new_css = {
-			'width': '900px',
-			'padding-left': '25px'		
+			'width': '920px',
+			'padding-left': '19px'		
 		}
 		$('#slideshow-buttons').css(new_css);
 		show_cover();
@@ -175,8 +175,8 @@ $(document).ready(function() {
 		
 		// reposition the button container div
 		var new_css = {
-			'width': '900px',
-			'padding-left': '25px'		
+			'width': '920px',
+			'padding-left': '19px'		
 		}
 		$('#slideshow-buttons').css(new_css);
 		show_cover();
@@ -446,9 +446,17 @@ function close_flickr_and_poster() {
 		'padding-left': '0px'		
 	}
 	$('#slideshow-buttons').css(old_css);
+	$('.info-section').show();
 }
 
 function show_cover() {
+	var cover_css = {
+		'width': win_w,
+		'height': win_h
+	}
+
+	$('.info-section').hide();
+	$('#page-cover').css(cover_css);	
 	$('#page-cover').show();
 }
 

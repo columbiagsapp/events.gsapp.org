@@ -58,7 +58,7 @@ a:hover {
 	top: 0;
 	left: 0;
 	width: 100%;
-	min-height: 150%;
+	min-height: 100%;
 	z-index: 28;
 	zoom: 1;
 	filter: alpha(opacity=95);
