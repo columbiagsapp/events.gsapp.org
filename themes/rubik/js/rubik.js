@@ -38,3 +38,16 @@ Drupal.behaviors.rubik = function(context) {
     $(this).addClass('rubik-processed');
   });
 };
+
+$(document).ready(function() {
+
+  if ($('#super-editor-found').length < 1) {
+    $('#edit-field-event-taxonomy-semester-tids-hierarchical-select-selects-0').children().each(function() {
+      var option_value = $(this).attr("value");
+      if (option_value == "create_new_item") {
+        $(this).remove();
+      }
+    });
+  }
+
+});

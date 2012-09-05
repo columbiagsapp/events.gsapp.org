@@ -5,11 +5,9 @@ var win_w = undefined;
 $(document).ready(function() {
 	win_h = $(window).height();
 	win_w = $(window).width();
-	updateLocation();
 	init_slideshows();
 	hide_nav_if_needed();
-	
-
+	reset_location_filter();
 
 	
 	$('.video .content').css('visibility', 'hidden');
@@ -42,9 +40,18 @@ $(document).ready(function() {
 	);
 
 	$(".menu-location .loc").click(function() { 
-		$.cookie('gsappevents-loc', $(this).attr("id"));
-		$.cookie('gsappevents-loc-name', $(this).html());
-		updateLocation();
+		reset_location_filter();
+		var new_loc = $(this).attr("id");
+		if (new_loc == "all") {
+			reset_location_filter();
+			return;
+		}
+		$('.node-teaser').each(function() {
+			var class_string = $(this).attr('class');
+			if (class_string.indexOf(new_loc) < 0) {
+				$(this).addClass('teaserhidden');
+			}
+		});
 	});
 
 
@@ -352,7 +359,11 @@ $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmo
 // end document.ready
 
 
-
+function reset_location_filter() {
+	$('.node-teaser').each(function() {
+		$(this).removeClass('teaserhidden');
+	});
+}
 
 
 function updateLoc() {
@@ -360,6 +371,14 @@ function updateLoc() {
 }
 
 function updateLocation() { 
+
+	//
+
+	//$("#currentloc a").removeClass();
+	//amman
+
+
+/*
 	
 	if($(".node-type-event.node-full").length) {  $.cookie('gsappevents-loc', "all"); $.cookie('gsappevents-loc-name', "All Locations"); } 
 
@@ -382,7 +401,7 @@ function updateLocation() {
 			$(".node-teaser").not("." + $.cookie('gsappevents-loc')).addClass("teaserhidden");
 		}
 	}
-
+*/
 }
 
     function livestreamPlayerCallback(event) {
