@@ -340,12 +340,21 @@ a:hover {
 	display: block;
 }
 
-#gallery-slider-large-wrapper, #poster-slider-large-wrapper, #flickr-slider-large-wrapper {
+#poster-slider-large-wrapper {
 	z-index: 29;
 	position: absolute;
 	display: none;
-	top: -30px;
+	top: -64px;
 	left: 0;
+}
+
+#gallery-slider-large-wrapper, #flickr-slider-large-wrapper {
+	z-index: 29;
+	position: absolute;
+	display: none;
+	top: -76px;
+	left: 0;
+
 }
 
 #poster-slider-large{
