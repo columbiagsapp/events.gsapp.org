@@ -6,10 +6,9 @@ $(document).ready(function() {
 	win_h = $(window).height();
 	win_w = $(window).width();
 	init_slideshows();
-	hide_nav_if_needed();
 	reset_location_filter();
+	hide_nav_if_needed();
 
-	
 	$('.video .content').css('visibility', 'hidden');
 	$("body .teaser-content a").hover(function () {
 		var randtop = null;
@@ -124,21 +123,27 @@ $(document).ready(function() {
 
 // new expand logic minus thickbox
 	$('#expand-poster').click(function() {
+		
 		$('#poster-slider-large-wrapper').show();
 		$('#poster-slider-large').show();
+		
 		// adjust the buttons
+		
 		var prev = $('#prev-button-poster');
 		var next = $('#next-button-poster');
+
 		
 		// reposition the button container div
 		var new_css = {
 			'width': '920px',
 			'padding-left': '19px'		
 		}
+		
 		$('#slideshow-buttons').css(new_css);
+		
 		show_cover();
-		var slides = hide_nav_if_needed();
-		if (slides['poster'] == 1) {
+		var poster_slides = $("#poster-slider img");
+		if (poster_slides == 1) {
 			// single image only, must process
 			var img_h = $('#poster-slider-large').find('img').attr('height');
 			if (img_h < 600) {
@@ -147,6 +152,8 @@ $(document).ready(function() {
 				$('#poster-slider-large').find('img').css('top', margin + 'px');
 			}
 		}
+		
+
 	});
 
 	$('#expand-gallery').click(function() {
@@ -504,6 +511,7 @@ function hide_nav_if_needed() {
 		'gallery': null,
 		'flickr': null
 	};
+	
 
 	var poster_slides = $("#poster-slider img");
 	if ((poster_slides.length < 2) || (poster_slides.length == undefined)) {
@@ -511,26 +519,30 @@ function hide_nav_if_needed() {
 		$('#next-button-poster').hide();
 		$('#prev-button-poster').hide();
 		slides_found['poster'] = 1;
-
 	} else {
+
 		$("#poster-slider").cycle({
-			fx: 'fade',
+			fx: 'none',
 			speed: 300, 
 			timeout: 0, 
 			next:   '#next-button-poster', 
 			prev:   '#prev-button-poster'
 		});
 		$("#poster-slider-large").cycle({
-			fx: 'fade',
-			speed: 300, 
+			fx: 'none',
+			speed: 300,
 			timeout: 0, 
 			next:   '#next-button-poster',
 			prev:   '#prev-button-poster',
 			before: recenter_image
 		});
+
+
 		slides_found['poster'] = 2;
 
 	}
+
+
 	var gallery_slides = $("#gallery-slider img");
 	if ((gallery_slides.length < 2) || (gallery_slides.length == undefined)) {
 		// hide chevrons
@@ -542,7 +554,7 @@ function hide_nav_if_needed() {
 	} else {
 
 		$("#gallery-slider").cycle({
-			fx: 'fade',
+			fx: 'none',
 			speed: 300, 
 			timeout: 0, 
 			next:   '#next-button-gallery',
@@ -550,12 +562,12 @@ function hide_nav_if_needed() {
 		});
 
 		$("#gallery-slider-large").cycle({
-			fx: 'fade',
+			fx: 'none',
 			speed: 300, 
 			timeout: 0, 
 			next:   '#next-button-gallery',
-			prev:   '#prev-button-gallery',
-			before: recenter_image
+			prev:   '#prev-button-gallery'
+			//before: recenter_image
 		});
 		slides_found['gallery'] = 2;
 	}
@@ -570,7 +582,7 @@ function hide_nav_if_needed() {
 	} else {
 
 		$("#flickr-slider").cycle({
-			fx: 'fade',
+			fx: 'none',
 			speed: 300, 
 			timeout: 0, 
 			next:   '#next-button-flickr',
@@ -578,7 +590,7 @@ function hide_nav_if_needed() {
 		});
 
 		$("#flickr-slider-large").cycle({
-			fx: 'fade',
+			fx: 'none',
 			speed: 300, 
 			timeout: 0, 
 			next:   '#next-button-flickr',
@@ -594,6 +606,7 @@ function recenter_image(moment) {
 
 	if (img_h < 650) {
 		// should do something here... if image is not upscaled.
+	
 
 	}
 }
