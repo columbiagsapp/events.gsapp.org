@@ -416,6 +416,8 @@ if($_GET['q'] != "featured_event") { ?>
 					// pix is 430x323
 					// resize to height of 323
 					// so get original dimensions, calculate required width, use sencha to resize.
+					
+
 					$reqwidth = ceil($flickr_photo['width_o'] / ($flickr_photo['height_o'] / 323));
 
 					//print "<img class='event_flickr_image' src='http://src.sencha.io/" . $reqwidth . "/" . $flickr_photo['url_o'] . "'>\n";
