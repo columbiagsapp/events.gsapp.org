@@ -9,6 +9,15 @@ $(document).ready(function() {
 	reset_location_filter();
 	hide_nav_if_needed();
 
+
+	if ($('.istoday').length > 0) {
+		if ($('.isnext').length > 0) {
+			$('.isnext a .teaser-date .teaser-date-box').css('background-color', 'transparent');
+			$('.isnext a .teaser-date .teaser-date-day').css('color', 'black');
+			$('.isnext a .teaser-date .teaser-date-month').css('color', 'black');
+		}
+	}
+
 	$('.video .content').css('visibility', 'hidden');
 	$("body .teaser-content a").hover(function () {
 		var randtop = null;
@@ -644,5 +653,5 @@ var TO = false;
 $(window).resize(function(){
  if(TO !== false)
     clearTimeout(TO);
- TO = setTimeout(resize_window, 1); // time offset
+ TO = setTimeout(resize_window, 100); // time offset
 });
