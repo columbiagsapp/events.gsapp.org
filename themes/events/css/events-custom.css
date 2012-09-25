@@ -940,6 +940,17 @@ body {
 
 /* @end */
 
+/* @group About */
+
+#node-510 .content {
+	width: 740px;
+	margin: 70px auto;
+	
+}
+
+
+/* @end */
+
 /* @group Events node page */
 
 .node-type-event.node-full {
