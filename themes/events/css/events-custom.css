@@ -263,7 +263,7 @@ a:hover {
 	padding: 5px;
 	height: 9px;
 	margin: 0;
-	background-color: #EEE;
+	background: #EEE url(/sites/all/themes/events/images/search.png) no-repeat center right;
 	border: 2px solid black;
 }
 
@@ -945,6 +945,9 @@ body {
 #node-510 .content {
 	width: 740px;
 	margin: 70px auto;
+	font-size:14px;
+	line-height:18px;
+	font-weight:bold;
 	
 }
 
@@ -958,10 +961,10 @@ body {
     margin-bottom: 50px;
 }
 
-.about-page-title {
-	font-size: 150%;
-	font-weight: bold;
-	margin-bottom:100px;
+.half {
+	float: left;
+	width:;
+
 }
 
 
