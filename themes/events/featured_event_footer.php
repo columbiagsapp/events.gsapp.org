@@ -87,7 +87,7 @@ print '<div id="footer-left-text" class="footer_column">' .
 	
 print '<div id="footer-mid-links" class="footer_column">' .
 	'<div class="footer-link">' . 
-	'<a href="http://www.arch.columbia.edu/event-archive">Event Archive</a></div>' .
+	'<a href="/about">About</a></div>' .
 	'<div class="footer-link">' . 
 	'<a href="/posters">Lecture Series Posters</a></div><br/>' .
 	'<div class="footer-link">' . 
