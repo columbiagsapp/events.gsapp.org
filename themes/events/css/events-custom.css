@@ -952,8 +952,6 @@ body {
 	/* view title */
 	font-size: 31px;
 	font-weight: bold;
-    text-align: center;
-    width: 100%;
     margin-top: -12px;
     margin-bottom: 50px;
 }
@@ -968,6 +966,7 @@ body {
 	width: 430px;
 
 }
+
 
 
 /* @end */
