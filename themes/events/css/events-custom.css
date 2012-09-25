@@ -943,11 +943,8 @@ body {
 /* @group About */
 
 #node-510 .content {
-	width: 740px;
-	margin: 70px auto;
-	font-size:14px;
-	line-height:18px;
-	font-weight:bold;
+	width: 100%;
+	margin-top:70px;
 	
 }
 
@@ -961,9 +958,14 @@ body {
     margin-bottom: 50px;
 }
 
-.half {
+.half-left {
 	float: left;
-	width:;
+	width: 430px;
+
+}
+.half-right {
+	float: right;
+	width: 430px;
 
 }
 
