@@ -115,6 +115,9 @@
   <?php print $head; ?>
   <?php print $styles; ?>
   <?php print $scripts; ?>
+  
+
+
 </head>
 <body class="<?php print $classes; ?>">
 <!-- facebook stuff -->

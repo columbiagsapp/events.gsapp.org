@@ -69,10 +69,15 @@ if (strlen($hover_image_path) > 3) {
 
 
 print '<div class="csslocation" id="' . $css_location .'"></div>' .
-	'<a href="/' . $path . '"><div id="footer-left-side">' . 
-	'<div id="footer-left-icon" class="footer_column">' .
-	'<div class="event-heptagon" id="event-heptagon-' . $css_location . '">' . date_format_date($dateobj, "custom", "j") . '<br/>' . date_format_date($dateobj, "custom", "M") . '</div>' .
-	'</div>';
+	'<a href="/' . $path . '">' .
+		'<div id="footer-left-side">' . 
+			'<div id="footer-left-icon" class="footer_column">' .
+				'<div class="event-heptagon" id="event-heptagon-' . $css_location . '">' . date_format_date($dateobj, "custom", "j") . '<br/>' .
+				date_format_date($dateobj, "custom", "M") . '</div>' .
+			'</div>' .
+		'</div>' .
+	'</a>';
+	
 
 print '<div id="footer-left-text" class="footer_column">' .
 	'<a href="/' . $path . '">' .

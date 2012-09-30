@@ -263,7 +263,7 @@ a:hover {
 	padding: 5px;
 	height: 9px;
 	margin: 0;
-	background-color: #EEE;
+	background: #EEE url(/sites/all/themes/events/images/search.png) no-repeat center right;
 	border: 2px solid black;
 }
 
@@ -535,7 +535,6 @@ html, body {
 #footer-left-side {
   color: #000000;
   float: left;
-  width: 368px;
   height: 78px;
   position: relative;
   padding-top:10px;
@@ -563,19 +562,8 @@ html, body {
 	background: url('/sites/all/themes/events/images/heptagon-clear.png') no-repeat left top;
 	line-height: 11px;
 	pointer-events:none;
-
 }
 
-#event-heptagon-amman { color: #ff00a6;}
-#event-heptagon-new-york {color: #00d6ff;	 }
-#event-heptagon-mumbai  {	color: #ff9e00; }
-#event-heptagon-rio-de-janeiro  {	color: #00e652; }
-#event-heptagon-beijing  {	color: #ff555a; }
-#event-heptagon-moscow  {	color: #008aff; }
-#event-heptagon-amman  {	color: #ff00a6; }
-#event-heptagon-sao-paulo  {	color: #00e652; }
-#event-heptagon-barcelona  {	color: #ad20ff; }
-#event-heptagon-other  {	color: gray; }
 
 
 #footer-left-text {
@@ -603,22 +591,6 @@ html, body {
 	display: inline;
 }
 
-
-#event-feature-text {line-height: 16px;}
-#event-title { font-weight: bold;}
-#event-type {}
-.footer-event-location {float: left;}
-#event-time {float: left;}
-
-#event-location-new-york {	color: #00d6ff; }
-#event-location-mumbai  {	color: #ff9e00; }
-#event-location-rio-de-janeiro  {	color: #00e652; }
-#event-location-beijing  {	color: #ff555a; }
-#event-location-moscow  {	color: #008aff; }
-#event-location-amman  {	color: #ff00a6; }
-#event-location-sao-paulo  {	color: #00e652; }
-#event-location-barcelona  {	color: #ad20ff; }
-#event-location-other  {	color: gray; }
 
 #footer-mid-links {
 	margin-left: 43px;
@@ -807,6 +779,39 @@ html, body {
   left: 65px;
   top: 20px;
 }
+
+
+
+#event-feature-text {line-height: 16px;}
+#event-title { font-weight: bold;}
+#event-type {}
+.footer-event-location {float: left;}
+#event-time {float: left;}
+
+#event-location-new-york {	color: #00d6ff; }
+#event-location-mumbai  {	color: #ff9e00; }
+#event-location-rio-de-janeiro  {	color: #00e652; }
+#event-location-beijing  {	color: #ff555a; }
+#event-location-moscow  {	color: #008aff; }
+#event-location-amman  {	color: #ff00a6; }
+#event-location-sao-paulo  {	color: #00e652; }
+#event-location-barcelona  {	color: #ad20ff; }
+#event-location-other  {	color: gray; }
+
+
+
+#event-heptagon-amman { color: #ff00a6;}
+#event-heptagon-new-york {color: #00d6ff;	 }
+#event-heptagon-mumbai  {	color: #ff9e00; }
+#event-heptagon-rio-de-janeiro  {	color: #00e652; }
+#event-heptagon-beijing  {	color: #ff555a; }
+#event-heptagon-moscow  {	color: #008aff; }
+#event-heptagon-amman  {	color: #ff00a6; }
+#event-heptagon-sao-paulo  {	color: #00e652; }
+#event-heptagon-barcelona  {	color: #ad20ff; }
+#event-heptagon-other  {	color: gray; }
+
+
 /* @end */
 
 /* @group Widget for featured event */
@@ -936,6 +941,37 @@ body {
 	margin: 70px auto;
 	
 }
+
+
+/* @end */
+
+/* @group About */
+
+#node-510 .content {
+	width: 100%;
+	margin-top:70px;
+	
+}
+
+#about-title {
+	/* view title */
+	font-size: 31px;
+	font-weight: bold;
+    margin-top: -12px;
+    margin-bottom: 50px;
+}
+
+.half-left {
+	float: left;
+	width: 430px;
+
+}
+.half-right {
+	float: right;
+	width: 430px;
+
+}
+
 
 
 /* @end */
