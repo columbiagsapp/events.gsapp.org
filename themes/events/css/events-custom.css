@@ -1732,6 +1732,11 @@ background-image: none !important;
 	font-weight: bold;
 }
 
+.node-type-page .event-title {
+	color: black;
+	font-weight: bold;
+}
+
 .node-type-event.node-teaser .event-location {
 	float: left;
 	margin-right: 5px;
