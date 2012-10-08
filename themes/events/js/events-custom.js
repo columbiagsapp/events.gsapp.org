@@ -280,6 +280,22 @@ $('#footer-left-side').hover(function () {
 		switch_heptagon('off');
 });
 
+$('#footer-left-text').hover(function () {
+	//checking for existence of .info-section on events page
+	var info_section = null;
+	info_section = $('.info-section')[0];
+	if ((info_section == undefined) || (info_section == null)) {
+		$('#footer-hover-image').addClass("hover");
+	}
+		switch_heptagon('on');
+	},
+	function() {
+		$('#footer-hover-image').removeClass("hover");
+		switch_heptagon('off');
+});
+
+
+
 $(window).scroll(function () { 
 	var footer_hover_offset = (win_w - 500)/2;
 	var page_offset = window.pageYOffset;
