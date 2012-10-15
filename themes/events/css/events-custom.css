@@ -567,7 +567,7 @@ html, body {
 
 
 #footer-left-text {
-	margin-left: 30px;
+	margin-left: 8px;
 	width: 220px;
 	padding-top: 10px;
 }
@@ -594,8 +594,8 @@ html, body {
 
 
 #footer-mid-links {
-	margin-left: 13px;
-	width: 252px;
+	margin-left: 45px;
+	width: 200px;
 	padding-top: 10px;
 	height: 62px;
 
@@ -605,8 +605,8 @@ html, body {
 
 
 #footer-right-links {
-	margin-left: 13px;
-	width: 284px;
+	margin-left: 63px;
+	width: 113px;
 	padding-top:10px;
 	height: 78px;
 }
