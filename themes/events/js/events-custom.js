@@ -669,5 +669,5 @@ var TO = false;
 $(window).resize(function(){
  if(TO !== false)
     clearTimeout(TO);
- TO = setTimeout(resize_window, 100); // time offset
+ TO = setTimeout(resize_window, 10); // time offset
 });
