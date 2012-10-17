@@ -485,11 +485,28 @@ if ($error == false) {
 
 				<?php
 
+				} else {
+					// flickr call failed...
+					$flickr_found = false; // dont display a tab if something went wrong with the API call...
+					// also email
+					$m = "Something went wrong with Flickr API call for this node. Status returned was not 'ok' ... ";
+					$m .= "\r\n\n\n NODE: " . $node->nid . ", title: " . $node->title;
+					$to = 'jlh2199@columbia.edu';
+					$subject = "[EVENTS.GSAPP.ORG] WARNING: flickr API error detected";
+					$headers   = array();
+					$headers[] = "MIME-Version: 1.0";
+					$headers[] = "Content-type: text/plain; charset=iso-8859-1";
+					$headers[] = "From: events.gsapp.org <no-reply@events.gsapp.org>";
+					$headers[] = "Cc: Leigha <lld2117@columbia.edu>, Troy <tct2003@columbia.edu>";
+					$headers[] = "Subject: {$subject}";
+					$headers[] = "X-Mailer: PHP/".phpversion();
+
+					mail($to, $subject, $m, implode("\r\n", $headers));
 				}
-				}
+			}
 				
-				?>
-				<!-- FLICKR GALLERY END -->
+			?>
+			<!-- FLICKR GALLERY END -->
 
 		</div>
 		<?php 
