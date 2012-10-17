@@ -118,7 +118,7 @@ try {
 	$headers[] = "MIME-Version: 1.0";
 	$headers[] = "Content-type: text/plain; charset=iso-8859-1";
 	$headers[] = "From: events.gsapp.org <no-reply@events.gsapp.org>";
-	//$headers[] = "Cc: Leigha <lld2117@columbia.edu>, Troy <tct2003@columbia.edu>";
+	$headers[] = "Cc: Leigha <lld2117@columbia.edu>, Troy <tct2003@columbia.edu>";
 	$headers[] = "Subject: {$subject}";
 	$headers[] = "X-Mailer: PHP/".phpversion();
 
