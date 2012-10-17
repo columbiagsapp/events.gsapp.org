@@ -96,145 +96,183 @@ global $base_url;
   <?php endif; ?>
 
 <?php  /* DATE STUFF */
-$dateobj = date_make_date($node->field_event_date[0]['value'], 'UTC'); 
-$dateutcobj = clone $dateobj;
-date_timezone_set($dateobj, timezone_open(date_default_timezone_name(TRUE)));
 
-// not sure if we still need this but keeping it for now
-if (strtotime(date("Y-m-d")) <= strtotime(date_format_date($dateobj, "custom", "Y-m-d"))) { 
-	$isfuture = "isfuture";
+// possible failure here for that case of events without dates
+$error = false;
+
+try {
+
+	$dateobj = date_make_date($node->field_event_date[0]['value'], 'UTC'); 
+	$dateutcobj = clone $dateobj;
+	date_timezone_set($dateobj, timezone_open(date_default_timezone_name(TRUE)));
+
+} catch (Exception $e) {
+	$error = true;
+	// mail us the message
+	$m = '';
+	$m .= $e->getMessage();
+	$m .= "\r\n\n\n NODE: " . $node->nid . ", title: " . $node->title;
+	$to = 'jlh2199@columbia.edu';
+	$subject = "[EVENTS.GSAPP.ORG] WARNING: event without date detected";
+	$headers   = array();
+	$headers[] = "MIME-Version: 1.0";
+	$headers[] = "Content-type: text/plain; charset=iso-8859-1";
+	$headers[] = "From: events.gsapp.org <no-reply@events.gsapp.org>";
+	//$headers[] = "Cc: Leigha <lld2117@columbia.edu>, Troy <tct2003@columbia.edu>";
+	$headers[] = "Subject: {$subject}";
+	$headers[] = "X-Mailer: PHP/".phpversion();
+
+	mail($to, $subject, $m, implode("\r\n", $headers));
+
+	// where to exit??
 }
 
-// revised today and next logic based on python script
-if ($node->field_event_sys_istoday[0]['value'] == 1) {
-	$istoday = 'istoday';
-}
-if ($node->field_event_sys_isnext[0]['value'] == 1) {
-	$isnext = 'isnext';
-}
-if ($node->field_event_sys_isfeatured[0]['value'] == 1) {
-	$isfeatured = 'isfeatured';
-}
-if ($node->field_event_sys_islast[0]['value'] > 0) {
-		$islast = 'islast';
-}
-if ($node->field_event_sys_isfirst[0]['value'] > 0) {
-		$isfirst = 'isfirst';
-}
+
+if ($error == false) {
+
+
+										// not sure if we still need this but keeping it for now
+										if (strtotime(date("Y-m-d")) <= strtotime(date_format_date($dateobj, "custom", "Y-m-d"))) { 
+											$isfuture = "isfuture";
+										}
+
+										// revised today and next logic based on python script
+										if ($node->field_event_sys_istoday[0]['value'] == 1) {
+											$istoday = 'istoday';
+										}
+										if ($node->field_event_sys_isnext[0]['value'] == 1) {
+											$isnext = 'isnext';
+										}
+										if ($node->field_event_sys_isfeatured[0]['value'] == 1) {
+											$isfeatured = 'isfeatured';
+										}
+										if ($node->field_event_sys_islast[0]['value'] > 0) {
+												$islast = 'islast';
+										}
+										if ($node->field_event_sys_isfirst[0]['value'] > 0) {
+												$isfirst = 'isfirst';
+										}
 
 
 
-$flickr_image_urls = array();
+										$flickr_image_urls = array();
 
-if($node->field_event_visibility[0]['value'] == "private") $isprivate = "isprivate";
+										if($node->field_event_visibility[0]['value'] == "private") $isprivate = "isprivate";
 
-?>
+										?>
 
-<?php if($teaser) { ?>
-	<?php if($isfuture) { print '<a class="futureanchor" name="future"></a>'; } ?>
-  <div class="content teaser-content <?php print $istoday . " " . $isprivate .
-  " " . $isnext; ?>" id="teaser-node-<?php print $nid; ?>">
-	<a href="<?php print $node_url; ?>"<?php if($_GET['q'] == "widget") { print ' target="_blank"'; } ?>>
-	
-	<div class="teaser-date">
-	<?php
-		if ($isfeatured == 'isfeatured') {
-			print '<div class="teaser-date-featured">&nbsp;</div>';
-		}
-		if ($isfirst == 'isfirst') {
-			print '<div class="teaser-date-first">&nbsp;</div>';
-		}
-		if ($islast == 'islast') {
-			print '<div class="teaser-date-last">&nbsp;</div>';
-		}
-	?>
-		
-		<div class="teaser-date-box"></div>
-		<div class="teaser-date-day"><?php print date_format_date($dateobj, "custom", "j"); ?> </div>
-		<div class="teaser-date-month"><?php print date_format_date($dateobj, "custom", "M"); ?> </div>
-		<?php
+										<?php if($teaser) { ?>
+											<?php if($isfuture) { print '<a class="futureanchor" name="future"></a>'; } ?>
+										  <div class="content teaser-content <?php print $istoday . " " . $isprivate .
+										  " " . $isnext; ?>" id="teaser-node-<?php print $nid; ?>">
+											<a href="<?php print $node_url; ?>"<?php if($_GET['q'] == "widget") { print ' target="_blank"'; } ?>>
+											
+											<div class="teaser-date">
+											<?php
+												if ($isfeatured == 'isfeatured') {
+													print '<div class="teaser-date-featured">&nbsp;</div>';
+												}
+												if ($isfirst == 'isfirst') {
+													print '<div class="teaser-date-first">&nbsp;</div>';
+												}
+												if ($islast == 'islast') {
+													print '<div class="teaser-date-last">&nbsp;</div>';
+												}
+											?>
+												
+												<div class="teaser-date-box"></div>
+												<div class="teaser-date-day"><?php print date_format_date($dateobj, "custom", "j"); ?> </div>
+												<div class="teaser-date-month"><?php print date_format_date($dateobj, "custom", "M"); ?> </div>
+												<?php
 
-			$ts = date_format_date($dateobj, "custom", "U");
-			print '<div class="teaser-date-nid"'. 			
-						'style="display:none;" title="' . $ts . '">' . 
-						date_format_date($dateobj, "custom", "Y-n-j") . '</div>';
+													$ts = date_format_date($dateobj, "custom", "U");
+													print '<div class="teaser-date-nid"'. 			
+																'style="display:none;" title="' . $ts . '">' . 
+																date_format_date($dateobj, "custom", "Y-n-j") . '</div>';
 
-		?>
+												?>
 
-	</div>
-
-
+											</div>
 
 
-	<div class="teaser-info">
+
+
+											<div class="teaser-info">
+										<?php
+												if ($istoday) {
+													print '<div class="event-is-today">TODAY!</div>';
+												}
+											?>
+
+
+												<div class="event-title"><?php if($isprivate) { print "PRIVATE: "; } print $title; ?></div>
+												<div class="content-left">
+													<div class="event-type hide-for-semester"><?php print $node->field_event_taxonomy_type[0]['view']; ?></div>
+													<div class="event-location"><?php print ($node->field_event_location[0]['view'] ? $node->field_event_location[0]['view'] . " " : "");
+										 ?></div>
+
+													<div class="event-time hide-for-semester"><?php print date_format_date($dateobj, "custom", "g:ia"); ?> </div>
+													
+													<?php
+														
+														print '<div class="teaser-date-year">' . date_format_date($dateobj, "custom", "j M Y");
+
+														if ($_GET['q'] == 'search') {
+															$semester = taxonomy_get_term($node->field_event_taxonomy_semester[0]['value']);
+															print '<div class="teaser-date-semester">' . $semester->name . '</div>';
+														}
+														print '</div>';
+													?>	
+
+													<div class="event-people hide-for-semester hide-for-month">
+													<?php  $counter = 0; $max = count($node->field_event_people); 
+														//hacky thing to display commas
+														foreach($node->field_event_people as $person) { $counter++; ?>
+														<div class="event-person"><?php print $person['view']; if($counter < $max) print ", "; ?></div>
+													<?php } ?>
+													</div>
+
+												</div>
+											
+											</div> <!-- /info-content -->
+											</a>
+											<!-- this was in if($_GET['q'] != "widget"), Troy moved b/c now we want images again -->
+											<div class="teaser-image" id="teaser-image-<?php print $nid; ?>">
+												<?php 
+												if($node->field_event_hover_image[0]['view']) {
+													print $node->field_event_hover_image[0]['view']; 
+												} else {
+													print $node->field_event_poster[0]['view'];
+												} ?>
+											</div>
+											
+											<div class="teaser-image-featured">
+												<?php 
+												if($node->field_event_hover_image[0]['view']) {
+													print theme('imagecache', 'event_image_widget', $node->field_event_hover_image[0]['filepath'], '', NULL);
+												} else {
+													print theme('imagecache', 'event_image_widget', $node->field_event_poster[0]['filepath'], '', NULL);
+												} ?>
+											</div>
+												
+											
+
+										<?php 
+										// don't load images if we're in the widget -- why waste bandwidth? stopping image loading is harder at a js/css level..
+										if($_GET['q'] != "featured_event") { ?>
+											
+											
+										<?php } ?>
+
+  									</div> <!-- /content -->
 <?php
-		if ($istoday) {
-			print '<div class="event-is-today">TODAY!</div>';
-		}
-	?>
-
-
-		<div class="event-title"><?php if($isprivate) { print "PRIVATE: "; } print $title; ?></div>
-		<div class="content-left">
-			<div class="event-type hide-for-semester"><?php print $node->field_event_taxonomy_type[0]['view']; ?></div>
-			<div class="event-location"><?php print ($node->field_event_location[0]['view'] ? $node->field_event_location[0]['view'] . " " : "");
- ?></div>
-
-			<div class="event-time hide-for-semester"><?php print date_format_date($dateobj, "custom", "g:ia"); ?> </div>
-			
-			<?php
-				
-				print '<div class="teaser-date-year">' . date_format_date($dateobj, "custom", "j M Y");
-
-				if ($_GET['q'] == 'search') {
-					$semester = taxonomy_get_term($node->field_event_taxonomy_semester[0]['value']);
-					print '<div class="teaser-date-semester">' . $semester->name . '</div>';
-				}
-				print '</div>';
-			?>	
-
-			<div class="event-people hide-for-semester hide-for-month">
-			<?php  $counter = 0; $max = count($node->field_event_people); 
-				//hacky thing to display commas
-				foreach($node->field_event_people as $person) { $counter++; ?>
-				<div class="event-person"><?php print $person['view']; if($counter < $max) print ", "; ?></div>
-			<?php } ?>
-			</div>
-
-		</div>
-	
-	</div> <!-- /info-content -->
-	</a>
-	<!-- this was in if($_GET['q'] != "widget"), Troy moved b/c now we want images again -->
-	<div class="teaser-image" id="teaser-image-<?php print $nid; ?>">
-		<?php 
-		if($node->field_event_hover_image[0]['view']) {
-			print $node->field_event_hover_image[0]['view']; 
-		} else {
-			print $node->field_event_poster[0]['view'];
-		} ?>
-	</div>
-	
-	<div class="teaser-image-featured">
-		<?php 
-		if($node->field_event_hover_image[0]['view']) {
-			print theme('imagecache', 'event_image_widget', $node->field_event_hover_image[0]['filepath'], '', NULL);
-		} else {
-			print theme('imagecache', 'event_image_widget', $node->field_event_poster[0]['filepath'], '', NULL);
-		} ?>
-	</div>
-		
-	
-
-<?php 
-// don't load images if we're in the widget -- why waste bandwidth? stopping image loading is harder at a js/css level..
-if($_GET['q'] != "featured_event") { ?>
-	
-	
-<?php } ?>
-
-  </div> <!-- /content -->
-
+} else {
+	// error in datelogic
+	// exit rendering but mark inline w hidden comment
+	print '<!-- error!!! no date for node ' . $node->nid . ' | title: ' . $node->title . '-->' .
+				'</div>'; // close div
+}
+?>
 
 <?php /* ************************************************ */ ?>
 <?php /* ************************************************ */ ?>
@@ -398,6 +436,8 @@ if($_GET['q'] != "featured_event") { ?>
 					$flickr_url = "http://api.flickr.com/services/rest/?".implode('&', $flickr_encoded_params);
 					$flickr_rsp = file_get_contents($flickr_url);
 					$flickr_rsp_obj = unserialize($flickr_rsp);
+
+					// possible failure here
 
 					if ($flickr_rsp_obj['stat'] == 'ok') {
 
@@ -804,4 +844,3 @@ print '<div id="livestream"><iframe width="431" height="324" src="http://cdn.liv
 
 </div><!-- /.node a -->
 
-<div id="log"></div>
