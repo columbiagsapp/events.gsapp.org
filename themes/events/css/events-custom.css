@@ -2162,7 +2162,7 @@ filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.39073113, M12=-0.92050485,
 
 .view-events-browse-semester table.views-view-grid td .node-teaser, .view-events-browse table.views-view-grid td .node-teaser {
 	width: 225px;
-	height: 90px;
+	height: 100px;
 }
 
 .view-events-browse-semester table.views-view-grid td.col-last, .view-events-browse table.views-view-grid td.col-last {
