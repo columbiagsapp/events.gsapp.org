@@ -618,11 +618,17 @@ html, body {
 
 #subscribe-text {
 	float: left;
+	width: 300px;
+
 }
 
 #subscribe-service-name {
+	
 	float: left;
-	margin-left: 10px;
+margin-left: 0;
+position: absolute;
+top: 20px;
+left: 800px;
 }
 
 .subscribe-icons-line {
