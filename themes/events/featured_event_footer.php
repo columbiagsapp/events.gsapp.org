@@ -5,6 +5,17 @@
   $view_data = views_get_view_result('nodequeue_1', 'default');
   $n_nid = $view_data[0]->nid;
 	$featured_node = node_load($n_nid, NULL, True);
+
+	$no_featured = false;
+	// if not found then dont do any of this...
+	if ($featured_node == null) {
+		$no_featured = true;
+
+
+	} else {
+
+
+
 	$title = $featured_node->title;
 	$date = $featured_node->field_event_date[0]['value'];
 	$location_main = $featured_node->field_event_location[1]['value']; 
@@ -17,15 +28,14 @@
 	if (strlen($hover_image_path) < 3) {
 		$hover_image_path = $featured_node->field_event_poster[0]['filepath'];
 	}
-	
-	
-	
 	$path = $featured_node->path;
 	
 	// term id for vocab 4, if found...
 	$event_type = $featured_node->field_event_taxonomy_type[0]['value'];
+	
 	$event_type_name = null;
 	$event_type_terms = taxonomy_get_tree(4);
+	
 	foreach($event_type_terms as $t) {
 		if ($t->tid == $event_type) {
 			$event_type_name = $t->name;
@@ -41,6 +51,10 @@
 		$istoday = "istoday";
 	}
 	
+	}
+	
+
+
 	$css_location = null;
 	//TODO find a more elegant way to do this if there is one...
 	switch($location_main) {
@@ -60,6 +74,12 @@
 // should be white, just diff hover target based on event location
 
 //hidden hover image
+
+
+if ($no_featured == false) {
+
+
+
 if (strlen($hover_image_path) > 3) {
 	print '<div id="footer-hover-image">' . 
 		theme('imagecache', 'featured_event_hover', $hover_image_path, 'Featured event:hover image', '', NULL) . '</div>'; 
@@ -89,6 +109,28 @@ print '<div id="footer-left-text" class="footer_column">' .
 	$location_sub_name . '</div>' . 
 	'<div id="event-time">, ' . date_format_date($dateobj, "custom", "g:ia") . '</div></a>' .
 	'</div></a></div>';
+} else {
+	// no featured event so print it blank
+
+
+	print '<div id="footer-hover-image">&nbsp;</div>';
+
+
+print '<div class="csslocation"></div>' .
+		'<div id="footer-left-side">' . 
+			'<div id="footer-left-icon" class="footer_column">';				
+print '</div></div>';
+
+
+print '<div id="footer-left-text" class="footer_column">' .
+	'<div id="event-feature-text">&nbsp;</div>' .
+	'<div id="event-title">&nbsp;</div>' .
+	'<div id="event-type">&nbsp;</div>' .
+	'<div class="footer-event-location">&nbsp;</div>' . 
+	'<div id="event-time">&nbsp;</div>' .
+	'</div></div>';
+
+}
 	
 print '<div id="footer-mid-links" class="footer_column">' .
 	'<div class="footer-link">' . 
