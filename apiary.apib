@@ -1,0 +1,107 @@
+HOST: http://events.gsapp.org/api/
+
+--- GSAPP Events API v1 ---
+---
+This describes the GSAPP Events API for [events.gsapp.org](http://events.gsapp.org/).
+---
+
+--
+Events
+The following is a section of resources related to uncategorized events
+--
+List all events
+GET /event
+< 200
+< Content-Type: application/json
+{ "items": [
+{ "url": "/node/:nid", "nid":nid, "title": "What is New? Zaha Hadid", "subtitle": null, "visibility": "public", "calendar_type": "studio-x", "taxonomy": "some_tax", "hover_image": "/images/hover1.png", "poster_image": "/images/poster1.png", "flickr_gallery": "8834792894", "image_gallery": ["images/gallery2/image1.png", "images/gallery2/image2.png"], "image_credits": "Tina Gao", "type": "lecture", "semester": "spring", "event_date": "YY:MM:DD HH:MM:SS GMT", "event_location": "Studio-X Rio, Rio de Janeiro", "google_map_link": null, "hashtag": "#wood110312", "video": null, "video_image": null, "people": [{"nid": nid, "name": "John Doe"}], "description": "This event is about blah", "author": nid, "updated": "YY:MM:DD HH:MM:SS GMT" }
+] }
+
+
+Return event with nid :id
+GET /event/:id
+< 200
+< Content-Type: application/json
+{ "item": { 
+    "url": "/node/:nid", "nid":nid, "title": "What is New? Zaha Hadid", "subtitle": null, "visibility": "public", "calendar_type": "studio-x", "taxonomy": "some_tax", "hover_image": "/images/hover1.png", "poster_image": "/images/poster1.png", "flickr_gallery": "8834792894", "image_gallery": ["images/gallery2/image1.png", "images/gallery2/image2.png"], "image_credits": "Tina Gao", "type": "lecture", "semester": "spring", "event_date": "YY:MM:DD HH:MM:SS GMT", "event_location": "Studio-X Rio, Rio de Janeiro", "google_map_link": null, "hashtag": "#wood110312", "video": null, "video_image": null, "people": [{"nid": nid, "name": "John Doe"}], "description": "This event is about blah", "author": nid, "updated": "YY:MM:DD HH:MM:SS GMT" }
+}
+
+
+List all upcoming events
+GET /event/upcoming
+< 200
+< Content-Type: application/json
+{ "items": [
+        { "url": "/node/:nid", "nid":nid, "title": "What is New? Zaha Hadid", "subtitle": null, "visibility": "public", "calendar_type": "studio-x", "taxonomy": "some_tax", "hover_image": "/images/hover1.png", "poster_image": "/images/poster1.png", "flickr_gallery": "8834792894", "image_gallery": ["images/gallery2/image1.png", "images/gallery2/image2.png"], "image_credits": "Tina Gao", "type": "lecture", "semester": "spring", "event_date": "YY:MM:DD HH:MM:SS GMT", "event_location": "Studio-X Rio, Rio de Janeiro", "google_map_link": null, "hashtag": "#wood110312", "video": null, "video_image": null, "people": [{"nid": nid, "name": "John Doe"}], "description": "This event is about blah", "author": nid, "updated": "YY:MM:DD HH:MM:SS GMT" }
+    ],
+    "total": 98
+}
+
+
+List all upcoming events until :end_date (UNIX timestamp)
+GET /event/upcoming/:end_date
+< 200
+< Content-Type: application/json
+{ "items": [
+        { "url": "/node/:nid", "nid":nid, "title": "What is New? Zaha Hadid", "subtitle": null, "visibility": "public", "calendar_type": "studio-x", "taxonomy": "some_tax", "hover_image": "/images/hover1.png", "poster_image": "/images/poster1.png", "flickr_gallery": "8834792894", "image_gallery": ["images/gallery2/image1.png", "images/gallery2/image2.png"], "image_credits": "Tina Gao", "type": "lecture", "semester": "spring", "event_date": "YY:MM:DD HH:MM:SS GMT", "event_location": "Studio-X Rio, Rio de Janeiro", "google_map_link": null, "hashtag": "#wood110312", "video": null, "video_image": null, "people": [{"nid": nid, "name": "John Doe"}], "description": "This event is about blah", "author": nid, "updated": "YY:MM:DD HH:MM:SS GMT" }
+    ],
+    "total": 12
+}
+
+
+List all upcoming events between :start_date and :end_date (UNIX timestamp)
+GET /event/start/:start_date/end/:end_date
+< 200
+< Content-Type: application/json
+{ "items": [
+        { "url": "/node/:nid", "nid":nid, "title": "What is New? Zaha Hadid", "subtitle": null, "visibility": "public", "calendar_type": "studio-x", "taxonomy": "some_tax", "hover_image": "/images/hover1.png", "poster_image": "/images/poster1.png", "flickr_gallery": "8834792894", "image_gallery": ["images/gallery2/image1.png", "images/gallery2/image2.png"], "image_credits": "Tina Gao", "type": "lecture", "semester": "spring", "event_date": "YY:MM:DD HH:MM:SS GMT", "event_location": "Studio-X Rio, Rio de Janeiro", "google_map_link": null, "hashtag": "#wood110312", "video": null, "video_image": null, "people": [{"nid": nid, "name": "John Doe"}], "description": "This event is about blah", "author": nid, "updated": "YY:MM:DD HH:MM:SS GMT" }
+    ],
+    "total": 22
+}
+
+--
+Categorized Events
+The following is a section of resources related to categorized events
+--
+List all upcoming events with calendar type of :calendar_type (string, eg. "studio-x")
+GET /event/category/:calendar_type
+< 200
+< Content-Type: application/json
+{ "items": [
+        { "url": "/node/:nid", "nid":nid, "title": "What is New? Zaha Hadid", "subtitle": null, "visibility": "public", "calendar_type": "studio-x", "taxonomy": "some_tax", "hover_image": "/images/hover1.png", "poster_image": "/images/poster1.png", "flickr_gallery": "8834792894", "image_gallery": ["images/gallery2/image1.png", "images/gallery2/image2.png"], "image_credits": "Tina Gao", "type": "lecture", "semester": "spring", "event_date": "YY:MM:DD HH:MM:SS GMT", "event_location": "Studio-X Rio, Rio de Janeiro", "google_map_link": null, "hashtag": "#wood110312", "video": null, "video_image": null, "people": [{"nid": nid, "name": "John Doe"}], "description": "This event is about blah", "author": nid, "updated": "YY:MM:DD HH:MM:SS GMT" }
+    ],
+    "total": 42
+}
+
+
+List all upcoming events with calendar type of :calendar_type (string, eg. "studio-x")
+GET /event/category/:calendar_type/upcoming
+< 200
+< Content-Type: application/json
+{ "items": [
+        { "url": "/node/:nid", "nid":nid, "title": "What is New? Zaha Hadid", "subtitle": null, "visibility": "public", "calendar_type": "studio-x", "taxonomy": "some_tax", "hover_image": "/images/hover1.png", "poster_image": "/images/poster1.png", "flickr_gallery": "8834792894", "image_gallery": ["images/gallery2/image1.png", "images/gallery2/image2.png"], "image_credits": "Tina Gao", "type": "lecture", "semester": "spring", "event_date": "YY:MM:DD HH:MM:SS GMT", "event_location": "Studio-X Rio, Rio de Janeiro", "google_map_link": null, "hashtag": "#wood110312", "video": null, "video_image": null, "people": [{"nid": nid, "name": "John Doe"}], "description": "This event is about blah", "author": nid, "updated": "YY:MM:DD HH:MM:SS GMT" }
+    ],
+    "total": 98
+}
+
+
+List all upcoming events until :end_date (UNIX timestamp) with calendar type of :calendar_type (string, eg. "studio-x")
+GET /event/category/:calendar_type/upcoming/:end_date
+< 200
+< Content-Type: application/json
+{ "items": [
+        { "url": "/node/:nid", "nid":nid, "title": "What is New? Zaha Hadid", "subtitle": null, "visibility": "public", "calendar_type": "studio-x", "taxonomy": "some_tax", "hover_image": "/images/hover1.png", "poster_image": "/images/poster1.png", "flickr_gallery": "8834792894", "image_gallery": ["images/gallery2/image1.png", "images/gallery2/image2.png"], "image_credits": "Tina Gao", "type": "lecture", "semester": "spring", "event_date": "YY:MM:DD HH:MM:SS GMT", "event_location": "Studio-X Rio, Rio de Janeiro", "google_map_link": null, "hashtag": "#wood110312", "video": null, "video_image": null, "people": [{"nid": nid, "name": "John Doe"}], "description": "This event is about blah", "author": nid, "updated": "YY:MM:DD HH:MM:SS GMT" }
+    ],
+    "total": 12
+}
+
+
+List all upcoming events between :start_date and :end_date (UNIX timestamp) with calendar type of :calendar_type (string, eg. "studio-x")
+GET /event/start/:start_date/end/:end_date/category/:calendar_type
+< 200
+< Content-Type: application/json
+{ "items": [
+        { "url": "/node/:nid", "nid":nid, "title": "What is New? Zaha Hadid", "subtitle": null, "visibility": "public", "calendar_type": "studio-x", "taxonomy": "some_tax", "hover_image": "/images/hover1.png", "poster_image": "/images/poster1.png", "flickr_gallery": "8834792894", "image_gallery": ["images/gallery2/image1.png", "images/gallery2/image2.png"], "image_credits": "Tina Gao", "type": "lecture", "semester": "spring", "event_date": "YY:MM:DD HH:MM:SS GMT", "event_location": "Studio-X Rio, Rio de Janeiro", "google_map_link": null, "hashtag": "#wood110312", "video": null, "video_image": null, "people": [{"nid": nid, "name": "John Doe"}], "description": "This event is about blah", "author": nid, "updated": "YY:MM:DD HH:MM:SS GMT" }
+    ],
+    "total": 7
+}
