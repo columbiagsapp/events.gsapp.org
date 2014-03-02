@@ -1,31 +1,31 @@
 {
-    name: "GSAPP Events Calendar",
-    url: "events.gsapp.org",
-    version: "1.0",
-    thumbnail: "screenshot.png",
-    contributors: [
+    "name": "GSAPP Events Calendar",
+    "url": "events.gsapp.org",
+    "version": "1.0",
+    "thumbnail": "screenshot.png",
+    "contributors": [
         {
-            name: "Troy Conrad Therrien",
-            username: "troyth",
-            role: "lead"
+            "name": "Troy Conrad Therrien",
+            "username": "troyth",
+            "role": "lead"
         },
         {
-            name: "Leigha Dennis",
-            username: "lleigha",
-            role: "lead"
+            "name": "Leigha Dennis",
+            "username": "lleigha",
+            "role": "lead"
         },
         {
-            name: "Jochen Hartmann",
-            username: "troyth",
-            role: "developer"
+            "name": "Jochen Hartmann",
+            "username": "troyth",
+            "role": "developer"
         },
         {
-            name: "Dan Taeyoung Lee",
-            username: "provolot",
-            role: "developer"
+            "name": "Dan Taeyoung Lee",
+            "username": "provolot",
+            "role": "developer"
         },
     ],
-    dependencies: [
+    "dependencies": [
         "arch.columbia.edu"
     ]
 }
