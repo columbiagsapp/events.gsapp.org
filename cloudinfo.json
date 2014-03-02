@@ -23,7 +23,7 @@
             "name": "Dan Taeyoung Lee",
             "username": "provolot",
             "role": "developer"
-        },
+        }
     ],
     "dependencies": [
         "arch.columbia.edu"
