@@ -1,6 +1,6 @@
 {
     "name": "GSAPP Events Calendar",
-    "url": "events.gsapp.org",
+    "url": "http://events.gsapp.org/",
     "version": "1.0",
     "thumbnail": "screenshot.png",
     "contributors": [
